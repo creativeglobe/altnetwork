@@ -56,7 +56,45 @@
 				font-size: 0.9em;
 				font-style: italic;
 				opacity: 0.7;
-				margin-top: 0.8em; /* Μειώθηκε για λιγότερο κενό */
+				margin-top: 0.5em;
+			}
+
+			/* Thank you popup modal */
+			#thankYouModal {
+				display: none;
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0,0,0,0.8);
+				justify-content: center;
+				align-items: center;
+				z-index: 100;
+			}
+
+			.modal-content {
+				background: #fff;
+				padding: 2em 3em;
+				border-radius: 10px;
+				text-align: center;
+				max-width: 500px;
+				color: #333;
+			}
+
+			.modal-content h2 {
+				margin-bottom: 1em;
+				font-size: 2em;
+			}
+
+			.modal-content button {
+				padding: 0.8em 2em;
+				background: #333;
+				color: white;
+				border: none;
+				border-radius: 5px;
+				cursor: pointer;
+				font-size: 1.1em;
 			}
 
 			#footer {
@@ -74,9 +112,12 @@
 					designed by its users.</p>
 				</header>
 
-				<form id="signup-form" method="post" action="#">
-					<input type="email" name="email" id="email" placeholder="Email Address" />
+				<form id="signup-form" method="post" action="https://formsubmit.co/ΤΟ_EMAIL_ΣΟΥ@example.com">
+					<input type="email" name="email" id="email" placeholder="Email Address" required />
 					<input type="submit" value="Join the Waitlist" />
+					<input type="text" name="_honey" style="display:none" /> <!-- Anti-spam honeypot -->
+					<input type="hidden" name="_captcha" value="false" /> <!-- Anti-spam -->
+					<input type="hidden" name="_next" value="" /> <!-- Θα δείξει το popup αντί redirect -->
 				</form>
 
 				<div id="form-note">We’ll only use your email to gauge interest. Nothing more.</div>
@@ -114,6 +155,15 @@
 			</p>
 		</div>
 
+		<!-- Thank you popup modal -->
+		<div id="thankYouModal">
+			<div class="modal-content">
+				<h2>You’re on the list.</h2>
+				<p>We’ll reach out once there’s enough interest.</p>
+				<button onclick="document.getElementById('thankYouModal').style.display='none'">OK</button>
+			</div>
+		</div>
+
 		<footer id="footer">
 			<ul class="icons">
 				<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
@@ -127,5 +177,13 @@
 		</footer>
 
 		<script src="assets/js/main.js"></script>
+		<script>
+			// Show thank you popup after successful submission
+			document.getElementById('signup-form').addEventListener('submit', function(e) {
+				e.preventDefault(); // Αποτρέπει reload (Formsubmit θα στείλει async)
+				document.getElementById('thankYouModal').style.display = 'flex';
+				this.submit(); // Συνεχίζει την υποβολή στο Formsubmit
+			});
+		</script>
 	</body>
 </html>
