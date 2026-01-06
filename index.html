@@ -40,10 +40,15 @@
 			.right-scroll-container p {
 				font-size: 1.35em;
 				line-height: 1.65;
-				margin: 0 0 1.5em 0; /* Επανήλθε το original κενό */
+				margin: 0 0 1.5em 0;
 			}
 
-			/* Section titles in right text - original spacing */
+			/* Remove extra bottom margin from the last paragraph */
+			.right-scroll-container p:last-child {
+				margin-bottom: 0;
+			}
+
+			/* Section titles in right text */
 			.right-scroll-container .section-title {
 				font-size: 1.8em;
 				font-weight: bold;
@@ -72,10 +77,10 @@
 			designed by its users.</p>
 		</header>
 
-		<!-- Signup Form -->
+		<!-- Signup Form - changed button text for waitlist -->
 		<form id="signup-form" method="post" action="#">
 			<input type="email" name="email" id="email" placeholder="Email Address" />
-			<input type="submit" value="Sign Up" />
+			<input type="submit" value="Express Interest" />
 		</form>
 
 		<!-- Right-side text with internal scroll only -->
