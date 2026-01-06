@@ -11,21 +11,13 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<style>
-			/* Scrollbar styling */
+			/* Hide scrollbar completely but keep scrolling functional */
 			.right-scroll-container::-webkit-scrollbar {
-				width: 8px;
-			}
-			.right-scroll-container::-webkit-scrollbar-track {
-				background: transparent;
-			}
-			.right-scroll-container::-webkit-scrollbar-thumb {
-				background: rgba(255,255,255,0.3);
-				border-radius: 4px;
+				display: none; /* Chrome, Safari, Edge */
 			}
 			.right-scroll-container {
-				-ms-overflow-style: none;
-				scrollbar-width: thin;
-				scrollbar-color: rgba(255,255,255,0.3) transparent;
+				-ms-overflow-style: none;  /* IE and Edge */
+				scrollbar-width: none;  /* Firefox */
 			}
 
 			/* Right container with internal scroll only */
@@ -38,23 +30,16 @@
 				padding: 10% 8% 10% 4%;
 				box-sizing: border-box;
 				overflow-y: auto;
-				text-align: center;
+				text-align: left; /* Better readability for long text */
 				color: white;
 				z-index: 10;
 				pointer-events: auto;
-			}
-
-			.right-scroll-container h1 {
-				font-size: 3.25em; /* Matches left h1 */
-				margin: 0 0 0.55em;
-				line-height: 1.2;
 			}
 
 			.right-scroll-container p {
 				font-size: 1.35em; /* Matches left p */
 				line-height: 1.65;
 				opacity: 0.95;
-				text-align: left;
 				margin: 0;
 			}
 
@@ -71,7 +56,7 @@
 		<header id="header">
 			<h1>Eventually</h1>
 			<p>An alternative social networking platform,<br />
-			designed by its users</a>.</p>
+			designed by its users.</p>
 		</header>
 
 		<!-- Signup Form -->
@@ -80,9 +65,8 @@
 			<input type="submit" value="Sign Up" />
 		</form>
 
-		<!-- Right-side text with internal scroll only -->
+		<!-- Right-side text with internal scroll only (no title, no bold) -->
 		<div class="right-scroll-container">
-			<h1>An alternative social networking platform, designed by its users</h1>
 			<p>
 				Today's social media platforms have become increasingly restrictive.<br><br>
 				Algorithms, arbitrary rules, content moderation practices, and the extensive use of personal data have distanced many people from what social networking was originally meant to be: free expression and meaningful communication.<br><br>
@@ -90,21 +74,17 @@
 				to create a social networking platform open to different viewpoints, without political or thematic bias, and with genuine respect for the user.<br><br>
 				We are not aiming to replace everything.<br>
 				We aim to build a real alternative, shaped by the participation of its community.<br><br>
-				
-				<strong>How the project will start</strong><br>
+				How the project will start<br>
 				At this stage, we are not asking for money.<br>
 				First, we want to see whether there is real interest.<br>
 				For practical reasons, during the initial phase, the platform will be available only in countries where active interest and participation are demonstrated.<br>
 				This allows us to launch in a more structured way, with real users rather than artificial or unfocused exposure.<br><br>
-				
 				If a sufficient number of interested people come forward:<br>
 				• the creation of the platform will be officially announced<br>
 				• optional financial support will then be opened<br>
 				• those who expressed interest early will have a voice in shaping the project<br><br>
-				
 				The platform will move forward only if there is a community that truly wants it.<br><br>
-				
-				<strong>Call to action</strong><br>
+				Call to action<br>
 				If you believe there is a need for such an alternative,<br>
 				sign up to express your interest and be among the first to receive updates.<br><br>
 				No commitment. No payment. Just a declaration of interest.
