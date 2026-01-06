@@ -11,7 +11,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<style>
-			/* Κρύβει scroll bar αλλά επιτρέπει scroll (προαιρετικό - αν θες να φαίνεται, αφαίρεσε αυτό το τμήμα) */
+			/* Scrollbar styling */
 			.right-scroll-container::-webkit-scrollbar {
 				width: 8px;
 			}
@@ -23,12 +23,12 @@
 				border-radius: 4px;
 			}
 			.right-scroll-container {
-				-ms-overflow-style: none;  /* IE and Edge */
-				scrollbar-width: thin;     /* Firefox - λεπτή μπάρα */
+				-ms-overflow-style: none;
+				scrollbar-width: thin;
 				scrollbar-color: rgba(255,255,255,0.3) transparent;
 			}
 
-			/* Δεξί container με scroll μόνο μέσα του */
+			/* Right container with internal scroll only */
 			.right-scroll-container {
 				position: fixed;
 				top: 0;
@@ -37,28 +37,28 @@
 				height: 100vh;
 				padding: 10% 8% 10% 4%;
 				box-sizing: border-box;
-				overflow-y: auto;          /* Scroll μόνο εδώ */
+				overflow-y: auto;
 				text-align: center;
 				color: white;
 				z-index: 10;
-				pointer-events: auto;      /* Επιτρέπει scroll με mouse */
+				pointer-events: auto;
 			}
 
 			.right-scroll-container h1 {
-				font-size: 4em;
-				margin: 0 0 0.8em;
+				font-size: 3.25em; /* Matches left h1 */
+				margin: 0 0 0.55em;
 				line-height: 1.2;
 			}
 
 			.right-scroll-container p {
-				font-size: 1.8em;
-				line-height: 1.5;
+				font-size: 1.35em; /* Matches left p */
+				line-height: 1.65;
 				opacity: 0.95;
 				text-align: left;
 				margin: 0;
 			}
 
-			/* Εξασφαλίζει ότι η σελίδα δεν κάνει scroll */
+			/* Prevent page scroll */
 			body, html {
 				overflow: hidden;
 				height: 100%;
@@ -67,20 +67,20 @@
 	</head>
 	<body class="is-preload">
 
-		<!-- Header (αριστερό κείμενο - αμετάβλητο) -->
+		<!-- Header -->
 		<header id="header">
 			<h1>Eventually</h1>
 			<p>A simple template for telling the world when you'll launch<br />
 			your next big thing. Brought to you by <a href="http://html5up.net">HTML5 UP</a>.</p>
 		</header>
 
-		<!-- Signup Form (αμετάβλητο) -->
+		<!-- Signup Form -->
 		<form id="signup-form" method="post" action="#">
 			<input type="email" name="email" id="email" placeholder="Email Address" />
 			<input type="submit" value="Sign Up" />
 		</form>
 
-		<!-- Δεξί κείμενο με scroll μόνο μέσα του (χωρίς πλαίσιο) -->
+		<!-- Right-side text with internal scroll only -->
 		<div class="right-scroll-container">
 			<h1>An alternative social networking platform, designed by its users</h1>
 			<p>
