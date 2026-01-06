@@ -11,37 +11,38 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<style>
-			/* Κρύβει scroll bar αλλά επιτρέπει scroll (προαιρετικό - αν θες να φαίνεται, αφαίρεσε αυτό το τμήμα) */
-			.right-scroll-container::-webkit-scrollbar {
-				width: 8px;
-			}
-			.right-scroll-container::-webkit-scrollbar-track {
-				background: transparent;
-			}
-			.right-scroll-container::-webkit-scrollbar-thumb {
-				background: rgba(255,255,255,0.3);
-				border-radius: 4px;
-			}
-			.right-scroll-container {
-				-ms-overflow-style: none;  /* IE and Edge */
-				scrollbar-width: thin;     /* Firefox - λεπτή μπάρα */
-				scrollbar-color: rgba(255,255,255,0.3) transparent;
+			/* Αριστερό κείμενο: Όπως ακριβώς στο original template (πιο ψηλά) */
+			#header .inner {
+				margin: 0;
+				padding: 6em 5em 2em 5em; /* Πιο ψηλά (μεγαλύτερο top padding) */
+				text-align: left;
 			}
 
-			/* Δεξί container με scroll μόνο μέσα του */
+			#header h1 {
+				font-size: 4em;
+				line-height: 1.2;
+				margin: 0 0 0.8em 0;
+			}
+
+			/* Φόρμα: Κοντά στον τίτλο */
+			#signup-form {
+				margin-top: 2em;
+			}
+
+			/* Δεξί κείμενο με scroll μόνο μέσα του */
 			.right-scroll-container {
 				position: fixed;
 				top: 0;
 				right: 0;
 				width: 50%;
 				height: 100vh;
-				padding: 5% 8% 10% 4%;
+				padding: 4% 8% 10% 4%; /* ← ΕΔΩ ρυθμίζεις το ύψος: 4% = πολύ ψηλά */
 				box-sizing: border-box;
-				overflow-y: auto;          /* Scroll μόνο εδώ */
+				overflow-y: auto;
 				text-align: center;
 				color: white;
 				z-index: 10;
-				pointer-events: auto;      /* Επιτρέπει scroll με mouse */
+				pointer-events: auto;
 			}
 
 			.right-scroll-container h1 {
@@ -58,7 +59,24 @@
 				margin: 0;
 			}
 
-			/* Εξασφαλίζει ότι η σελίδα δεν κάνει scroll */
+			/* Λεπτή scroll bar για το δεξί κείμενο */
+			.right-scroll-container::-webkit-scrollbar {
+				width: 8px;
+			}
+			.right-scroll-container::-webkit-scrollbar-track {
+				background: transparent;
+			}
+			.right-scroll-container::-webkit-scrollbar-thumb {
+				background: rgba(255,255,255,0.3);
+				border-radius: 4px;
+			}
+			.right-scroll-container {
+				-ms-overflow-style: none;
+				scrollbar-width: thin;
+				scrollbar-color: rgba(255,255,255,0.3) transparent;
+			}
+
+			/* Η σελίδα δεν κάνει scroll */
 			body, html {
 				overflow: hidden;
 				height: 100%;
@@ -67,20 +85,24 @@
 	</head>
 	<body class="is-preload">
 
-		<!-- Header (αριστερό κείμενο - αμετάβλητο) -->
-		<header id="header">
-			<h1>Eventually</h1>
-			<p>A simple template for telling the world when you'll launch<br />
-			your next big thing. Brought to you by <a href="http://html5up.net">HTML5 UP</a>.</p>
-		</header>
+		<!-- Header με αριστερό κείμενο όπως στο original template -->
+		<section id="header">
+			<div class="inner">
+				<header>
+					<h1>Eventually</h1>
+					<p>A simple template for telling the world when you'll launch<br />
+					your next big thing. Brought to you by <a href="http://html5up.net">HTML5 UP</a>.</p>
+				</header>
 
-		<!-- Signup Form (αμετάβλητο) -->
-		<form id="signup-form" method="post" action="#">
-			<input type="email" name="email" id="email" placeholder="Email Address" />
-			<input type="submit" value="Sign Up" />
-		</form>
+				<!-- Signup Form -->
+				<form id="signup-form" method="post" action="#">
+					<input type="email" name="email" id="email" placeholder="Email Address" />
+					<input type="submit" value="Sign Up" />
+				</form>
+			</div>
+		</section>
 
-		<!-- Δεξί κείμενο με scroll μόνο μέσα του (χωρίς πλαίσιο) -->
+		<!-- Δεξί μεγάλο κείμενο με scroll μόνο μέσα του -->
 		<div class="right-scroll-container">
 			<h1>An alternative social networking platform, designed by its users</h1>
 			<p>
@@ -111,14 +133,8 @@
 			</p>
 		</div>
 
-		<!-- Footer -->
+		<!-- Footer χωρίς icons -->
 		<footer id="footer">
-			<ul class="icons">
-				<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-				<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-				<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-				<li><a href="#" class="icon fa-envelope"><span class="label">Email</span></a></li>
-			</ul>
 			<ul class="copyright">
 				<li>&copy; Untitled.</li><li>Credits: <a href="http://html5up.net">HTML5 UP</a></li>
 			</ul>
