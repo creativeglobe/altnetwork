@@ -53,20 +53,10 @@
 			}
 
 			#form-note {
-				display: none;
-			}
-
-			#thankYouMessage {
-				display: none;
-				font-size: 1.3em;
-				font-weight: bold;
-				color: white;
-				opacity: 0.9;
-				margin-left: 1em;
-			}
-
-			#signup-form {
-				align-items: center;
+				font-size: 0.9em;
+				font-style: italic;
+				opacity: 0.7;
+				margin-top: 0.3em;
 			}
 
 			#footer {
@@ -87,7 +77,6 @@
 				<form id="signup-form">
 					<input type="email" id="email" placeholder="Email Address" required />
 					<input type="submit" value="Join the Waitlist" />
-					<span id="thankYouMessage">Thank you</span>
 				</form>
 
 				<div id="form-note">We’ll only use your email to gauge interest. Nothing more.</div>
@@ -138,15 +127,5 @@
 		</footer>
 
 		<script src="assets/js/main.js"></script>
-		<script>
-			document.getElementById('signup-form').addEventListener('submit', function(e) {
-				e.preventDefault();
-				const email = document.getElementById('email').value.trim();
-				if (email) {
-					document.getElementById('thankYouMessage').style.display = 'inline';
-					document.getElementById('email').value = '';
-				}
-			});
-		</script>
 	</body>
 </html>
