@@ -10,62 +10,91 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<style>
+			/* Κρύβει τη scroll bar αλλά επιτρέπει scroll με mouse/touch */
+			body::-webkit-scrollbar {
+				display: none; /* Chrome, Safari, Edge */
+			}
+			body {
+				-ms-overflow-style: none;  /* IE and Edge */
+				scrollbar-width: none;  /* Firefox */
+			}
+			
+			/* Δεξί κείμενο: ελεύθερο, χωρίς πλαίσιο */
+			.right-text-container {
+				position: absolute;
+				top: 0;
+				right: 0;
+				width: 50%; /* Μισή οθόνη δεξιά */
+				height: 100vh;
+				padding: 10% 8% 10% 4%; /* Απόσταση για καλύτερη εμφάνιση */
+				box-sizing: border-box;
+				overflow-y: auto; /* Scroll αν χρειάζεται */
+				text-align: center;
+				color: white;
+				z-index: 10;
+				pointer-events: none; /* Δεν εμποδίζει κλικ στο background */
+			}
+			
+			.right-text-container h1 {
+				font-size: 4em;
+				margin: 0 0 0.4em;
+				line-height: 1.2;
+			}
+			
+			.right-text-container p {
+				font-size: 1.8em;
+				line-height: 1.5;
+				opacity: 0.95;
+				text-align: left; /* Ευανάγνωστο για μεγάλο κείμενο */
+			}
+		</style>
 	</head>
 	<body class="is-preload">
 
-		<!-- Header με δύο στήλες -->
-		<section id="header" style="display: flex; align-items: stretch; height: 100vh; width: 100%; max-width: none; margin: 0; padding: 0; position: relative;">
-			
-			<!-- Αριστερή στήλη: Τίτλος και φόρμα -->
-			<div style="flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 0 6em; min-width: 300px; z-index: 2;">
-				<header>
-					<h1>Eventually</h1>
-					<p>A simple template for telling the world when you'll launch<br />
-					your next big thing. Brought to you by <a href="http://html5up.net">HTML5 UP</a>.</p>
-				</header>
+		<!-- Header (αριστερό κείμενο + φόρμα - αμετάβλητο) -->
+		<header id="header">
+			<h1>Eventually</h1>
+			<p>A simple template for telling the world when you'll launch<br />
+			your next big thing. Brought to you by <a href="http://html5up.net">HTML5 UP</a>.</p>
+		</header>
+
+		<!-- Signup Form (αμετάβλητο) -->
+		<form id="signup-form" method="post" action="#">
+			<input type="email" name="email" id="email" placeholder="Email Address" />
+			<input type="submit" value="Sign Up" />
+		</form>
+
+		<!-- Δεξί μεγάλο κείμενο: ελεύθερο, με scroll χωρίς μπάρα -->
+		<div class="right-text-container">
+			<h1>An alternative social networking platform, designed by its users</h1>
+			<p>
+				Today's social media platforms have become increasingly restrictive.<br><br>
+				Algorithms, arbitrary rules, content moderation practices, and the extensive use of personal data have distanced many people from what social networking was originally meant to be: free expression and meaningful communication.<br><br>
+				Our idea is simple:<br>
+				to create a social networking platform open to different viewpoints, without political or thematic bias, and with genuine respect for the user.<br><br>
+				We are not aiming to replace everything.<br>
+				We aim to build a real alternative, shaped by the participation of its community.<br><br>
 				
-				<!-- Signup Form -->
-				<form id="signup-form" method="post" action="#" style="margin-top: 3em; width: 100%; max-width: 400px;">
-					<input type="email" name="email" id="email" placeholder="Email Address" />
-					<input type="submit" value="Sign Up" />
-				</form>
-			</div>
-			
-			<!-- Δεξιά στήλη: Scrollable πλαίσιο με το μεγάλο κείμενο -->
-			<div style="flex: 1; display: flex; align-items: center; justify-content: center; padding: 4em; background: rgba(0,0,0,0.4);">
-				<div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(5px); border-radius: 15px; padding: 3em; width: 90%; max-height: 90%; overflow-y: auto; text-align: center; color: white; box-shadow: 0 0 40px rgba(0,0,0,0.7);">
-					<h1 style="font-size: 3.8em; margin: 0 0 0.6em; line-height: 1.2;">An alternative social networking platform, designed by its users</h1>
-					<p style="font-size: 1.7em; line-height: 1.6; opacity: 0.95; text-align: left;">
-						Today's social media platforms have become increasingly restrictive.<br>
-						Algorithms, arbitrary rules, content moderation practices, and the extensive use of personal data have distanced many people from what social networking was originally meant to be: free expression and meaningful communication.<br><br>
-						
-						Our idea is simple:<br>
-						to create a social networking platform open to different viewpoints, without political or thematic bias, and with genuine respect for the user.<br><br>
-						
-						We are not aiming to replace everything.<br>
-						We aim to build a real alternative, shaped by the participation of its community.<br><br>
-						
-						<strong>How the project will start</strong><br>
-						At this stage, we are not asking for money.<br>
-						First, we want to see whether there is real interest.<br>
-						For practical reasons, during the initial phase, the platform will be available only in countries where active interest and participation are demonstrated.<br>
-						This allows us to launch in a more structured way, with real users rather than artificial or unfocused exposure.<br><br>
-						
-						If a sufficient number of interested people come forward:<br>
-						• the creation of the platform will be officially announced<br>
-						• optional financial support will then be opened<br>
-						• those who expressed interest early will have a voice in shaping the project<br><br>
-						
-						The platform will move forward only if there is a community that truly wants it.<br><br>
-						
-						<strong>Call to action</strong><br>
-						If you believe there is a need for such an alternative,<br>
-						sign up to express your interest and be among the first to receive updates.<br><br>
-						No commitment. No payment. Just a declaration of interest.
-					</p>
-				</div>
-			</div>
-		</section>
+				<strong>How the project will start</strong><br>
+				At this stage, we are not asking for money.<br>
+				First, we want to see whether there is real interest.<br>
+				For practical reasons, during the initial phase, the platform will be available only in countries where active interest and participation are demonstrated.<br>
+				This allows us to launch in a more structured way, with real users rather than artificial or unfocused exposure.<br><br>
+				
+				If a sufficient number of interested people come forward:<br>
+				• the creation of the platform will be officially announced<br>
+				• optional financial support will then be opened<br>
+				• those who expressed interest early will have a voice in shaping the project<br><br>
+				
+				The platform will move forward only if there is a community that truly wants it.<br><br>
+				
+				<strong>Call to action</strong><br>
+				If you believe there is a need for such an alternative,<br>
+				sign up to express your interest and be among the first to receive updates.<br><br>
+				No commitment. No payment. Just a declaration of interest.
+			</p>
+		</div>
 
 		<!-- Footer -->
 		<footer id="footer">
