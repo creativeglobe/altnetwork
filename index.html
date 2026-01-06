@@ -71,6 +71,7 @@
 				justify-content: center;
 				align-items: center;
 				z-index: 100;
+				flex-direction: column;
 			}
 
 			.modal-content {
@@ -112,12 +113,9 @@
 					designed by its users.</p>
 				</header>
 
-				<form id="signup-form" method="post" action="https://formsubmit.co/ΤΟ_EMAIL_ΣΟΥ@example.com">
-					<input type="email" name="email" id="email" placeholder="Email Address" required />
+				<form id="signup-form">
+					<input type="email" id="email" placeholder="Email Address" required />
 					<input type="submit" value="Join the Waitlist" />
-					<input type="text" name="_honey" style="display:none" /> <!-- Anti-spam honeypot -->
-					<input type="hidden" name="_captcha" value="false" /> <!-- Anti-spam -->
-					<input type="hidden" name="_next" value="" /> <!-- Θα δείξει το popup αντί redirect -->
 				</form>
 
 				<div id="form-note">We’ll only use your email to gauge interest. Nothing more.</div>
@@ -178,11 +176,13 @@
 
 		<script src="assets/js/main.js"></script>
 		<script>
-			// Show thank you popup after successful submission
 			document.getElementById('signup-form').addEventListener('submit', function(e) {
-				e.preventDefault(); // Αποτρέπει reload (Formsubmit θα στείλει async)
-				document.getElementById('thankYouModal').style.display = 'flex';
-				this.submit(); // Συνεχίζει την υποβολή στο Formsubmit
+				e.preventDefault();
+				const email = document.getElementById('email').value.trim();
+				if (email) {
+					document.getElementById('thankYouModal').style.display = 'flex';
+					document.getElementById('email').value = '';
+				}
 			});
 		</script>
 	</body>
