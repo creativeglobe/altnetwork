@@ -1,9 +1,4 @@
 <!DOCTYPE HTML>
-<!--
-	Eventually by HTML5 UP
-	html5up.net
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
 	<head>
 		<title>Eventually by HTML5 UP</title>
@@ -11,7 +6,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<style>
-			/* Hide scrollbar completely but keep scrolling functional */
 			.right-scroll-container::-webkit-scrollbar {
 				display: none;
 			}
@@ -20,7 +14,6 @@
 				scrollbar-width: none;
 			}
 
-			/* Right container with internal scroll only */
 			.right-scroll-container {
 				position: fixed;
 				top: 0;
@@ -43,12 +36,10 @@
 				margin: 0 0 1.5em 0;
 			}
 
-			/* Remove extra bottom margin from the last paragraph */
 			.right-scroll-container p:last-child {
 				margin-bottom: 0;
 			}
 
-			/* Section titles in right text */
 			.right-scroll-container .section-title {
 				font-size: 1.8em;
 				font-weight: bold;
@@ -56,13 +47,22 @@
 				opacity: 1;
 			}
 
-			/* Prevent page scroll */
 			body, html {
 				overflow: hidden;
 				height: 100%;
 			}
 
-			/* Hide footer (keep code for future use) */
+			#signup-form {
+				margin-top: 2em;
+			}
+
+			#form-note {
+				font-size: 0.9em;
+				font-style: italic;
+				opacity: 0.7;
+				margin-top: 0.8em;
+			}
+
 			#footer {
 				display: none;
 			}
@@ -70,20 +70,18 @@
 	</head>
 	<body class="is-preload">
 
-		<!-- Header -->
 		<header id="header">
 			<h1>Eventually</h1>
 			<p>An alternative social networking platform,<br />
 			designed by its users.</p>
 		</header>
 
-		<!-- Signup Form - changed button text for waitlist -->
 		<form id="signup-form" method="post" action="#">
 			<input type="email" name="email" id="email" placeholder="Email Address" />
-			<input type="submit" value="Express Interest" />
+			<input type="submit" value="Join the Waitlist" />
+			<div id="form-note">We’ll only use your email to gauge interest. Nothing more.</div>
 		</form>
 
-		<!-- Right-side text with internal scroll only -->
 		<div class="right-scroll-container">
 			<p>
 				Today's social media platforms have become <b>increasingly restrictive</b>.<br><br>
@@ -115,7 +113,6 @@
 			</p>
 		</div>
 
-		<!-- Footer (hidden with CSS - code kept for future use) -->
 		<footer id="footer">
 			<ul class="icons">
 				<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
@@ -128,7 +125,6 @@
 			</ul>
 		</footer>
 
-		<!-- Scripts -->
 		<script src="assets/js/main.js"></script>
 	</body>
 </html>
