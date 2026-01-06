@@ -11,48 +11,63 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<style>
-			/* Κρύβει τη scroll bar αλλά επιτρέπει scroll με mouse/touch */
-			body::-webkit-scrollbar {
-				display: none; /* Chrome, Safari, Edge */
+			/* Κρύβει scroll bar αλλά επιτρέπει scroll (προαιρετικό - αν θες να φαίνεται, αφαίρεσε αυτό το τμήμα) */
+			.right-scroll-container::-webkit-scrollbar {
+				width: 8px;
 			}
-			body {
+			.right-scroll-container::-webkit-scrollbar-track {
+				background: transparent;
+			}
+			.right-scroll-container::-webkit-scrollbar-thumb {
+				background: rgba(255,255,255,0.3);
+				border-radius: 4px;
+			}
+			.right-scroll-container {
 				-ms-overflow-style: none;  /* IE and Edge */
-				scrollbar-width: none;  /* Firefox */
+				scrollbar-width: thin;     /* Firefox - λεπτή μπάρα */
+				scrollbar-color: rgba(255,255,255,0.3) transparent;
 			}
-			
-			/* Δεξί κείμενο: ελεύθερο, χωρίς πλαίσιο */
-			.right-text-container {
-				position: absolute;
+
+			/* Δεξί container με scroll μόνο μέσα του */
+			.right-scroll-container {
+				position: fixed;
 				top: 0;
 				right: 0;
-				width: 50%; /* Μισή οθόνη δεξιά */
+				width: 50%;
 				height: 100vh;
-				padding: 10% 8% 10% 4%; /* Απόσταση για καλύτερη εμφάνιση */
+				padding: 10% 8% 10% 4%;
 				box-sizing: border-box;
-				overflow-y: auto; /* Scroll αν χρειάζεται */
+				overflow-y: auto;          /* Scroll μόνο εδώ */
 				text-align: center;
 				color: white;
 				z-index: 10;
-				pointer-events: none; /* Δεν εμποδίζει κλικ στο background */
+				pointer-events: auto;      /* Επιτρέπει scroll με mouse */
 			}
-			
-			.right-text-container h1 {
+
+			.right-scroll-container h1 {
 				font-size: 4em;
-				margin: 0 0 0.4em;
+				margin: 0 0 0.8em;
 				line-height: 1.2;
 			}
-			
-			.right-text-container p {
+
+			.right-scroll-container p {
 				font-size: 1.8em;
 				line-height: 1.5;
 				opacity: 0.95;
-				text-align: left; /* Ευανάγνωστο για μεγάλο κείμενο */
+				text-align: left;
+				margin: 0;
+			}
+
+			/* Εξασφαλίζει ότι η σελίδα δεν κάνει scroll */
+			body, html {
+				overflow: hidden;
+				height: 100%;
 			}
 		</style>
 	</head>
 	<body class="is-preload">
 
-		<!-- Header (αριστερό κείμενο + φόρμα - αμετάβλητο) -->
+		<!-- Header (αριστερό κείμενο - αμετάβλητο) -->
 		<header id="header">
 			<h1>Eventually</h1>
 			<p>A simple template for telling the world when you'll launch<br />
@@ -65,8 +80,8 @@
 			<input type="submit" value="Sign Up" />
 		</form>
 
-		<!-- Δεξί μεγάλο κείμενο: ελεύθερο, με scroll χωρίς μπάρα -->
-		<div class="right-text-container">
+		<!-- Δεξί κείμενο με scroll μόνο μέσα του (χωρίς πλαίσιο) -->
+		<div class="right-scroll-container">
 			<h1>An alternative social networking platform, designed by its users</h1>
 			<p>
 				Today's social media platforms have become increasingly restrictive.<br><br>
