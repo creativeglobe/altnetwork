@@ -27,7 +27,7 @@
 				right: 0;
 				width: 50%;
 				height: 100vh;
-				padding: 6% 8% 6% 1%; /* Ίδιο top/bottom (6%), αριστερά 1%, δεξιά 8% */
+				padding: 6% 8% 6% 1%; /* Ίδιο κενό πάνω-κάτω, αριστερά πολύ μικρό */
 				box-sizing: border-box;
 				overflow-y: auto;
 				text-align: left;
@@ -40,19 +40,14 @@
 			.right-scroll-container p {
 				font-size: 1.35em;
 				line-height: 1.65;
-				margin: 0 0 1.5em 0;
-			}
-
-			/* Μικρότερο κενό στο τέλος του τελευταίου p */
-			.right-scroll-container p:last-child {
-				margin-bottom: 0;
+				margin: 0; /* Καμία επιπλέον απόσταση μεταξύ παραγράφων */
 			}
 
 			/* Section titles in right text */
 			.right-scroll-container .section-title {
 				font-size: 1.8em;
 				font-weight: bold;
-				margin: 2em 0 1em 0;
+				margin: 2.5em 0 1em 0; /* Μόνο εδώ κενό για να ξεχωρίζουν οι τίτλοι */
 				opacity: 1;
 			}
 
