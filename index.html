@@ -27,10 +27,7 @@
 				right: 0;
 				width: 50%;
 				height: 100vh;
-				padding-top: 6%;
-				padding-right: 8%;    /* Δεξί περιθώριο μένει ίδιο */
-				padding-bottom: 6%;
-				padding-left: 1%;     /* Πολύ μικρό αριστερό περιθώριο → κείμενο πολύ πιο αριστερά (κοντά στη μέση) */
+				padding: 6% 8% 6% 1%; /* Ίδιο top/bottom (6%), αριστερά 1%, δεξιά 8% */
 				box-sizing: border-box;
 				overflow-y: auto;
 				text-align: left;
@@ -44,6 +41,11 @@
 				font-size: 1.35em;
 				line-height: 1.65;
 				margin: 0 0 1.5em 0;
+			}
+
+			/* Μικρότερο κενό στο τέλος του τελευταίου p */
+			.right-scroll-container p:last-child {
+				margin-bottom: 0;
 			}
 
 			/* Section titles in right text */
