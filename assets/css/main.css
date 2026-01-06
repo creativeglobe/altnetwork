@@ -886,13 +886,24 @@ button,
       margin: 1em 0 0 0;
       position: relative; } }
 
-.right-side-text {
+.centered-right-text {
   position: absolute;
   top: 50%;
-  right: 50px;
-  transform: translateY(-50%);
+  left: 50%;
+  transform: translate(-50%, -50%);
   color: white;
-  max-width: 300px;
-  text-align: right;
-  font-family: 'Arial', sans-serif;
+  text-align: center;
+  font-family: 'Source Sans Pro', sans-serif; /* ίδια γραμματοσειρά με το template */
+}
+
+.centered-right-text h1 {
+  font-size: 3em; /* ίδιο μέγεθος με το header του template */
+  line-height: 1.2;
+  margin: 0 0 0.5em 0;
+}
+
+.centered-right-text p {
+  font-size: 1.2em; /* ίδιο μέγεθος με το paragraph του template */
+  line-height: 1.5;
+  margin: 0;
 }
