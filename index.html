@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <!--
 	Eventually by HTML5 UP
-	html5up.net | @ajlkn
+	html5up.net
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
@@ -13,11 +13,11 @@
 		<style>
 			/* Hide scrollbar completely but keep scrolling functional */
 			.right-scroll-container::-webkit-scrollbar {
-				display: none; /* Chrome, Safari, Edge */
+				display: none;
 			}
 			.right-scroll-container {
-				-ms-overflow-style: none;  /* IE and Edge */
-				scrollbar-width: none;  /* Firefox */
+				-ms-overflow-style: none;
+				scrollbar-width: none;
 			}
 
 			/* Right container with internal scroll only */
@@ -27,19 +27,19 @@
 				right: 0;
 				width: 50%;
 				height: 100vh;
-				padding: 10% 8% 10% 4%;
+				padding: 6% 8% 10% 4%; /* Πιο ψηλά */
 				box-sizing: border-box;
 				overflow-y: auto;
-				text-align: left; /* Better readability for long text */
+				text-align: left;
 				color: white;
+				opacity: 0.8; /* Ίδιο γκρι απόχρωση με το αριστερό */
 				z-index: 10;
 				pointer-events: auto;
 			}
 
 			.right-scroll-container p {
-				font-size: 1.35em; /* Matches left p */
+				font-size: 1.35em;
 				line-height: 1.65;
-				opacity: 0.95;
 				margin: 0;
 			}
 
@@ -65,7 +65,7 @@
 			<input type="submit" value="Sign Up" />
 		</form>
 
-		<!-- Right-side text with internal scroll only (no title, no bold) -->
+		<!-- Right-side text with internal scroll only -->
 		<div class="right-scroll-container">
 			<p>
 				Today's social media platforms have become increasingly restrictive.<br><br>
