@@ -27,12 +27,12 @@
 				right: 0;
 				width: 50%;
 				height: 100vh;
-				padding: 6% 8% 6% 4%; /* Ίδιο top/bottom για ομοιομορφία */
+				padding: 6% 8% 6% 4%;
 				box-sizing: border-box;
 				overflow-y: auto;
 				text-align: left;
 				color: white;
-				opacity: 0.8; /* Ίδιο γκρι με αριστερά */
+				opacity: 0.8;
 				z-index: 10;
 				pointer-events: auto;
 			}
@@ -47,6 +47,11 @@
 			body, html {
 				overflow: hidden;
 				height: 100%;
+			}
+
+			/* Hide footer (keep code for future use) */
+			#footer {
+				display: none;
 			}
 		</style>
 	</head>
@@ -91,7 +96,7 @@
 			</p>
 		</div>
 
-		<!-- Footer -->
+		<!-- Footer (hidden with CSS - code kept for future use) -->
 		<footer id="footer">
 			<ul class="icons">
 				<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
