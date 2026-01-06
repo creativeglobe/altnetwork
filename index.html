@@ -52,19 +52,13 @@
 				height: 100%;
 			}
 
-			#signup-form {
-				margin-top: 2em;
-				display: flex;
-				flex-direction: column;
-				align-items: flex-start;
-			}
-
 			#form-note {
 				font-size: 0.9em;
 				font-style: italic;
 				opacity: 0.7;
-				margin-top: 1em;
-				align-self: center;
+				margin-top: 1.5em;
+				text-align: center;
+				width: 100%;
 			}
 
 			#footer {
@@ -83,8 +77,9 @@
 		<form id="signup-form" method="post" action="#">
 			<input type="email" name="email" id="email" placeholder="Email Address" />
 			<input type="submit" value="Join the Waitlist" />
-			<div id="form-note">We’ll only use your email to gauge interest. Nothing more.</div>
 		</form>
+
+		<div id="form-note">We’ll only use your email to gauge interest. Nothing more.</div>
 
 		<div class="right-scroll-container">
 			<p>
