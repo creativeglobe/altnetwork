@@ -886,18 +886,3 @@ button,
       margin: 1em 0 0 0;
       position: relative; } }
 
-.header-text-right {
-  margin-top: 1.5em;
-  text-align: center;
-  font-family: var(--font-main);
-  color: inherit;
-}
-
-.header-text-right h2 {
-  font-size: 2rem;
-  font-weight: 700;
-}
-
-.header-text-right p {
-  font-size: 1.25rem;
-}
