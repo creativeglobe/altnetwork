@@ -885,3 +885,11 @@ button,
       left: auto;
       margin: 1em 0 0 0;
       position: relative; } }
+
+
+/* Make the first background image visible immediately */
+#bg div:first-child {
+  opacity: 1;
+  visibility: visible;
+  z-index: 1;
+}
