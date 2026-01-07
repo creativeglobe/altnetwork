@@ -5,6 +5,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+
 		<style>
 			.right-scroll-container::-webkit-scrollbar {
 				display: none;
@@ -56,7 +57,7 @@
 				font-size: 0.9em;
 				font-style: italic;
 				opacity: 0.7;
-				margin-top: 0; /* Τώρα μηδενικό κενό – κολλημένη κάτω από τη φόρμα */
+				margin-top: 0;
 			}
 
 			#footer {
@@ -64,10 +65,60 @@
 			}
 		</style>
 	</head>
+
 	<body class="is-preload">
 
 		<section id="header">
 			<div class="inner">
+
+				<!-- IMAGE SLIDESHOW -->
+				<div id="slideshow"
+					style="
+						width: 420px;
+						height: 260px;
+						margin: 0 auto 40px auto;
+						position: relative;
+						overflow: hidden;
+						border-radius: 14px;
+					">
+
+					<img src="images/slide1.jpg"
+						style="
+							position:absolute;
+							inset:0;
+							width:100%;
+							height:100%;
+							object-fit:cover;
+							opacity:1;
+							transform:scale(1);
+							transition: opacity .8s ease, transform 6s ease;
+						">
+
+					<img src="images/slide2.jpg"
+						style="
+							position:absolute;
+							inset:0;
+							width:100%;
+							height:100%;
+							object-fit:cover;
+							opacity:0;
+							transform:scale(1.05);
+							transition: opacity .8s ease, transform 6s ease;
+						">
+
+					<img src="images/slide3.jpg"
+						style="
+							position:absolute;
+							inset:0;
+							width:100%;
+							height:100%;
+							object-fit:cover;
+							opacity:0;
+							transform:scale(1.05);
+							transition: opacity .8s ease, transform 6s ease;
+						">
+				</div>
+
 				<header>
 					<h1>Social Media Network</h1>
 					<p>An alternative social networking platform,<br />
@@ -80,6 +131,7 @@
 				</form>
 
 				<div id="form-note">We'll only use your email to gauge interest. Nothing more.</div>
+
 			</div>
 		</section>
 
@@ -114,18 +166,38 @@
 			</p>
 		</div>
 
-		<footer id="footer">
-			<ul class="icons">
-				<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-				<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-				<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-				<li><a href="#" class="icon fa-envelope"><span class="label">Email</span></a></li>
-			</ul>
-			<ul class="copyright">
-				<li>&copy; Untitled.</li><li>Credits: <a href="http://html5up.net">HTML5 UP</a></li>
-			</ul>
-		</footer>
-
 		<script src="assets/js/main.js"></script>
+
+		<!-- SLIDESHOW SCRIPT -->
+		<script>
+			const slides = document.querySelectorAll('#slideshow img');
+			let currentSlide = 0;
+			let interval;
+
+			function showSlide(index) {
+				slides.forEach((img, i) => {
+					img.style.opacity = i === index ? '1' : '0';
+					img.style.transform = i === index ? 'scale(1)' : 'scale(1.05)';
+				});
+			}
+
+			function startSlideshow() {
+				interval = setInterval(() => {
+					currentSlide = (currentSlide + 1) % slides.length;
+					showSlide(currentSlide);
+				}, 4000);
+			}
+
+			function stopSlideshow() {
+				clearInterval(interval);
+			}
+
+			showSlide(0);
+			startSlideshow();
+
+			document.getElementById('slideshow').addEventListener('mouseenter', stopSlideshow);
+			document.getElementById('slideshow').addEventListener('mouseleave', startSlideshow);
+		</script>
+
 	</body>
 </html>
