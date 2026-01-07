@@ -1,101 +1,3 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-<title>Future Launch</title>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-<link rel="stylesheet" href="assets/css/main.css" />
-<style>
-.right-scroll-container::-webkit-scrollbar { display: none; }
-.right-scroll-container { -ms-overflow-style: none; scrollbar-width: none; }
-.right-scroll-container {
-position: fixed;
-top: 0;
-right: 0;
-width: 50%;
-height: 100vh;
-padding: 6% 8% 6% 1%;
-box-sizing: border-box;
-overflow-y: auto;
-text-align: left;
-color: white;
-opacity: 0.8;
-z-index: 10;
-pointer-events: auto;
-}
-.right-scroll-container p {
-font-size: 1.35em;
-line-height: 1.65;
-margin: 0 0 1.5em 0;
-}
-.right-scroll-container p:last-child { margin-bottom: 0; }
-.right-scroll-container .section-title {
-font-size: 1.8em;
-font-weight: bold;
-margin: 2em 0 1em 0;
-opacity: 1;
-}
-body, html { overflow: hidden; height: 100%; }
-#form-note { font-size: 0.9em; font-style: italic; opacity: 0.7; margin-top: 0; }
-#footer { display: none; }
-#header .inner { display: block !important; margin-top: 0 !important; }
-</style>
-</head>
-<body class="is-preload">
-<section id="header">
-<div class="inner">
-<div id="slideshow" style="width:500px; height:260px; margin-top:-15px; margin-bottom:25px; margin-left:0.5%; position: relative; overflow:hidden; border-radius:14px;">
-<img src="images/slide1.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:1; transform:scale(1); transition: opacity .8s ease, transform 5s ease;">
-<img src="images/slide2.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
-<img src="images/slide3.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
-<img src="images/slide4.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
-<img src="images/slide5.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
-<img src="images/slide6.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
-<img src="images/slide7.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
-<img src="images/slide8.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
-<img src="images/slide9.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
-<img src="images/slide10.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
-</div>
-<header style="margin-bottom:10px;">
-<h1>Social Media Network</h1>
-<p>An alternative social networking platform,<br />centered around its users.</p>
-</header>
-<form id="signup-form" style="margin-bottom:10px;">
-<input type="email" id="email" placeholder="Email Address" required />
-<input type="submit" value="Join the Waitlist" />
-</form>
-<div id="form-note" style="margin-bottom:5px;">We'll only use your email to gauge interest. Nothing more.</div>
-</div>
-</section>
-<div class="right-scroll-container">
-<p>
-Today's social media platforms have become <b>increasingly restrictive</b>.<br><br>
-Algorithms, arbitrary rules, content moderation practices, and the extensive use of personal data have distanced many people from what social networking was originally meant to be: <b>free expression and meaningful communication</b>.<br><br>
-<b>Our idea is simple:</b><br>
-to create a social networking platform <b>open to different viewpoints</b>, <b>without political or thematic bias</b>, and with <b>genuine respect for the user</b>.<br><br>
-We are <b>not aiming to replace everything</b>.<br>
-We aim to build <b>a real alternative</b>, shaped by the participation of its community.
-</p>
-<div class="section-title">How the project will start</div>
-<p>
-At this stage, <b>we are not asking for money</b>.<br>
-First, we want to see whether there is <b>real interest</b>.<br>
-For practical reasons, during the initial phase, the platform will be available <b>only in countries where active interest and participation are demonstrated</b>.<br>
-This allows us to launch in a more structured way, with real users rather than artificial or unfocused exposure.<br><br>
-If a sufficient number of interested people come forward:<br>
-• the creation of the platform will be <b>officially announced</b><br>
-• <b>optional financial support</b> will then be opened<br>
-• those who expressed interest early will have a <b>voice in shaping the project</b><br><br>
-The platform will move forward <b>only if there is a community that truly wants it</b>.
-</p>
-<div class="section-title">Call to action</div>
-<p>
-If you believe there is a need for such an alternative,<br>
-<b>sign up</b> to express your interest and be among the first to receive updates.<br><br>
-<b>No commitment. No payment.</b> Just a declaration of interest.
-</p>
-</div>
-<script src="assets/js/main.js"></script>
 <script>
 const slides = document.querySelectorAll('#slideshow img');
 let currentSlide = 0;
@@ -115,10 +17,13 @@ showSlide(currentSlide);
 function stopSlideshow() {
 clearInterval(interval);
 }
-showSlide(0);
+// Εφέ και στην πρώτη εικόνα
+slides[0].style.opacity = '0';
+slides[0].style.transform = 'scale(1.05)';
+setTimeout(() => {
+    showSlide(0);
+}, 100);
 startSlideshow();
 document.getElementById('slideshow').addEventListener('mouseenter', stopSlideshow);
 document.getElementById('slideshow').addEventListener('mouseleave', startSlideshow);
 </script>
-</body>
-</html>
