@@ -128,10 +128,10 @@ body {
     background-size: cover;
     height: 100%;
     left: 0;
-    opacity: 1;
+    opacity: 0;
     position: absolute;
     top: 0;
-    visibility: visible;
+    visibility: hidden;
     width: 150%; }
     #bg div.visible {
       -moz-animation: bg 45s linear infinite;
@@ -160,8 +160,9 @@ body {
       -webkit-animation-direction: alternate !important;
       -ms-animation-direction: alternate !important;
       animation-direction: alternate !important; }
-  body.is-preload #bg {
-    opacity: 0.375; }
+  body.is-preload #bg div {
+    opacity: 1;
+    visibility: visible; }
 @-moz-keyframes bg {
   0% {
     -moz-transform: translateX(0);
