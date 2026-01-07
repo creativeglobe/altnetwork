@@ -45,7 +45,7 @@ body, html { overflow: hidden; height: 100%; }
 <section id="header">
 <div class="inner">
 <div id="slideshow" style="width:500px; height:260px; margin-top:-15px; margin-bottom:25px; margin-left:0.5%; position: relative; overflow:hidden; border-radius:14px;">
-<img src="images/slide1.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:1; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
+<img src="images/slide1.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:1; transform:scale(1); transition: opacity .8s ease, transform 5s ease;">
 <img src="images/slide2.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
 <img src="images/slide3.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
 <img src="images/slide4.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
@@ -115,14 +115,16 @@ showSlide(currentSlide);
 function stopSlideshow() {
 clearInterval(interval);
 }
-// Ξεκίνα με την πρώτη εικόνα σε scale(1.05) για να παίξει το εφέ και σε αυτή
-slides[0].style.transform = 'scale(1.05)';
-setTimeout(() => {
-    showSlide(0);
-}, 50);
+function resumeSlideshow() {
+clearInterval(interval);
+currentSlide = (currentSlide + 1) % slides.length;
+showSlide(currentSlide);
+startSlideshow();
+}
+showSlide(0);
 startSlideshow();
 document.getElementById('slideshow').addEventListener('mouseenter', stopSlideshow);
-document.getElementById('slideshow').addEventListener('mouseleave', startSlideshow);
+document.getElementById('slideshow').addEventListener('mouseleave', resumeSlideshow);
 </script>
 </body>
 </html>
