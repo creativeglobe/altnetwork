@@ -115,7 +115,7 @@ showSlide(currentSlide);
 function stopSlideshow() {
 clearInterval(interval);
 }
-// Ξεκίνα με opacity:0 για όλες, και αμέσως κάνε την πρώτη active – έτσι παίζει το εφέ και στην πρώτη
+// Ξεκίνα με όλες opacity:0 – έτσι η πρώτη παίζει το εφέ
 showSlide(0);
 startSlideshow();
 document.getElementById('slideshow').addEventListener('mouseenter', stopSlideshow);
