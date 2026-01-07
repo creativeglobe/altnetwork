@@ -160,9 +160,6 @@ body {
       -webkit-animation-direction: alternate !important;
       -ms-animation-direction: alternate !important;
       animation-direction: alternate !important; }
-  body.is-preload #bg div.visible {
-    opacity: 1;
-    visibility: visible; }
 @-moz-keyframes bg {
   0% {
     -moz-transform: translateX(0);
