@@ -63,6 +63,12 @@
 			#footer {
 				display: none;
 			}
+
+			/* override vertical centering for header inner to align top */
+			#header .inner {
+				display: block !important;
+				margin-top: 0 !important;
+			}
 		</style>
 	</head>
 
@@ -70,15 +76,13 @@
 
 		<section id="header">
 			<div class="inner">
-				
-				<div style="height: 120px;"></div>
 
 				<!-- IMAGE SLIDESHOW -->
 				<div id="slideshow"
 					style="
 						width: 420px;
 						height: 260px;
-						margin: 0 auto 40px auto;
+						margin-bottom: 30px;
 						position: relative;
 						overflow: hidden;
 						border-radius: 14px;
