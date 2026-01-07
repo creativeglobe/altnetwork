@@ -885,3 +885,55 @@ button,
       left: auto;
       margin: 1em 0 0 0;
       position: relative; } }
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+  // 1️⃣ Remove preload to enable animations
+  setTimeout(() => {
+    document.body.classList.remove('is-preload');
+  }, 100);
+
+  // 2️⃣ Background slideshow
+  const bgContainer = document.getElementById('bg');
+  if (bgContainer) {
+    const slides = bgContainer.querySelectorAll('div');
+    let current = 0;
+    if (slides.length > 0) {
+      slides[current].classList.add('visible');
+
+      setInterval(() => {
+        slides[current].classList.remove('visible');
+        current = (current + 1) % slides.length;
+        slides[current].classList.add('visible');
+      }, 10000); // Change slide every 10s
+    }
+  }
+
+  // 3️⃣ Form message animation
+  const formMessages = document.querySelectorAll('form .message');
+  formMessages.forEach(msg => {
+    setTimeout(() => {
+      msg.classList.add('visible');
+    }, 500); // fade in after 0.5s
+  });
+
+  // 4️⃣ Optional: Animate sections on scroll
+  const animatedSections = document.querySelectorAll('section, article');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = 1;
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  animatedSections.forEach(section => {
+    section.style.opacity = 0;
+    section.style.transform = 'translateY(2em)';
+    observer.observe(section);
+  });
+
+});
+</script>
