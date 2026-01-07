@@ -885,3 +885,17 @@ button,
       left: auto;
       margin: 1em 0 0 0;
       position: relative; } }
+
+/* Make first background image visible immediately, remove black start */
+body {
+  background-color: transparent; /* Remove black */
+}
+
+#bg {
+  opacity: 1 !important; /* Ensure container is fully visible */
+}
+
+#bg div:first-child {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
