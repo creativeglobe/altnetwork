@@ -36,15 +36,9 @@ margin: 2em 0 1em 0;
 opacity: 1;
 }
 body, html { overflow: hidden; height: 100%; }
-#form-note { font-size: 0.9em; font-style: italic; opacity: 0.7; margin-top: 0; }
+#form-note { display:none; }
 #footer { display: none; }
 #header .inner { display: block !important; margin-top: 0 !important; }
-
-/* Web3Forms form styling, aligned left with button inline */
-#signup-form { display: flex; align-items: center; gap: 0.5em; }
-#signup-form input[type="email"] { flex: 1; padding: 0.5em; font-size: 1em; }
-#signup-form input[type="submit"] { padding: 0.55em 1em; font-size: 1em; cursor: pointer; }
-#form-message { margin-left: 1em; font-style: italic; color: #fff; opacity: 0.8; }
 </style>
 </head>
 <body class="is-preload">
@@ -64,27 +58,14 @@ body, html { overflow: hidden; height: 100%; }
 </div>
 <header style="margin-bottom:10px;">
 <h1>Social Media Network</h1>
-<p>An alternative user-focused social network<br>fostering communication and diverse perspectives.</p>
+<p>An alternative user-focused social network<br />fostering communication and diverse perspectives.</p>
 </header>
-
-<!-- Web3Forms form -->
-<form id="signup-form" action="https://api.web3forms.com/submit" method="POST" autocomplete="off" style="margin-bottom:10px; display: inline-block;">
-  <input type="hidden" name="access_key" value="ΤΟ_ACCESS_KEY_ΣΟΥ">
-  <input type="hidden" name="redirect" value="">
-  <input type="email" name="email" placeholder="Email Address" required style="padding:0.5em; font-size:1em;">
-  <input type="submit" value="Join the Waitlist" style="padding:0.55em 1em; font-size:1em; cursor:pointer;">
-  <span id="form-message" style="margin-left:1em; font-style:italic; color:#fff; opacity:0.8;"></span>
+<form id="signup-form" style="margin-bottom:10px;">
+<input type="email" id="email" placeholder="Email Address" required />
+<input type="submit" value="Join the Waitlist" />
 </form>
-
-<!-- Backup old form (hidden) -->
-<form id="signup-form-backup" style="display:none;">
-  <input type="email" id="email-backup" placeholder="Email Address" />
-  <input type="submit" value="Join the Waitlist" />
-</form>
-
 </div>
 </section>
-
 <div class="right-scroll-container">
 <p>
 Today's social media platforms have become <b>increasingly restrictive</b>.<br><br>
@@ -113,7 +94,6 @@ If you believe there is a need for such an alternative,<br>
 <b>No commitment. No payment.</b> Just a declaration of interest.
 </p>
 </div>
-
 <script src="assets/js/main.js"></script>
 <script>
 const slides = document.querySelectorAll('#slideshow img');
@@ -145,40 +125,43 @@ startSlideshow();
 document.getElementById('slideshow').addEventListener('mouseenter', stopSlideshow);
 document.getElementById('slideshow').addEventListener('mouseleave', resumeSlideshow);
 </script>
+</body>
+</html>
+
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
 
-  // Remove preload
+  // 1️⃣ Remove preload to enable animations
   setTimeout(() => {
     document.body.classList.remove('is-preload');
   }, 100);
 
-  // Web3Forms AJAX submission
-  const form = document.getElementById('signup-form');
-  const messageEl = document.getElementById('form-message');
+  // 2️⃣ Background slideshow
+  const bgContainer = document.getElementById('bg');
+  if (bgContainer) {
+    const slides = bgContainer.querySelectorAll('div');
+    let current = 0;
+    if (slides.length > 0) {
+      slides[current].classList.add('visible');
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const data = new FormData(form);
-    messageEl.textContent = "Sending...";
-    try {
-      const res = await fetch(form.action, {
-        method: form.method,
-        body: data,
-      });
-      if (res.ok) {
-        messageEl.textContent = "Thank you!";
-        form.reset();
-      } else {
-        messageEl.textContent = "Error, try again.";
-      }
-    } catch (err) {
-      messageEl.textContent = "Error, try again.";
+      setInterval(() => {
+        slides[current].classList.remove('visible');
+        current = (current + 1) % slides.length;
+        slides[current].classList.add('visible');
+      }, 10000); // Change slide every 10s
     }
+  }
+
+  // 3️⃣ Form message animation
+  const formMessages = document.querySelectorAll('form .message');
+  formMessages.forEach(msg => {
+    setTimeout(() => {
+      msg.classList.add('visible');
+    }, 500); // fade in after 0.5s
   });
 
-  // Animate sections on scroll
+  // 4️⃣ Optional: Animate sections on scroll
   const animatedSections = document.querySelectorAll('section, article');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -197,5 +180,3 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 </script>
-</body>
-</html>
