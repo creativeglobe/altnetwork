@@ -983,3 +983,23 @@ button,
     padding: 4% 5% !important;
   }
 }
+
+@media screen and (max-width: 1024px) {
+  #signup-form {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 0.5em;
+    margin: 1em auto !important;
+  }
+
+  #signup-form input[type="email"] {
+    flex: 1 1 auto;
+    min-width: 200px;
+  }
+
+  #signup-form input[type="submit"] {
+    flex: 0 0 auto;
+  }
+}
