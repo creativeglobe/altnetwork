@@ -906,3 +906,23 @@ button,
     padding: 4% 5% !important;
   }
 }
+
+/* Tablet & mobile: full width + centered content */
+@media screen and (max-width: 1024px) {
+  #header, .inner, .right-scroll-container {
+    width: 100% !important;
+    text-align: center !important; /* center all content */
+    position: static !important;
+    height: auto !important;
+    margin-top: 2em !important;
+    padding: 2% 4% !important;
+    opacity: 1 !important;
+  }
+}
+
+/* Mobile extra padding */
+@media screen and (max-width: 600px) {
+  .right-scroll-container {
+    padding: 4% 5% !important;
+  }
+}
