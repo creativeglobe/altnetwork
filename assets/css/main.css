@@ -886,77 +886,7 @@ button,
       margin: 1em 0 0 0;
       position: relative; } }
 
-/* Responsive fallback: move right column below slideshow on smaller screens */
-@media screen and (max-width: 1024px) {
-  .right-scroll-container {
-    position: static !important;
-    width: 100% !important;
-    height: auto !important;
-    padding: 2% 4% !important;
-    margin-top: 2em !important;
-    opacity: 1 !important;
-  }
-
-  #header, .inner {
-    width: 100% !important;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .right-scroll-container {
-    padding: 4% 5% !important;
-  }
-}
-
-/* Tablet & Mobile Layout Fix */
-@media screen and (max-width: 1024px) {
-  .right-scroll-container {
-    position: static !important;
-    width: 100% !important;
-    height: auto !important;
-    margin: 2em auto 0 auto !important;
-    padding: 2% 5% !important;
-    text-align: center !important;
-    opacity: 1 !important;
-  }
-
-  #header, .inner {
-    width: 100% !important;
-    text-align: center !important;
-    margin: 0 auto;
-  }
-
-  #slideshow {
-    margin: 0 auto 1em auto !important;
-    width: 90% !important;
-    max-width: 500px !important;
-  }
-
-  #slideshow img {
-    width: 100% !important;
-    left: 0 !important;
-    right: 0 !important;
-    transform: scale(1) !important;
-  }
-
-  /* Form: ensuring it is correctly centered */
-  #signup-form {
-    width: 100% !important;
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    gap: 0.5em;
-    margin: 1em auto 0 auto !important;
-  }
-
-  #signup-form input[type="email"],
-  #signup-form input[type="submit"] {
-    max-width: 500px !important;
-    width: 100% !important;
-  }
-}
-
-/* Form width & centering on all devices */
+/* Reset some previous overrides and ensure form is correctly centered */
 #signup-form {
   max-width: 500px;
   width: 100%;
@@ -967,25 +897,72 @@ button,
   margin: 1em auto 0 auto;
 }
 
+/* Tablet / Mobile form adjustments */
+@media screen and (max-width: 1024px) {
+  #signup-form {
+    flex-direction: column; /* Stack email input and submit button */
+    align-items: center; /* Center content in tablet / mobile */
+    gap: 0.5em;
+  }
+
+  #signup-form input[type="email"] {
+    width: 100%;
+    max-width: 400px; /* Set max width for email input */
+  }
+
+  #signup-form input[type="submit"] {
+    width: 100%;
+    max-width: 400px; /* Make the submit button width equal to input */
+    padding: 12px; /* Fix the size of the button */
+  }
+}
+
+/* General form styling */
 #signup-form input[type="email"] {
   flex: 1 1 auto;
   min-width: 200px;
+  padding: 10px;
+  font-size: 16px;
 }
 
 #signup-form input[type="submit"] {
   flex: 0 0 auto;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
 }
 
-/* Adjustments for mobile view */
+/* Slideshow and Title Fix */
 @media screen and (max-width: 1024px) {
-  #signup-form {
-    flex-direction: row !important;
-    max-width: 90% !important;
+  #header .inner {
+    margin-top: 3em;
+    text-align: center;
+  }
+
+  #slideshow {
+    width: 90%;
+    max-width: 500px;
+    margin: 0 auto 1em auto;
+  }
+
+  #slideshow img {
+    width: 100%;
+    transform: scale(1);
+  }
+
+  .right-scroll-container {
+    text-align: center;
+    width: 100%;
+    padding: 2% 5%;
   }
 }
 
-/* Spacing Above Title */
+/* Keep layout clean with space above the title */
 #header .inner {
-  margin-top: 4em !important;
+  margin-top: 3em;
   text-align: center;
 }
