@@ -40,11 +40,22 @@ body, html { overflow: hidden; height: 100%; }
 #footer { display: none; }
 #header .inner { display: block !important; margin-top: 0 !important; }
 #form-result { margin-top: 10px; font-weight: bold; color: #1cb495; }
-/* Restore original spacing between email input and button */
+/* Force left alignment and proper spacing for the form */
+#signup-form {
+  justify-content: flex-start !important;
+  display: flex !important;
+  gap: 12px !important; /* Adjust this value if needed for exact spacing */
+  align-items: center !important;
+}
 #signup-form input[type="email"] {
-  margin-right: 12px !important; /* Προσαρμόστε το 12px όπως ήταν στην original (δοκιμάστε 10px-15px αν χρειάζεται) */
+  margin: 0 !important;
 }
 #signup-form input[type="submit"] {
+  margin: 0 !important;
+}
+#form-result,
+#form-note {
+  text-align: left !important;
   margin-left: 0 !important;
 }
 </style>
