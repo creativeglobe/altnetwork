@@ -922,3 +922,24 @@ button,
     padding: 4% 5%;
   }
 }
+
+@media screen and (max-width: 1024px) {
+  .right-scroll-container {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    padding: 2% 4% !important;
+    margin-top: 2em !important;
+    opacity: 1 !important;
+  }
+
+  #header, .inner {
+    width: 100% !important;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .right-scroll-container {
+    padding: 4% 5% !important;
+  }
+}
