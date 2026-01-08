@@ -39,25 +39,27 @@ body, html { overflow: hidden; height: 100%; }
 #footer { display: none; }
 #header .inner { display: block !important; margin-top: 0 !important; }
 
+/* Στυλ φόρμας Web3Forms */
 #signup-form {
-  display: flex;
-  align-items: center;
-  gap: 0.5em;
+display: flex;
+align-items: center;
+gap: 10px;
+margin-bottom: 10px;
 }
 #signup-form input[type="email"] {
-  padding: 0.7em;
-  font-size: 1em;
-  flex: 1;
+padding: 0.5em 0.7em;
+font-size: 1em;
+flex: 1;
 }
 #signup-form input[type="submit"] {
-  padding: 0.7em 1em;
-  font-size: 1em;
-  cursor: pointer;
+padding: 0.55em 1em;
+font-size: 1em;
+cursor: pointer;
 }
-#signup-form .form-message {
-  margin-left: 1em;
-  font-weight: bold;
-  color: #1cb495;
+#signup-form .w3f-message {
+margin-left: 10px;
+color: #0f0;
+font-weight: bold;
 }
 </style>
 </head>
@@ -81,12 +83,19 @@ body, html { overflow: hidden; height: 100%; }
 <p>An alternative social networking platform,<br />centered around its users.</p>
 </header>
 
-<!-- Web3Forms Form -->
-<form id="signup-form" action="https://api.web3forms.com/submit" method="POST" class="web3forms-form" style="display:flex; align-items:center; gap:0.5em; max-width:400px;">
-  <input type="hidden" name="access_key" value=d59c6d7b-f144-4eea-9c67-ec80c95ef229 />
-  <input type="email" name="email" placeholder="Email Address" required style="flex:1; padding:0.7em; font-size:1em;" />
-  <input type="submit" value="Join the Waitlist" style="padding:0.7em 1em; font-size:1em; cursor:pointer;" />
-  <span class="form-message" style="margin-left:0.5em; font-weight:bold; color:#1cb495;"></span>
+<!-- Web3Forms Φόρμα -->
+<form id="signup-form" action="https://api.web3forms.com/submit" method="POST">
+<input type="hidden" name="access_key" value=d59c6d7b-f144-4eea-9c67-ec80c95ef229 />
+<input type="hidden" name="redirect" value="" /> <!-- Αποτρέπει το redirect -->
+<input type="email" name="email" placeholder="Email Address" required />
+<input type="submit" value="Join the Waitlist" />
+<span class="w3f-message"></span>
+</form>
+
+<!-- Backup παλιά φόρμα -->
+<form id="backup-form" style="display:none;">
+<input type="email" id="email-backup" placeholder="Email Address" required />
+<input type="submit" value="Join the Waitlist" />
 </form>
 
 </div>
@@ -122,68 +131,62 @@ If you believe there is a need for such an alternative,<br>
 </div>
 
 <script src="assets/js/main.js"></script>
-
 <script>
-// Slideshow
+// Slideshow λειτουργία
 const slides = document.querySelectorAll('#slideshow img');
 let currentSlide = 0;
 let interval;
 function showSlide(index) {
-  slides.forEach((img, i) => {
-    img.style.opacity = i === index ? '1' : '0';
-    img.style.transform = i === index ? 'scale(1)' : 'scale(1.05)';
-  });
+slides.forEach((img, i) => {
+img.style.opacity = i === index ? '1' : '0';
+img.style.transform = i === index ? 'scale(1)' : 'scale(1.05)';
+});
 }
 function startSlideshow() {
-  interval = setInterval(() => {
-    currentSlide = (currentSlide + 1) % slides.length;
-    showSlide(currentSlide);
-  }, 5000);
+interval = setInterval(() => {
+currentSlide = (currentSlide + 1) % slides.length;
+showSlide(currentSlide);
+}, 5000);
 }
-function stopSlideshow() {
-  clearInterval(interval);
-}
+function stopSlideshow() { clearInterval(interval); }
 function resumeSlideshow() {
-  clearInterval(interval);
-  currentSlide = (currentSlide + 1) % slides.length;
-  showSlide(currentSlide);
-  startSlideshow();
+clearInterval(interval);
+currentSlide = (currentSlide + 1) % slides.length;
+showSlide(currentSlide);
+startSlideshow();
 }
 showSlide(0);
 startSlideshow();
 document.getElementById('slideshow').addEventListener('mouseenter', stopSlideshow);
 document.getElementById('slideshow').addEventListener('mouseleave', resumeSlideshow);
 
-// Web3Forms handling - prevent redirect
-document.addEventListener('DOMContentLoaded', function() {
-  const form = document.querySelector('.web3forms-form');
-  const messageSpan = form.querySelector('.form-message');
+// Web3Forms inline thank you
+const w3fForm = document.querySelector('#signup-form');
+const w3fMessage = w3fForm.querySelector('.w3f-message');
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
+w3fForm.addEventListener('submit', async (e) => {
+e.preventDefault();
+const formData = new FormData(w3fForm);
+const data = Object.fromEntries(formData.entries());
 
-    const formData = new FormData(form);
-    const data = {};
-    formData.forEach((value, key) => (data[key] = value));
-
-    try {
-      const response = await fetch(form.action, {
-        method: form.method,
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      });
-
-      if (response.ok) {
-        messageSpan.textContent = "Thank you! ✅";
-        form.reset();
-      } else {
-        messageSpan.textContent = "Error sending form 😢";
-      }
-    } catch (err) {
-      messageSpan.textContent = "Error sending form 😢";
-    }
+try {
+  const res = await fetch(w3fForm.action, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
   });
+  const json = await res.json();
+  if (json.success) {
+    w3fMessage.textContent = "Thank you!";
+    w3fForm.reset();
+  } else {
+    w3fMessage.textContent = "Error, please try again.";
+  }
+} catch(err) {
+  w3fMessage.textContent = "Error, please try again.";
+}
 });
 </script>
+
 </body>
 </html>
