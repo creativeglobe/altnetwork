@@ -1,164 +1,19 @@
-@import url(fontawesome-all.min.css);
-@import url("https://fonts.googleapis.com/css?family=Roboto:400,700");
-/*
-	Eventually by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license
-*/
+/* === FORCE LEFT ALIGN FOR SIGNUP FORM === */
 
-/* Reset */
-html, body, div, span, applet, object,
-iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
-pre, a, abbr, acronym, address, big, cite,
-code, del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var, b,
-u, i, center, dl, dt, dd, ol, ul, li, fieldset,
-form, label, legend, table, caption, tbody,
-tfoot, thead, tr, th, td, article, aside,
-canvas, details, embed, figure, figcaption,
-footer, header, hgroup, menu, nav, output, ruby,
-section, summary, time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font: inherit;
-	vertical-align: baseline;
+#header form {
+  margin: 0 !important;
+  text-align: left !important;
 }
 
-article, aside, footer, header, nav, section {
-	display: block;
+#header #signup-form {
+  justify-content: flex-start;
 }
 
-body {
-	line-height: 1;
-	background: #000;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	padding: 6em 4em 4em 4em;
+#header #signup-form > * {
+  margin-left: 0;
+  margin-right: 1em;
 }
 
-html, body {
-	height: 100%;
-	width: 100%;
-	overflow-x: hidden;
-}
-
-*, *:before, *:after {
-	box-sizing: border-box;
-}
-
-/* Typography */
-body, input, select, textarea {
-	color: rgba(255, 255, 255, 0.75);
-	font-family: "Roboto", sans-serif;
-	font-size: 16pt;
-	line-height: 1.65em;
-}
-
-h1 {
-	color: #fff;
-	font-size: 3.25em;
-	margin-bottom: 0.55em;
-}
-
-p {
-	margin: 0 0 2em 0;
-}
-
-strong {
-	color: #fff;
-	font-weight: 700;
-}
-
-/* Header */
-#header h1 {
-	margin-bottom: 0.55em;
-}
-
-#header p {
-	font-size: 1.35em;
-	line-height: 1.65em;
-}
-
-/* ============================= */
-/* SIGNUP FORM — FIXED PROPERLY */
-/* ============================= */
-
-#signup-form {
-	display: flex;
-	align-items: center;
-	justify-content: flex-start; /* FIX */
-	margin: 0;
-}
-
-#signup-form input[type="email"] {
-	width: 18em;
-}
-
-#signup-form > * {
-	margin: 0 1em 0 0; /* FIX */
-}
-
-#signup-form > *:last-child {
-	margin-right: 0;
-}
-
-@media screen and (max-width: 480px) {
-	#signup-form {
-		flex-direction: column;
-		align-items: stretch;
-	}
-
-	#signup-form > * {
-		margin: 1.25em 0 0 0;
-	}
-
-	#signup-form input[type="email"] {
-		width: 100%;
-	}
-}
-
-/* Inputs */
-input[type="email"],
-input[type="text"],
-input[type="password"],
-textarea {
-	background: transparent;
-	border-radius: 6px;
-	border: solid 2px rgba(255, 255, 255, 0.35);
-	color: inherit;
-	display: block;
-	outline: 0;
-	padding: 0 1em;
-	height: 2.75em;
-	width: 100%;
-}
-
-input:focus {
-	background-color: rgba(255, 255, 255, 0.125);
-	border-color: #1cb495;
-}
-
-/* Button */
-input[type="submit"] {
-	background-color: #1cb495;
-	border-radius: 6px;
-	border: 0;
-	color: #fff !important;
-	cursor: pointer;
-	font-weight: 700;
-	height: 2.75em;
-	line-height: 2.75em;
-	padding: 0 1.25em;
-	white-space: nowrap;
-}
-
-input[type="submit"]:hover {
-	background-color: #1fcaa7;
-}
-
-/* Footer */
-#footer {
-	display: none;
+#header #signup-form > *:last-child {
+  margin-right: 0;
 }
