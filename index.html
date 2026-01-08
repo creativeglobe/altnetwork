@@ -177,15 +177,6 @@ document.getElementById('signup-form').addEventListener('submit', async function
 
     const result = await res.json();
 
-    if(result.success) {
-      note.style.color = 'green';
-      note.textContent = 'Thank you! Your email has been submitted.';
-      form.reset();
-    } else {
-      note.style.color = 'red';
-      note.textContent = 'Submission failed. Please try again.';
-      console.log(result);
-    }
   } catch(err) {
     note.style.color = 'red';
     note.textContent = 'Error sending email. Check console.';
