@@ -5,183 +5,187 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="assets/css/main.css" />
+
 <style>
 .right-scroll-container::-webkit-scrollbar { display: none; }
 .right-scroll-container { -ms-overflow-style: none; scrollbar-width: none; }
+
 .right-scroll-container {
-position: fixed;
-top: 0;
-right: 0;
-width: 50%;
-height: 100vh;
-padding: 6% 8% 6% 1%;
-box-sizing: border-box;
-overflow-y: auto;
-text-align: left;
-color: white;
-opacity: 0.8;
-z-index: 10;
-pointer-events: auto;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100vh;
+  padding: 6% 8% 6% 1%;
+  box-sizing: border-box;
+  overflow-y: auto;
+  text-align: left;
+  color: white;
+  opacity: 0.8;
+  z-index: 10;
+  pointer-events: auto;
 }
+
 .right-scroll-container p {
-font-size: 1.35em;
-line-height: 1.65;
-margin: 0 0 1.5em 0;
+  font-size: 1.35em;
+  line-height: 1.65;
+  margin: 0 0 1.5em 0;
 }
-.right-scroll-container p:last-child { margin-bottom: 0; }
+
 .right-scroll-container .section-title {
-font-size: 1.8em;
-font-weight: bold;
-margin: 2em 0 1em 0;
-opacity: 1;
+  font-size: 1.8em;
+  font-weight: bold;
+  margin: 2em 0 1em 0;
 }
-body, html { overflow: hidden; height: 100%; }
-#form-note { font-size: 0.9em; font-style: italic; opacity: 0.7; margin-top: 0; margin-bottom: 5px; }
+
+body, html {
+  overflow: hidden;
+  height: 100%;
+}
+
 #footer { display: none; }
 #header .inner { display: block !important; margin-top: 0 !important; }
-/* Hide reCAPTCHA badge to stop flickering */
 .grecaptcha-badge { visibility: hidden !important; }
-/* Force left alignment for the form and note */
-#signup-form,
+
+/* FORM WRAPPER – θα τελειοποιηθεί στο CSS βήμα */
+#form-wrapper {
+  max-width: 420px;
+  margin: 0;
+  text-align: left;
+}
+
 #form-note {
-  text-align: left !important;
-  margin-left: 0 !important;
-  padding-left: 0 !important;
+  font-size: 0.9em;
+  font-style: italic;
+  opacity: 0.7;
+  margin-top: 6px;
+}
+
+#form-success {
+  margin-top: 6px;
+  font-weight: bold;
 }
 </style>
 </head>
+
 <body class="is-preload">
+
 <section id="header">
-<div class="inner">
-<div id="slideshow" style="width:500px; height:260px; margin-top:-15px; margin-bottom:25px; margin-left:0.35%; position: relative; overflow:hidden; border-radius:14px;">
-<img src="images/slide1.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:1; transform:scale(1); transition: opacity .8s ease, transform 5s ease;">
-<img src="images/slide2.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
-<img src="images/slide3.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
-<img src="images/slide4.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
-<img src="images/slide5.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
-<img src="images/slide6.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
-<img src="images/slide7.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
-<img src="images/slide8.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
-<img src="images/slide9.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
-<img src="images/slide10.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
-</div>
-<header style="margin-bottom:10px;">
-<h1>Social Media Network</h1>
-<p>An alternative social networking platform,<br />centered around its users.</p>
-</header>
+  <div class="inner">
 
-<!-- Old form - hidden in comments for backup -->
-<!--
-<form id="signup-form" style="margin-bottom:10px;">
-<input type="email" id="email" placeholder="Email Address" required />
-<input type="submit" value="Join the Waitlist" />
-</form>
--->
+    <div id="slideshow" style="width:500px; height:260px; margin-top:-15px; margin-bottom:25px; margin-left:0.35%; position: relative; overflow:hidden; border-radius:14px;">
+      <img src="images/slide1.jpg">
+      <img src="images/slide2.jpg">
+      <img src="images/slide3.jpg">
+      <img src="images/slide4.jpg">
+      <img src="images/slide5.jpg">
+      <img src="images/slide6.jpg">
+      <img src="images/slide7.jpg">
+      <img src="images/slide8.jpg">
+      <img src="images/slide9.jpg">
+      <img src="images/slide10.jpg">
+    </div>
 
-<!-- Functional form with Web3Forms - no success message on page -->
-<form id="signup-form" action="https://api.web3forms.com/submit" method="POST" style="margin-bottom:10px;">
-  <input type="hidden" name="access_key" value="d59c6d7b-f144-4eea-9c67-ec80c95ef229">
-  <input type="email" name="email" id="email" placeholder="Email Address" required />
-  <input type="submit" value="Join the Waitlist" />
-  <input type="hidden" name="subject" value="New Waitlist Signup - AltNetwork">
-  <input type="hidden" name="redirect" value="https://web3forms.com/success"> <!-- Προαιρετικό: redirect σε success page του Web3Forms -->
-</form>
+    <header style="margin-bottom:10px;">
+      <h1>Social Media Network</h1>
+      <p>An alternative social networking platform,<br />centered around its users.</p>
+    </header>
 
-<div id="form-note" style="margin-bottom:5px;">We'll only use your email to gauge interest. Nothing more.</div>
-</div>
+    <!-- FORM BLOCK -->
+    <div id="form-wrapper">
+
+      <form id="signup-form" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="d59c6d7b-f144-4eea-9c67-ec80c95ef229">
+        <input type="hidden" name="subject" value="New Waitlist Signup - AltNetwork">
+
+        <input type="email" name="email" placeholder="Email Address" required />
+        <input type="submit" value="Join the Waitlist" />
+
+        <!-- Honeypot -->
+        <input type="checkbox" name="botcheck" style="display:none;">
+      </form>
+
+      <div id="form-note">
+        We'll only use your email to gauge interest. Nothing more.
+      </div>
+
+      <div id="form-success" hidden>
+        Thank you!
+      </div>
+
+    </div>
+    <!-- END FORM BLOCK -->
+
+  </div>
 </section>
+
 <div class="right-scroll-container">
-<p>
-Today's social media platforms have become <b>increasingly restrictive</b>.<br><br>
-Algorithms, arbitrary rules, content moderation practices, and the extensive use of personal data have distanced many people from what social networking was originally meant to be: <b>free expression and meaningful communication</b>.<br><br>
-<b>Our idea is simple:</b><br>
-to create a social networking platform <b>open to different viewpoints</b>, <b>without political or thematic bias</b>, and with <b>genuine respect for the user</b>.<br><br>
-We are <b>not aiming to replace everything</b>.<br>
-We aim to build <b>a real alternative</b>, shaped by the participation of its community.
-</p>
-<div class="section-title">How the project will start</div>
-<p>
-At this stage, <b>we are not asking for money</b>.<br>
-First, we want to see whether there is <b>real interest</b>.<br>
-For practical reasons, during the initial phase, the platform will be available <b>only in countries where active interest and participation are demonstrated</b>.<br>
-This allows us to launch in a more structured way, with real users rather than artificial or unfocused exposure.<br><br>
-If a sufficient number of interested people come forward:<br>
-• the creation of the platform will be <b>officially announced</b><br>
-• <b>optional financial support</b> will then be opened<br>
-• those who expressed interest early will have a <b>voice in shaping the project</b><br><br>
-The platform will move forward <b>only if there is a community that truly wants it</b>.
-</p>
-<div class="section-title">Call to action</div>
-<p>
-If you believe there is a need for such an alternative,<br>
-<b>sign up</b> to express your interest and be among the first to receive updates.<br><br>
-<b>No commitment. No payment.</b> Just a declaration of interest.
-</p>
+  <p>
+    Today's social media platforms have become <b>increasingly restrictive</b>.<br><br>
+    Algorithms, arbitrary rules, content moderation practices, and the extensive use of personal data have distanced many people from what social networking was originally meant to be: <b>free expression and meaningful communication</b>.<br><br>
+    <b>Our idea is simple:</b><br>
+    to create a social networking platform <b>open to different viewpoints</b>, <b>without political or thematic bias</b>, and with <b>genuine respect for the user</b>.
+  </p>
+
+  <div class="section-title">How the project will start</div>
+
+  <p>
+    At this stage, <b>we are not asking for money</b>.<br>
+    First, we want to see whether there is <b>real interest</b>.<br>
+    The platform will move forward <b>only if there is a community that truly wants it</b>.
+  </p>
 </div>
+
 <script src="assets/js/main.js"></script>
+
 <script>
+/* Slideshow */
 const slides = document.querySelectorAll('#slideshow img');
 let currentSlide = 0;
-let interval;
-function showSlide(index) {
-slides.forEach((img, i) => {
-img.style.opacity = i === index ? '1' : '0';
-img.style.transform = i === index ? 'scale(1)' : 'scale(1.05)';
+
+slides.forEach(img => {
+  img.style.position = 'absolute';
+  img.style.inset = '0';
+  img.style.width = '100%';
+  img.style.height = '100%';
+  img.style.objectFit = 'cover';
+  img.style.opacity = '0';
+  img.style.transition = 'opacity .8s ease, transform 5s ease';
 });
+
+function showSlide(i) {
+  slides.forEach((img, index) => {
+    img.style.opacity = index === i ? '1' : '0';
+    img.style.transform = index === i ? 'scale(1)' : 'scale(1.05)';
+  });
 }
-function startSlideshow() {
-interval = setInterval(() => {
-currentSlide = (currentSlide + 1) % slides.length;
-showSlide(currentSlide);
-}, 5000);
-}
-function stopSlideshow() {
-clearInterval(interval);
-}
-function resumeSlideshow() {
-clearInterval(interval);
-currentSlide = (currentSlide + 1) % slides.length;
-showSlide(currentSlide);
-startSlideshow();
-}
+
 showSlide(0);
-startSlideshow();
-document.getElementById('slideshow').addEventListener('mouseenter', stopSlideshow);
-document.getElementById('slideshow').addEventListener('mouseleave', resumeSlideshow);
+setInterval(() => {
+  currentSlide = (currentSlide + 1) % slides.length;
+  showSlide(currentSlide);
+}, 5000);
 </script>
+
+<script>
+/* Web3Forms submit */
+const form = document.getElementById('signup-form');
+const success = document.getElementById('form-success');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const res = await fetch(form.action, {
+    method: 'POST',
+    body: new FormData(form)
+  });
+
+  if (res.ok) {
+    form.reset();
+    success.hidden = false;
+  }
+});
+</script>
+
 </body>
 </html>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  setTimeout(() => {
-    document.body.classList.remove('is-preload');
-  }, 100);
-  const bgContainer = document.getElementById('bg');
-  if (bgContainer) {
-    const slides = bgContainer.querySelectorAll('div');
-    let current = 0;
-    if (slides.length > 0) {
-      slides[current].classList.add('visible');
-      setInterval(() => {
-        slides[current].classList.remove('visible');
-        current = (current + 1) % slides.length;
-        slides[current].classList.add('visible');
-      }, 10000);
-    }
-  }
-  const animatedSections = document.querySelectorAll('section, article');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = 1;
-        entry.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.1 });
-  animatedSections.forEach(section => {
-    section.style.opacity = 0;
-    section.style.transform = 'translateY(2em)';
-    observer.observe(section);
-  });
-});
-</script>
