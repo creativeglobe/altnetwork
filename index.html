@@ -9,31 +9,31 @@
 .right-scroll-container::-webkit-scrollbar { display: none; }
 .right-scroll-container { -ms-overflow-style: none; scrollbar-width: none; }
 .right-scroll-container {
-position: fixed;
-top: 0;
-right: 0;
-width: 50%;
-height: 100vh;
-padding: 6% 8% 6% 1%;
-box-sizing: border-box;
-overflow-y: auto;
-text-align: left;
-color: white;
-opacity: 0.8;
-z-index: 10;
-pointer-events: auto;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100vh;
+  padding: 6% 8% 6% 1%;
+  box-sizing: border-box;
+  overflow-y: auto;
+  text-align: left;
+  color: white;
+  opacity: 0.8;
+  z-index: 10;
+  pointer-events: auto;
 }
 .right-scroll-container p {
-font-size: 1.35em;
-line-height: 1.65;
-margin: 0 0 1.5em 0;
+  font-size: 1.35em;
+  line-height: 1.65;
+  margin: 0 0 1.5em 0;
 }
 .right-scroll-container p:last-child { margin-bottom: 0; }
 .right-scroll-container .section-title {
-font-size: 1.8em;
-font-weight: bold;
-margin: 2em 0 1em 0;
-opacity: 1;
+  font-size: 1.8em;
+  font-weight: bold;
+  margin: 2em 0 1em 0;
+  opacity: 1;
 }
 body, html { overflow: hidden; height: 100%; }
 #form-note { display:none; }
@@ -60,10 +60,50 @@ body, html { overflow: hidden; height: 100%; }
 <h1>Social Media Network</h1>
 <p>An alternative user-focused social network<br />fostering communication and diverse perspectives.</p>
 </header>
-<form id="signup-form" style="margin-bottom:10px;">
-<input type="email" id="email" placeholder="Email Address" required />
-<input type="submit" value="Join the Waitlist" />
+
+<!-- Web3Forms integration -->
+<form id="signup-form" style="margin-bottom:10px;" method="POST" action="https://api.web3forms.com/submit" autocomplete="off">
+  <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+  <input type="hidden" name="redirect" value="" />
+  <input type="hidden" name="email_subject" value="New Waitlist Signup" />
+  <input type="hidden" name="from_name" value="Future Launch Website" />
+  
+  <input type="email" name="email" placeholder="Email Address" required />
+  <input type="submit" value="Join the Waitlist" />
+  
+  <span id="form-success" style="margin-left:10px; color:#0f0; display:none;">Thank you! Your email has been received.</span>
+  <span id="form-error" style="margin-left:10px; color:#f00; display:none;">Oops! Something went wrong.</span>
 </form>
+
+<script>
+document.getElementById('signup-form').addEventListener('submit', async function(e){
+  e.preventDefault();
+  const form = e.target;
+  const successMsg = document.getElementById('form-success');
+  const errorMsg = document.getElementById('form-error');
+  successMsg.style.display = 'none';
+  errorMsg.style.display = 'none';
+
+  const data = new FormData(form);
+  
+  try {
+    const res = await fetch(form.action, {
+      method: form.method,
+      body: data
+    });
+    const json = await res.json();
+    if(json.success) {
+      successMsg.style.display = 'inline';
+      form.reset();
+    } else {
+      errorMsg.style.display = 'inline';
+    }
+  } catch(err) {
+    errorMsg.style.display = 'inline';
+  }
+});
+</script>
+
 </div>
 </section>
 <div class="right-scroll-container">
@@ -100,25 +140,25 @@ const slides = document.querySelectorAll('#slideshow img');
 let currentSlide = 0;
 let interval;
 function showSlide(index) {
-slides.forEach((img, i) => {
-img.style.opacity = i === index ? '1' : '0';
-img.style.transform = i === index ? 'scale(1)' : 'scale(1.05)';
-});
+  slides.forEach((img, i) => {
+    img.style.opacity = i === index ? '1' : '0';
+    img.style.transform = i === index ? 'scale(1)' : 'scale(1.05)';
+  });
 }
 function startSlideshow() {
-interval = setInterval(() => {
-currentSlide = (currentSlide + 1) % slides.length;
-showSlide(currentSlide);
-}, 5000);
+  interval = setInterval(() => {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+  }, 5000);
 }
 function stopSlideshow() {
-clearInterval(interval);
+  clearInterval(interval);
 }
 function resumeSlideshow() {
-clearInterval(interval);
-currentSlide = (currentSlide + 1) % slides.length;
-showSlide(currentSlide);
-startSlideshow();
+  clearInterval(interval);
+  currentSlide = (currentSlide + 1) % slides.length;
+  showSlide(currentSlide);
+  startSlideshow();
 }
 showSlide(0);
 startSlideshow();
@@ -127,56 +167,3 @@ document.getElementById('slideshow').addEventListener('mouseleave', resumeSlides
 </script>
 </body>
 </html>
-
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-
-  // 1️⃣ Remove preload to enable animations
-  setTimeout(() => {
-    document.body.classList.remove('is-preload');
-  }, 100);
-
-  // 2️⃣ Background slideshow
-  const bgContainer = document.getElementById('bg');
-  if (bgContainer) {
-    const slides = bgContainer.querySelectorAll('div');
-    let current = 0;
-    if (slides.length > 0) {
-      slides[current].classList.add('visible');
-
-      setInterval(() => {
-        slides[current].classList.remove('visible');
-        current = (current + 1) % slides.length;
-        slides[current].classList.add('visible');
-      }, 10000); // Change slide every 10s
-    }
-  }
-
-  // 3️⃣ Form message animation
-  const formMessages = document.querySelectorAll('form .message');
-  formMessages.forEach(msg => {
-    setTimeout(() => {
-      msg.classList.add('visible');
-    }, 500); // fade in after 0.5s
-  });
-
-  // 4️⃣ Optional: Animate sections on scroll
-  const animatedSections = document.querySelectorAll('section, article');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = 1;
-        entry.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.1 });
-
-  animatedSections.forEach(section => {
-    section.style.opacity = 0;
-    section.style.transform = 'translateY(2em)';
-    observer.observe(section);
-  });
-
-});
-</script>
