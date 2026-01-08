@@ -36,76 +36,70 @@
   opacity: 1;
 }
 body, html { overflow: hidden; height: 100%; }
-#form-note { display:none; }
 #footer { display: none; }
 #header .inner { display: block !important; margin-top: 0 !important; }
+
+/* Styling for form and Thank you message */
+#signup-form {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+#signup-form input[type="email"] {
+  padding: 0.6em;
+  font-size: 1em;
+}
+#signup-form input[type="submit"] {
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  cursor: pointer;
+}
+#thankyou-msg {
+  display: none;
+  color: #0f0; /* green check */
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: 10px;
+  font-size: 1em;
+}
+#thankyou-msg::before {
+  content: "✔";
+}
 </style>
 </head>
 <body class="is-preload">
 <section id="header">
 <div class="inner">
 <div id="slideshow" style="width:500px; height:260px; margin-top:-15px; margin-bottom:25px; margin-left:0.35%; position: relative; overflow:hidden; border-radius:14px;">
-<img src="images/slide1.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:1; transform:scale(1); transition: opacity .8s ease, transform 5s ease;">
-<img src="images/slide2.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
-<img src="images/slide3.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
-<img src="images/slide4.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
-<img src="images/slide5.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
-<img src="images/slide6.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
-<img src="images/slide7.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
-<img src="images/slide8.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
-<img src="images/slide9.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
-<img src="images/slide10.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
+  <img src="images/slide1.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:1; transform:scale(1); transition: opacity .8s ease, transform 5s ease;">
+  <img src="images/slide2.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
+  <img src="images/slide3.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
+  <img src="images/slide4.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
+  <img src="images/slide5.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
+  <img src="images/slide6.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
+  <img src="images/slide7.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
+  <img src="images/slide8.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
+  <img src="images/slide9.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
+  <img src="images/slide10.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
 </div>
 <header style="margin-bottom:10px;">
 <h1>Social Media Network</h1>
 <p>An alternative user-focused social network<br />fostering communication and diverse perspectives.</p>
 </header>
 
-<!-- Web3Forms integration -->
-<form id="signup-form" style="margin-bottom:10px;" method="POST" action="https://api.web3forms.com/submit" autocomplete="off">
-  <input type="hidden" name="access_key" value=d59c6d7b-f144-4eea-9c67-ec80c95ef229 />
-  <input type="hidden" name="redirect" value="" />
-  <input type="hidden" name="email_subject" value="New Waitlist Signup" />
-  <input type="hidden" name="from_name" value="Future Launch Website" />
-  
+<!-- Web3Forms form -->
+<form id="signup-form" style="margin-bottom:10px">
   <input type="email" name="email" placeholder="Email Address" required />
   <input type="submit" value="Join the Waitlist" />
-  
-  <span id="form-success" style="margin-left:10px; color:#0f0; display:none;">Thank you! Your email has been received.</span>
-  <span id="form-error" style="margin-left:10px; color:#f00; display:none;">Oops! Something went wrong.</span>
+  <div id="thankyou-msg">Thank you!</div>
 </form>
-
-<script>
-document.getElementById('signup-form').addEventListener('submit', async function(e){
-  e.preventDefault();
-  const form = e.target;
-  const successMsg = document.getElementById('form-success');
-  const errorMsg = document.getElementById('form-error');
-  successMsg.style.display = 'none';
-  errorMsg.style.display = 'none';
-
-  const data = new FormData(form);
-  
-  try {
-    const res = await fetch(form.action, {
-      method: form.method,
-      body: data
-    });
-    const json = await res.json();
-    if(json.success) {
-      successMsg.style.display = 'inline';
-      form.reset();
-    } else {
-      errorMsg.style.display = 'inline';
-    }
-  } catch(err) {
-    errorMsg.style.display = 'inline';
-  }
-});
-</script>
 
 </div>
 </section>
+
 <div class="right-scroll-container">
 <p>
 Today's social media platforms have become <b>increasingly restrictive</b>.<br><br>
@@ -134,8 +128,11 @@ If you believe there is a need for such an alternative,<br>
 <b>No commitment. No payment.</b> Just a declaration of interest.
 </p>
 </div>
+
 <script src="assets/js/main.js"></script>
+
 <script>
+// Slideshow
 const slides = document.querySelectorAll('#slideshow img');
 let currentSlide = 0;
 let interval;
@@ -151,9 +148,7 @@ function startSlideshow() {
     showSlide(currentSlide);
   }, 5000);
 }
-function stopSlideshow() {
-  clearInterval(interval);
-}
+function stopSlideshow() { clearInterval(interval); }
 function resumeSlideshow() {
   clearInterval(interval);
   currentSlide = (currentSlide + 1) % slides.length;
@@ -164,6 +159,37 @@ showSlide(0);
 startSlideshow();
 document.getElementById('slideshow').addEventListener('mouseenter', stopSlideshow);
 document.getElementById('slideshow').addEventListener('mouseleave', resumeSlideshow);
+
+// Web3Forms submission
+document.getElementById('signup-form').addEventListener('submit', async function(e){
+  e.preventDefault();
+  const form = e.target;
+  const data = new FormData(form);
+  const jsonData = {};
+  data.forEach((value, key) => { jsonData[key] = value; });
+
+  try {
+    const response = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        access_key: 'YOUR_ACCESS_KEY_HERE',
+        ...jsonData
+      })
+    });
+    const result = await response.json();
+    if(result.success){
+      document.getElementById('thankyou-msg').style.display = 'flex';
+      form.reset();
+    } else {
+      alert('There was an error. Please try again.');
+    }
+  } catch(err){
+    alert('There was an error. Please try again.');
+    console.error(err);
+  }
+});
 </script>
+
 </body>
 </html>
