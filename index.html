@@ -51,21 +51,36 @@ body, html { overflow: hidden; height: 100%; }
 /* Header inner fix */
 #header .inner { display: block !important; margin-top: 0 !important; }
 
-/* Web3Forms styling to align left */
-#signup-form {
-  display: block;
-  text-align: left;
-  margin: 0 0 10px 0;
+/* Form container for left alignment */
+.form-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0.5em;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
 }
-#signup-form input[type="email"],
-#signup-form input[type="submit"] {
-  display: inline-block;
-  vertical-align: middle;
-  width: 18em;
-  margin-right: 0.5em;
+.form-container input[type="email"] {
+  flex: 1 1 200px;
+  min-width: 180px;
 }
-#signup-form input[type="submit"] {
-  width: auto;
+.form-container input[type="submit"] {
+  flex: 0 0 auto;
+  min-width: 120px;
+}
+
+/* Mobile adjustments */
+@media screen and (max-width: 480px) {
+  .form-container {
+    flex-direction: column;
+    gap: 0.75em;
+  }
+  .form-container input[type="email"],
+  .form-container input[type="submit"] {
+    width: 100%;
+    min-width: auto;
+  }
 }
 </style>
 </head>
@@ -99,11 +114,13 @@ body, html { overflow: hidden; height: 100%; }
 
 <!-- Active Web3Forms form -->
 <form id="signup-form" action="https://api.web3forms.com/submit" method="POST">
-  <input type="hidden" name="access_key" value="d59c6d7b-f144-4eea-9c67-ec80c95ef229">
-  <input type="email" name="email" id="email" placeholder="Email Address" required />
-  <input type="submit" value="Join the Waitlist" />
-  <input type="hidden" name="subject" value="New Waitlist Signup - AltNetwork">
-  <input type="hidden" name="redirect" value="https://web3forms.com/success">
+  <div class="form-container">
+    <input type="hidden" name="access_key" value="d59c6d7b-f144-4eea-9c67-ec80c95ef229">
+    <input type="email" name="email" id="email" placeholder="Email Address" required />
+    <input type="submit" value="Join the Waitlist" />
+    <input type="hidden" name="subject" value="New Waitlist Signup - AltNetwork">
+    <input type="hidden" name="redirect" value="https://web3forms.com/success">
+  </div>
 </form>
 
 <div id="form-note">We'll only use your email to gauge interest. Nothing more.</div>
@@ -175,7 +192,6 @@ document.getElementById('slideshow').addEventListener('mouseleave', resumeSlides
 document.addEventListener('DOMContentLoaded', function() {
   setTimeout(() => { document.body.classList.remove('is-preload'); }, 100);
 
-  // Animate sections on scroll
   const animatedSections = document.querySelectorAll('section, article');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
