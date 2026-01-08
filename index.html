@@ -6,6 +6,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="assets/css/main.css" />
 <style>
+  /* Force left alignment for form, result and note to match header text */
+#signup-form,
+#form-result,
+#form-note {
+  text-align: left !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+
+#signup-form input[type="email"],
+#signup-form input[type="submit"] {
+  text-align: left !important;
+  margin-left: 0 !important;
+}
 .right-scroll-container::-webkit-scrollbar { display: none; }
 .right-scroll-container { -ms-overflow-style: none; scrollbar-width: none; }
 .right-scroll-container {
