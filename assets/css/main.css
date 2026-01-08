@@ -886,95 +886,57 @@ button,
       margin: 1em 0 0 0;
       position: relative; } }
 
-#header .inner {
-  margin-top: 4em;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* Responsive fallback: move right column below slideshow on smaller screens */
+@media screen and (max-width: 1024px) {
+  .right-scroll-container {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    padding: 2% 4% !important;
+    margin-top: 2em !important;
+    opacity: 1 !important;
+  }
+  #header, .inner {
+    width: 100% !important;
+  }
 }
 
-#slideshow {
-  width: 500px;
-  max-width: 90%;
-  margin: 0 auto 1em auto;
-  position: relative;
+@media screen and (max-width: 600px) {
+  .right-scroll-container {
+    padding: 4% 5% !important;
+  }
 }
 
-#slideshow img {
-  width: 100%;
-  transform: scale(1);
+@media screen and (max-width: 1024px) {
+  .right-scroll-container {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 2em auto 0 auto !important;
+    padding: 2% 5% !important;
+    text-align: center !important;
+    opacity: 1 !important;
+  }
+
+  #header, .inner {
+    width: 100% !important;
+    text-align: center !important;
+    margin: 0 auto;
+  }
+
+  #slideshow {
+    margin: 0 auto 1em auto !important;
+  }
+
+  #signup-form {
+    display: inline-block;
+  }
 }
 
-#signup-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5em;
-  max-width: 500px;
-  width: 90%;
-  margin: 1em auto 0 auto;
-}
-
-#signup-form input[type="email"] {
-  flex: 1 1 auto;
-  min-width: 200px;
-}
-
-#signup-form input[type="submit"] {
-  flex: 0 0 auto;
-}
-
-.right-scroll-container {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 50%;
-  height: 100vh;
-  padding: 6% 8% 6% 1%;
-  box-sizing: border-box;
-  overflow-y: auto;
-  text-align: left;
-  color: white;
-  opacity: 0.8;
-  z-index: 10;
-  pointer-events: auto;
-}
-
-.right-scroll-container p {
-  font-size: 1.35em;
-  line-height: 1.65;
-  margin: 0 0 1.5em 0;
-}
-
-.right-scroll-container p:last-child {
-  margin-bottom: 0;
-}
-
-.right-scroll-container .section-title {
-  font-size: 1.8em;
-  font-weight: bold;
-  margin: 2em 0 1em 0;
-  opacity: 1;
-}
-
-body, html {
-  overflow: hidden;
-  height: 100%;
-}
-
-#footer {
-  display: none;
-}
-
-#header .inner {
-  display: block !important;
-  margin-top: 0 !important;
-}
-
-#form-note {
-  margin-top: 10px;
-  font-weight: bold;
+@media screen and (max-width: 600px) {
+  .right-scroll-container {
+    padding: 4% 5% !important;
+  }
 }
 
 @media screen and (max-width: 1024px) {
@@ -999,6 +961,8 @@ body, html {
     max-width: 500px !important;
     margin: 0 auto 1em auto !important;
     position: relative !important;
+    left: auto !important;
+    right: auto !important;
   }
 
   #slideshow img {
@@ -1009,11 +973,24 @@ body, html {
   }
 
   #signup-form {
+    display: inline-block;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .right-scroll-container {
+    padding: 4% 5% !important;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  #signup-form {
+    display: flex !important;
     flex-direction: row !important;
     justify-content: center !important;
     align-items: center !important;
     gap: 0.5em;
-    max-width: 90%;
+    margin: 1em auto !important;
   }
 
   #signup-form input[type="email"] {
@@ -1026,8 +1003,33 @@ body, html {
   }
 }
 
-@media screen and (max-width: 600px) {
-  .right-scroll-container {
-    padding: 4% 5% !important;
+#header .inner {
+  margin-top: 4em !important;
+  text-align: center;
+}
+
+#signup-form {
+  max-width: 500px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  margin: 1em auto 0 auto;
+}
+
+#signup-form input[type="email"] {
+  flex: 1 1 auto;
+  min-width: 200px;
+}
+
+#signup-form input[type="submit"] {
+  flex: 0 0 auto;
+}
+
+@media screen and (max-width: 1024px) {
+  #signup-form {
+    flex-direction: row;
+    max-width: 90%;
   }
 }
