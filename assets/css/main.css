@@ -1036,3 +1036,38 @@ button,
     flex: 0 0 auto;
   }
 }
+
+/* More space above title / description */
+#header .inner {
+  margin-top: 4em !important;
+  text-align: center;
+}
+
+/* Form width & centering */
+#signup-form {
+  max-width: 500px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  margin: 1em auto 0 auto;
+}
+
+/* Form elements */
+#signup-form input[type="email"] {
+  flex: 1 1 auto;
+  min-width: 200px;
+}
+
+#signup-form input[type="submit"] {
+  flex: 0 0 auto;
+}
+
+/* Tablet / Mobile adjustments */
+@media screen and (max-width: 1024px) {
+  #signup-form {
+    flex-direction: row;
+    max-width: 90%;
+  }
+}
