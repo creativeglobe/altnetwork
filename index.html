@@ -39,13 +39,7 @@ body, html { overflow: hidden; height: 100%; }
 #form-note { font-size: 0.9em; font-style: italic; opacity: 0.7; margin-top: 10px; }
 #footer { display: none; }
 #header .inner { display: block !important; margin-top: 0 !important; }
-/* Extra CSS για να εξασφαλίσουμε ότι δεν θα έχει λευκό box */
-[data-supascribe-embed-id] {
-  background: transparent !important;
-  box-shadow: none !important;
-  border: none !important;
-  padding: 0 !important;
-}
+#form-result { margin-top: 10px; font-weight: bold; color: #1cb495; }
 </style>
 </head>
 <body class="is-preload">
@@ -68,11 +62,47 @@ body, html { overflow: hidden; height: 100%; }
 <p>An alternative social networking platform,<br />centered around its users.</p>
 </header>
 
-<!-- ΝΕΑ ΛΕΙΤΟΥΡΓΙΚΗ ΦΟΡΜΑ ΜΕ SUPASCRIBE -->
-<div style="margin-bottom:10px;">
-  <!-- Subscribe embed code -->
-  <div data-supascribe-embed-id="522069628453" data-supascribe-subscribe></div>
-</div>
+<!-- ΛΕΙΤΟΥΡΓΙΚΗ ΦΟΡΜΑ ΜΕ WEB3FORMS -->
+<form id="signup-form" action="https://api.web3forms.com/submit" method="POST" style="margin-bottom:10px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+  <input type="hidden" name="access_key" value="d59c6d7b-f144-4eea-9c67-ec80c95ef229">
+  <input type="email" name="email" id="email" placeholder="Email Address" required style="flex: 1; min-width: 220px; padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.35); background: transparent; color: white;" />
+  <input type="submit" value="Join the Waitlist" style="padding: 12px 24px; background: #1cb495; color: white; border: none; border-radius: 8px; cursor: pointer;" />
+  <input type="hidden" name="subject" value="New Waitlist Signup - AltNetwork">
+</form>
+
+<div id="form-result"></div>
+
+<script>
+  const form = document.getElementById('signup-form');
+  const result = document.getElementById('form-result');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    result.textContent = 'Sending...';
+
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        result.textContent = 'Thank you! We will keep you updated.';
+        form.reset();
+      } else {
+        result.textContent = 'Something went wrong. Please try again.';
+        result.style.color = 'red';
+      }
+    } catch (err) {
+      result.textContent = 'Connection error. Please try later.';
+      result.style.color = 'red';
+    }
+  });
+</script>
+
 <div id="form-note">We'll only use your email to gauge interest. Nothing more.</div>
 
 </div>
@@ -136,10 +166,6 @@ startSlideshow();
 document.getElementById('slideshow').addEventListener('mouseenter', stopSlideshow);
 document.getElementById('slideshow').addEventListener('mouseleave', resumeSlideshow);
 </script>
-
-<!-- Supascribe Script (μία φορά, πριν το </body>) -->
-<script src="https://js.supascribe.com/v1/loader/6natZxMtIPdXBYURzryduIxKVht2.js" async></script>
-
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   setTimeout(() => {
@@ -158,12 +184,6 @@ document.addEventListener('DOMContentLoaded', function() {
       }, 10000);
     }
   }
-  const formMessages = document.querySelectorAll('form .message');
-  formMessages.forEach(msg => {
-    setTimeout(() => {
-      msg.classList.add('visible');
-    }, 500);
-  });
   const animatedSections = document.querySelectorAll('section, article');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
