@@ -939,3 +939,47 @@ button,
     padding: 4% 5% !important;
   }
 }
+
+@media screen and (max-width: 1024px) {
+  .right-scroll-container {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 2em auto 0 auto !important;
+    padding: 2% 5% !important;
+    text-align: center !important;
+    opacity: 1 !important;
+  }
+
+  #header, .inner {
+    width: 100% !important;
+    text-align: center !important;
+    margin: 0 auto;
+  }
+
+  #slideshow {
+    width: 90% !important;
+    max-width: 500px !important;
+    margin: 0 auto 1em auto !important;
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+  }
+
+  #slideshow img {
+    width: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    transform: scale(1) !important;
+  }
+
+  #signup-form {
+    display: inline-block;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .right-scroll-container {
+    padding: 4% 5% !important;
+  }
+}
