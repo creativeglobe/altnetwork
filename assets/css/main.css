@@ -909,18 +909,31 @@ button,
 
 /* Tablet & mobile: full width + centered content */
 @media screen and (max-width: 1024px) {
-  #header, .inner, .right-scroll-container {
-    width: 100% !important;
-    text-align: center !important; /* center all content */
+  .right-scroll-container {
     position: static !important;
+    width: 100% !important;
     height: auto !important;
-    margin-top: 2em !important;
-    padding: 2% 4% !important;
+    margin: 2em auto 0 auto !important;
+    padding: 2% 5% !important;
+    text-align: center !important;
     opacity: 1 !important;
+  }
+
+  #header, .inner {
+    width: 100% !important;
+    text-align: center !important;
+    margin: 0 auto;
+  }
+
+  #slideshow {
+    margin: 0 auto 1em auto !important;
+  }
+
+  #signup-form {
+    display: inline-block;
   }
 }
 
-/* Mobile extra padding */
 @media screen and (max-width: 600px) {
   .right-scroll-container {
     padding: 4% 5% !important;
