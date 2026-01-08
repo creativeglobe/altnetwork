@@ -41,6 +41,23 @@ body, html { overflow: hidden; height: 100%; }
 #header .inner { display: block !important; margin-top: 0 !important; }
 /* Hide reCAPTCHA badge to avoid flickering */
 .grecaptcha-badge { visibility: hidden !important; }
+/* Final fix for form alignment - force left alignment and remove any centering */
+#signup-form {
+  display: block !important;
+  text-align: left !important;
+  justify-content: flex-start !important;
+  margin-left: 0 !important;
+}
+#signup-form input[type="email"],
+#signup-form input[type="submit"] {
+  display: inline-block !important;
+  margin-left: 0 !important;
+  margin-right: 12px !important; /* Adjust spacing if needed */
+}
+#form-note {
+  text-align: left !important;
+  margin-left: 0 !important;
+}
 </style>
 </head>
 <body class="is-preload">
