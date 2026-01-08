@@ -39,24 +39,15 @@ body, html { overflow: hidden; height: 100%; }
 #form-note { font-size: 0.9em; font-style: italic; opacity: 0.7; margin-top: 0; }
 #footer { display: none; }
 #header .inner { display: block !important; margin-top: 0 !important; }
-/* Hide reCAPTCHA badge to avoid flickering */
+/* Hide reCAPTCHA badge */
 .grecaptcha-badge { visibility: hidden !important; }
-/* Final fix for form alignment - force left alignment and remove any centering */
-#signup-form {
-  display: block !important;
-  text-align: left !important;
-  justify-content: flex-start !important;
-  margin-left: 0 !important;
-}
-#signup-form input[type="email"],
-#signup-form input[type="submit"] {
-  display: inline-block !important;
-  margin-left: 0 !important;
-  margin-right: 12px !important; /* Adjust spacing if needed */
-}
-#form-note {
-  text-align: left !important;
-  margin-left: 0 !important;
+/* Success message styling - left aligned and below the form */
+#form-result {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #1cb495;
+  text-align: left;
 }
 </style>
 </head>
@@ -88,13 +79,46 @@ body, html { overflow: hidden; height: 100%; }
 </form>
 -->
 
-<!-- Functional form with Web3Forms - no success message on page -->
+<!-- Functional form with Web3Forms -->
 <form id="signup-form" action="https://api.web3forms.com/submit" method="POST" style="margin-bottom:10px;">
   <input type="hidden" name="access_key" value="d59c6d7b-f144-4eea-9c67-ec80c95ef229">
   <input type="email" name="email" id="email" placeholder="Email Address" required />
   <input type="submit" value="Join the Waitlist" />
   <input type="hidden" name="subject" value="New Waitlist Signup - AltNetwork">
 </form>
+
+<div id="form-result"></div>
+
+<script>
+  const form = document.getElementById('signup-form');
+  const result = document.getElementById('form-result');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    result.textContent = 'Sending...';
+
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        result.textContent = 'Thank you! We will keep you updated.';
+        form.reset();
+      } else {
+        result.textContent = 'Something went wrong. Please try again.';
+        result.style.color = 'red';
+      }
+    } catch (err) {
+      result.textContent = 'Connection error. Please try later.';
+      result.style.color = 'red';
+    }
+  });
+</script>
 
 <div id="form-note" style="margin-bottom:5px;">We'll only use your email to gauge interest. Nothing more.</div>
 </div>
