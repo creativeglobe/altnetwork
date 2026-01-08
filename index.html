@@ -6,12 +6,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="assets/css/main.css" />
 <style>
-/* Hide backup form */
-#signup-form-backup {
-  display: none;
-}
-
-/* Scroll container */
 .right-scroll-container::-webkit-scrollbar { display: none; }
 .right-scroll-container { -ms-overflow-style: none; scrollbar-width: none; }
 .right-scroll-container {
@@ -41,53 +35,27 @@
   margin: 2em 0 1em 0;
   opacity: 1;
 }
-
-/* Prevent page scroll */
 body, html { overflow: hidden; height: 100%; }
 
-/* Form note */
-#form-note { font-size: 0.9em; font-style: italic; opacity: 0.7; margin-top: 0; }
+/* Form Note */
+#signup-form #form-note {
+  font-size: 0.9em;
+  font-style: italic;
+  opacity: 0.7;
+  margin-top: 0.25em;
+}
 
-/* Header inner fix */
+/* Backup form hidden */
+#backup-form { display: none; }
+
+#footer { display: none; }
 #header .inner { display: block !important; margin-top: 0 !important; }
-
-/* Form container for left alignment */
-.form-container {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-start;
-  gap: 0.5em;
-  flex-wrap: wrap;
-  margin-bottom: 10px;
-}
-.form-container input[type="email"] {
-  flex: 1 1 200px;
-  min-width: 180px;
-}
-.form-container input[type="submit"] {
-  flex: 0 0 auto;
-  min-width: 120px;
-}
-
-/* Mobile adjustments */
-@media screen and (max-width: 480px) {
-  .form-container {
-    flex-direction: column;
-    gap: 0.75em;
-  }
-  .form-container input[type="email"],
-  .form-container input[type="submit"] {
-    width: 100%;
-    min-width: auto;
-  }
-}
 </style>
 </head>
 <body class="is-preload">
+
 <section id="header">
 <div class="inner">
-
 <div id="slideshow" style="width:500px; height:260px; margin-top:-15px; margin-bottom:25px; margin-left:0.35%; position: relative; overflow:hidden; border-radius:14px;">
 <img src="images/slide1.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:1; transform:scale(1); transition: opacity .8s ease, transform 5s ease;">
 <img src="images/slide2.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
@@ -106,24 +74,22 @@ body, html { overflow: hidden; height: 100%; }
 <p>An alternative social networking platform,<br />centered around its users.</p>
 </header>
 
-<!-- Backup form, hidden -->
-<form id="signup-form-backup">
-<input type="email" id="email-backup" placeholder="Email Address" required />
-<input type="submit" value="Join the Waitlist" />
+<!-- Backup form (hidden) -->
+<form id="backup-form">
+  <input type="email" id="email-backup" placeholder="Email Address" />
+  <input type="submit" value="Join the Waitlist" />
 </form>
 
 <!-- Active Web3Forms form -->
-<form id="signup-form" action="https://api.web3forms.com/submit" method="POST">
-  <div class="form-container">
-    <input type="hidden" name="access_key" value="d59c6d7b-f144-4eea-9c67-ec80c95ef229">
-    <input type="email" name="email" id="email" placeholder="Email Address" required />
-    <input type="submit" value="Join the Waitlist" />
-    <input type="hidden" name="subject" value="New Waitlist Signup - AltNetwork">
-    <input type="hidden" name="redirect" value="https://web3forms.com/success">
-  </div>
+<form id="signup-form" action="https://api.web3forms.com/submit" method="POST" style="margin-bottom:0;">
+  <input type="hidden" name="access_key" value="d59c6d7b-f144-4eea-9c67-ec80c95ef229">
+  <input type="email" name="email" id="email" placeholder="Email Address" required />
+  <input type="submit" value="Join the Waitlist" />
+  <input type="hidden" name="subject" value="New Waitlist Signup - AltNetwork">
+  <input type="hidden" name="redirect" value="https://web3forms.com/success">
+  <div id="form-note">We'll only use your email to gauge interest. Nothing more.</div>
 </form>
 
-<div id="form-note">We'll only use your email to gauge interest. Nothing more.</div>
 </div>
 </section>
 
@@ -136,7 +102,6 @@ to create a social networking platform <b>open to different viewpoints</b>, <b>w
 We are <b>not aiming to replace everything</b>.<br>
 We aim to build <b>a real alternative</b>, shaped by the participation of its community.
 </p>
-
 <div class="section-title">How the project will start</div>
 <p>
 At this stage, <b>we are not asking for money</b>.<br>
@@ -149,7 +114,6 @@ If a sufficient number of interested people come forward:<br>
 • those who expressed interest early will have a <b>voice in shaping the project</b><br><br>
 The platform will move forward <b>only if there is a community that truly wants it</b>.
 </p>
-
 <div class="section-title">Call to action</div>
 <p>
 If you believe there is a need for such an alternative,<br>
@@ -164,23 +128,25 @@ const slides = document.querySelectorAll('#slideshow img');
 let currentSlide = 0;
 let interval;
 function showSlide(index) {
-  slides.forEach((img, i) => {
-    img.style.opacity = i === index ? '1' : '0';
-    img.style.transform = i === index ? 'scale(1)' : 'scale(1.05)';
-  });
+slides.forEach((img, i) => {
+img.style.opacity = i === index ? '1' : '0';
+img.style.transform = i === index ? 'scale(1)' : 'scale(1.05)';
+});
 }
 function startSlideshow() {
-  interval = setInterval(() => {
-    currentSlide = (currentSlide + 1) % slides.length;
-    showSlide(currentSlide);
-  }, 5000);
+interval = setInterval(() => {
+currentSlide = (currentSlide + 1) % slides.length;
+showSlide(currentSlide);
+}, 5000);
 }
-function stopSlideshow() { clearInterval(interval); }
+function stopSlideshow() {
+clearInterval(interval);
+}
 function resumeSlideshow() {
-  clearInterval(interval);
-  currentSlide = (currentSlide + 1) % slides.length;
-  showSlide(currentSlide);
-  startSlideshow();
+clearInterval(interval);
+currentSlide = (currentSlide + 1) % slides.length;
+showSlide(currentSlide);
+startSlideshow();
 }
 showSlide(0);
 startSlideshow();
@@ -190,23 +156,11 @@ document.getElementById('slideshow').addEventListener('mouseleave', resumeSlides
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  setTimeout(() => { document.body.classList.remove('is-preload'); }, 100);
-
-  const animatedSections = document.querySelectorAll('section, article');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = 1;
-        entry.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.1 });
-  animatedSections.forEach(section => {
-    section.style.opacity = 0;
-    section.style.transform = 'translateY(2em)';
-    observer.observe(section);
-  });
+  setTimeout(() => {
+    document.body.classList.remove('is-preload');
+  }, 100);
 });
 </script>
+
 </body>
 </html>
