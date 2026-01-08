@@ -36,28 +36,28 @@ margin: 2em 0 1em 0;
 opacity: 1;
 }
 body, html { overflow: hidden; height: 100%; }
-
-/* Web3Forms specific overrides to keep the form left-aligned */
-#signup-form-web3 {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 0.5em;
-  margin-bottom: 10px;
-}
-#signup-form-web3 input[type="email"] {
-  width: 18em;
-}
-#signup-form-web3 input[type="submit"] {
-  flex-shrink: 0;
-}
-#form-note { font-size: 0.9em; font-style: italic; opacity: 0.7; margin-top: 0; }
 #footer { display: none; }
 #header .inner { display: block !important; margin-top: 0 !important; }
 
-/* Hide old backup form */
-#signup-form-backup {
-  display: none;
+#signup-form {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+#signup-form input[type="email"] {
+  padding: 0.7em;
+  font-size: 1em;
+  flex: 1;
+}
+#signup-form input[type="submit"] {
+  padding: 0.7em 1em;
+  font-size: 1em;
+  cursor: pointer;
+}
+#signup-form .form-message {
+  margin-left: 1em;
+  font-weight: bold;
+  color: #1cb495;
 }
 </style>
 </head>
@@ -81,18 +81,12 @@ body, html { overflow: hidden; height: 100%; }
 <p>An alternative social networking platform,<br />centered around its users.</p>
 </header>
 
-<!-- Backup old form (invisible) -->
-<form id="signup-form-backup" style="margin-bottom:10px;">
-<input type="email" id="email-backup" placeholder="Email Address" required />
-<input type="submit" value="Join the Waitlist" />
-</form>
-
-<!-- Web3Forms form -->
-<form id="signup-form-web3" action="https://api.web3forms.com/submit" method="POST">
-  <input type="hidden" name="access_key" value=d59c6d7b-f144-4eea-9c67-ec80c95ef229 />
-  <input type="hidden" name="redirect" value="" />
+<!-- Web3Forms Form -->
+<form id="signup-form" action="https://api.web3forms.com/submit" method="POST" class="web3forms-form">
+  <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
   <input type="email" name="email" placeholder="Email Address" required />
   <input type="submit" value="Join the Waitlist" />
+  <span class="form-message"></span>
 </form>
 
 </div>
@@ -128,86 +122,68 @@ If you believe there is a need for such an alternative,<br>
 </div>
 
 <script src="assets/js/main.js"></script>
+
 <script>
+// Slideshow
 const slides = document.querySelectorAll('#slideshow img');
 let currentSlide = 0;
 let interval;
 function showSlide(index) {
-slides.forEach((img, i) => {
-img.style.opacity = i === index ? '1' : '0';
-img.style.transform = i === index ? 'scale(1)' : 'scale(1.05)';
-});
+  slides.forEach((img, i) => {
+    img.style.opacity = i === index ? '1' : '0';
+    img.style.transform = i === index ? 'scale(1)' : 'scale(1.05)';
+  });
 }
 function startSlideshow() {
-interval = setInterval(() => {
-currentSlide = (currentSlide + 1) % slides.length;
-showSlide(currentSlide);
-}, 5000);
+  interval = setInterval(() => {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+  }, 5000);
 }
 function stopSlideshow() {
-clearInterval(interval);
+  clearInterval(interval);
 }
 function resumeSlideshow() {
-clearInterval(interval);
-currentSlide = (currentSlide + 1) % slides.length;
-showSlide(currentSlide);
-startSlideshow();
+  clearInterval(interval);
+  currentSlide = (currentSlide + 1) % slides.length;
+  showSlide(currentSlide);
+  startSlideshow();
 }
 showSlide(0);
 startSlideshow();
 document.getElementById('slideshow').addEventListener('mouseenter', stopSlideshow);
 document.getElementById('slideshow').addEventListener('mouseleave', resumeSlideshow);
-</script>
 
-</body>
-</html>
-
-<script>
+// Web3Forms handling - prevent redirect
 document.addEventListener('DOMContentLoaded', function() {
-  // Remove preload to enable animations
-  setTimeout(() => {
-    document.body.classList.remove('is-preload');
-  }, 100);
+  const form = document.querySelector('.web3forms-form');
+  const messageSpan = form.querySelector('.form-message');
 
-  // Background slideshow
-  const bgContainer = document.getElementById('bg');
-  if (bgContainer) {
-    const slides = bgContainer.querySelectorAll('div');
-    let current = 0;
-    if (slides.length > 0) {
-      slides[current].classList.add('visible');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-      setInterval(() => {
-        slides[current].classList.remove('visible');
-        current = (current + 1) % slides.length;
-        slides[current].classList.add('visible');
-      }, 10000);
-    }
-  }
+    const formData = new FormData(form);
+    const data = {};
+    formData.forEach((value, key) => (data[key] = value));
 
-  // Form message animation
-  const formMessages = document.querySelectorAll('form .message');
-  formMessages.forEach(msg => {
-    setTimeout(() => {
-      msg.classList.add('visible');
-    }, 500);
-  });
+    try {
+      const response = await fetch(form.action, {
+        method: form.method,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
 
-  // Animate sections on scroll
-  const animatedSections = document.querySelectorAll('section, article');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = 1;
-        entry.target.style.transform = 'translateY(0)';
+      if (response.ok) {
+        messageSpan.textContent = "Thank you! ✅";
+        form.reset();
+      } else {
+        messageSpan.textContent = "Error sending form 😢";
       }
-    });
-  }, { threshold: 0.1 });
-
-  animatedSections.forEach(section => {
-    section.style.opacity = 0;
-    section.style.transform = 'translateY(2em)';
-    observer.observe(section);
+    } catch (err) {
+      messageSpan.textContent = "Error sending form 😢";
+    }
   });
 });
 </script>
+</body>
+</html>
