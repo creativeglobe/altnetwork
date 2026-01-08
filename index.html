@@ -36,14 +36,10 @@ margin: 2em 0 1em 0;
 opacity: 1;
 }
 body, html { overflow: hidden; height: 100%; }
-#form-note { font-size: 0.9em; font-style: italic; opacity: 0.7; margin-top: 10px; }
+#form-note { font-size: 0.9em; font-style: italic; opacity: 0.7; margin-top: 0; }
 #footer { display: none; }
 #header .inner { display: block !important; margin-top: 0 !important; }
 #form-result { margin-top: 10px; font-weight: bold; color: #1cb495; }
-/* Διόρθωση στοίχισης φόρμας και κειμένου */
-#signup-form, #form-result, #form-note {
-  text-align: left;
-}
 </style>
 </head>
 <body class="is-preload">
@@ -66,7 +62,16 @@ body, html { overflow: hidden; height: 100%; }
 <p>An alternative social networking platform,<br />centered around its users.</p>
 </header>
 
-<form id="signup-form" action="https://api.web3forms.com/submit" method="POST" style="margin-bottom:10px;">
+<!-- ΠΑΛΙΑ ΦΟΡΜΑ - ΑΠΟΚΡΥΜΜΕΝΗ (για backup) -->
+<!--
+<form id="signup-form" style="margin-bottom:10px;">
+<input type="email" id="email" placeholder="Email Address" required />
+<input type="submit" value="Join the Waitlist" />
+</form>
+-->
+
+<!-- ΝΕΑ ΛΕΙΤΟΥΡΓΙΚΗ ΦΟΡΜΑ ΜΕ WEB3FORMS -->
+<form id="signup-form-new" action="https://api.web3forms.com/submit" method="POST" style="margin-bottom:10px;">
   <input type="hidden" name="access_key" value="d59c6d7b-f144-4eea-9c67-ec80c95ef229">
   <input type="email" name="email" id="email" placeholder="Email Address" required />
   <input type="submit" value="Join the Waitlist" />
@@ -76,7 +81,7 @@ body, html { overflow: hidden; height: 100%; }
 <div id="form-result"></div>
 
 <script>
-  const form = document.getElementById('signup-form');
+  const form = document.getElementById('signup-form-new');
   const result = document.getElementById('form-result');
 
   form.addEventListener('submit', async (e) => {
@@ -106,8 +111,7 @@ body, html { overflow: hidden; height: 100%; }
   });
 </script>
 
-<div id="form-note">We'll only use your email to gauge interest. Nothing more.</div>
-
+<div id="form-note" style="margin-bottom:5px;">We'll only use your email to gauge interest. Nothing more.</div>
 </div>
 </section>
 <div class="right-scroll-container">
@@ -169,11 +173,15 @@ startSlideshow();
 document.getElementById('slideshow').addEventListener('mouseenter', stopSlideshow);
 document.getElementById('slideshow').addEventListener('mouseleave', resumeSlideshow);
 </script>
+</body>
+</html>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+  // 1️⃣ Remove preload to enable animations
   setTimeout(() => {
     document.body.classList.remove('is-preload');
   }, 100);
+  // 2️⃣ Background slideshow
   const bgContainer = document.getElementById('bg');
   if (bgContainer) {
     const slides = bgContainer.querySelectorAll('div');
@@ -184,9 +192,17 @@ document.addEventListener('DOMContentLoaded', function() {
         slides[current].classList.remove('visible');
         current = (current + 1) % slides.length;
         slides[current].classList.add('visible');
-      }, 10000);
+      }, 10000); // Change slide every 10s
     }
   }
+  // 3️⃣ Form message animation
+  const formMessages = document.querySelectorAll('form .message');
+  formMessages.forEach(msg => {
+    setTimeout(() => {
+      msg.classList.add('visible');
+    }, 500); // fade in after 0.5s
+  });
+  // 4️⃣ Optional: Animate sections on scroll
   const animatedSections = document.querySelectorAll('section, article');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -203,5 +219,3 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
-</body>
-</html>
