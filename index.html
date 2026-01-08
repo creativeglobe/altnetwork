@@ -64,6 +64,7 @@ body, html { overflow: hidden; height: 100%; }
 <input type="email" id="email" placeholder="Email Address" required />
 <input type="submit" value="Join the Waitlist" />
 </form>
+<div id="form-note" style="margin-top:10px;color:#0f0;"></div>
 </div>
 </section>
 <div class="right-scroll-container">
@@ -125,58 +126,50 @@ startSlideshow();
 document.getElementById('slideshow').addEventListener('mouseenter', stopSlideshow);
 document.getElementById('slideshow').addEventListener('mouseleave', resumeSlideshow);
 </script>
-</body>
-</html>
 
-
+<!-- Web3Forms Integration -->
 <script>
-document.addEventListener('DOMContentLoaded', function() {
+document.getElementById('signup-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const email = document.getElementById('email').value;
+    const formNote = document.getElementById('form-note');
 
-  // 1️⃣ Remove preload to enable animations
-  setTimeout(() => {
-    document.body.classList.remove('is-preload');
-  }, 100);
-
-  // 2️⃣ Background slideshow
-  const bgContainer = document.getElementById('bg');
-  if (bgContainer) {
-    const slides = bgContainer.querySelectorAll('div');
-    let current = 0;
-    if (slides.length > 0) {
-      slides[current].classList.add('visible');
-
-      setInterval(() => {
-        slides[current].classList.remove('visible');
-        current = (current + 1) % slides.length;
-        slides[current].classList.add('visible');
-      }, 10000); // Change slide every 10s
+    if(!email) {
+        formNote.style.color = '#f00';
+        formNote.textContent = 'Please enter a valid email.';
+        formNote.style.display = 'block';
+        return;
     }
-  }
 
-  // 3️⃣ Form message animation
-  const formMessages = document.querySelectorAll('form .message');
-  formMessages.forEach(msg => {
-    setTimeout(() => {
-      msg.classList.add('visible');
-    }, 500); // fade in after 0.5s
-  });
+    try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                access_key: d59c6d7b-f144-4eea-9c67-ec80c95ef229,
+                email: email
+            })
+        });
 
-  // 4️⃣ Optional: Animate sections on scroll
-  const animatedSections = document.querySelectorAll('section, article');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = 1;
-        entry.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.1 });
-
-  animatedSections.forEach(section => {
-    section.style.opacity = 0;
-    section.style.transform = 'translateY(2em)';
-    observer.observe(section);
-  });
-
+        const result = await response.json();
+        if(result.success) {
+            formNote.style.color = '#0f0';
+            formNote.textContent = 'Thank you! Your email has been submitted.';
+            formNote.style.display = 'block';
+            document.getElementById('signup-form').reset();
+        } else {
+            formNote.style.color = '#f00';
+            formNote.textContent = 'Submission failed. Please try again.';
+            formNote.style.display = 'block';
+        }
+    } catch (err) {
+        formNote.style.color = '#f00';
+        formNote.textContent = 'An error occurred. Please try again.';
+        formNote.style.display = 'block';
+        console.error(err);
+    }
 });
 </script>
+
+</body>
+</html>
