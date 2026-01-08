@@ -36,15 +36,32 @@ margin: 2em 0 1em 0;
 opacity: 1;
 }
 body, html { overflow: hidden; height: 100%; }
-#form-note { display:none; }
 #footer { display: none; }
 #header .inner { display: block !important; margin-top: 0 !important; }
+form.web3forms-form input, form.web3forms-form textarea, form.web3forms-form button {
+  display:block;
+  width:100%;
+  margin-bottom:10px;
+  padding:10px;
+  border-radius:5px;
+  border:1px solid #ccc;
+}
+form.web3forms-form button {
+  background:#007BFF;
+  color:white;
+  border:none;
+  cursor:pointer;
+}
+form.web3forms-form button:hover {
+  background:#0056b3;
+}
 </style>
 </head>
 <body class="is-preload">
 <section id="header">
 <div class="inner">
 <div id="slideshow" style="width:500px; height:260px; margin-top:-15px; margin-bottom:25px; margin-left:0.35%; position: relative; overflow:hidden; border-radius:14px;">
+<!-- slides -->
 <img src="images/slide1.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:1; transform:scale(1); transition: opacity .8s ease, transform 5s ease;">
 <img src="images/slide2.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
 <img src="images/slide3.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
@@ -56,16 +73,24 @@ body, html { overflow: hidden; height: 100%; }
 <img src="images/slide9.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
 <img src="images/slide10.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
 </div>
+
 <header style="margin-bottom:10px;">
 <h1>Social Media Network</h1>
 <p>An alternative user-focused social network<br />fostering communication and diverse perspectives.</p>
 </header>
-<form id="signup-form" style="margin-bottom:10px;">
-<input type="email" id="email" placeholder="Email Address" required />
-<input type="submit" value="Join the Waitlist" />
+
+<!-- Web3Forms Form -->
+<form class="web3forms-form" action="https://api.web3forms.com/submit" method="POST">
+  <input type="hidden" name="access_key" value="d59c6d7b-f144-4eea-9c67-ec80c95ef229">
+  <input type="text" name="name" placeholder="Your Name" required>
+  <input type="email" name="email" placeholder="Email Address" required>
+  <textarea name="message" placeholder="Your Message" required></textarea>
+  <button type="submit">Submit Form</button>
 </form>
+
 </div>
 </section>
+
 <div class="right-scroll-container">
 <p>
 Today's social media platforms have become <b>increasingly restrictive</b>.<br><br>
@@ -94,6 +119,7 @@ If you believe there is a need for such an alternative,<br>
 <b>No commitment. No payment.</b> Just a declaration of interest.
 </p>
 </div>
+
 <script src="assets/js/main.js"></script>
 <script>
 const slides = document.querySelectorAll('#slideshow img');
@@ -111,9 +137,7 @@ currentSlide = (currentSlide + 1) % slides.length;
 showSlide(currentSlide);
 }, 5000);
 }
-function stopSlideshow() {
-clearInterval(interval);
-}
+function stopSlideshow() { clearInterval(interval); }
 function resumeSlideshow() {
 clearInterval(interval);
 currentSlide = (currentSlide + 1) % slides.length;
@@ -125,58 +149,6 @@ startSlideshow();
 document.getElementById('slideshow').addEventListener('mouseenter', stopSlideshow);
 document.getElementById('slideshow').addEventListener('mouseleave', resumeSlideshow);
 </script>
+
 </body>
 </html>
-
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-
-  // 1️⃣ Remove preload to enable animations
-  setTimeout(() => {
-    document.body.classList.remove('is-preload');
-  }, 100);
-
-  // 2️⃣ Background slideshow
-  const bgContainer = document.getElementById('bg');
-  if (bgContainer) {
-    const slides = bgContainer.querySelectorAll('div');
-    let current = 0;
-    if (slides.length > 0) {
-      slides[current].classList.add('visible');
-
-      setInterval(() => {
-        slides[current].classList.remove('visible');
-        current = (current + 1) % slides.length;
-        slides[current].classList.add('visible');
-      }, 10000); // Change slide every 10s
-    }
-  }
-
-  // 3️⃣ Form message animation
-  const formMessages = document.querySelectorAll('form .message');
-  formMessages.forEach(msg => {
-    setTimeout(() => {
-      msg.classList.add('visible');
-    }, 500); // fade in after 0.5s
-  });
-
-  // 4️⃣ Optional: Animate sections on scroll
-  const animatedSections = document.querySelectorAll('section, article');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = 1;
-        entry.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.1 });
-
-  animatedSections.forEach(section => {
-    section.style.opacity = 0;
-    section.style.transform = 'translateY(2em)';
-    observer.observe(section);
-  });
-
-});
-</script>
