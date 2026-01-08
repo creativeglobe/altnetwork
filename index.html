@@ -9,36 +9,41 @@
 .right-scroll-container::-webkit-scrollbar { display: none; }
 .right-scroll-container { -ms-overflow-style: none; scrollbar-width: none; }
 .right-scroll-container {
-position: fixed;
-top: 0;
-right: 0;
-width: 50%;
-height: 100vh;
-padding: 6% 8% 6% 1%;
-box-sizing: border-box;
-overflow-y: auto;
-text-align: left;
-color: white;
-opacity: 0.8;
-z-index: 10;
-pointer-events: auto;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100vh;
+  padding: 6% 8% 6% 1%;
+  box-sizing: border-box;
+  overflow-y: auto;
+  text-align: left;
+  color: white;
+  opacity: 0.8;
+  z-index: 10;
+  pointer-events: auto;
 }
 .right-scroll-container p {
-font-size: 1.35em;
-line-height: 1.65;
-margin: 0 0 1.5em 0;
+  font-size: 1.35em;
+  line-height: 1.65;
+  margin: 0 0 1.5em 0;
 }
 .right-scroll-container p:last-child { margin-bottom: 0; }
 .right-scroll-container .section-title {
-font-size: 1.8em;
-font-weight: bold;
-margin: 2em 0 1em 0;
-opacity: 1;
+  font-size: 1.8em;
+  font-weight: bold;
+  margin: 2em 0 1em 0;
+  opacity: 1;
 }
 body, html { overflow: hidden; height: 100%; }
 #form-note { font-size: 0.9em; font-style: italic; opacity: 0.7; margin-top: 0; }
 #footer { display: none; }
 #header .inner { display: block !important; margin-top: 0 !important; }
+
+/* Hide backup form */
+#signup-form-backup {
+  display: none;
+}
 </style>
 </head>
 <body class="is-preload">
@@ -56,17 +61,32 @@ body, html { overflow: hidden; height: 100%; }
 <img src="images/slide9.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
 <img src="images/slide10.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
 </div>
+
 <header style="margin-bottom:10px;">
 <h1>Social Media Network</h1>
 <p>An alternative social networking platform,<br />centered around its users.</p>
 </header>
-<form id="signup-form" style="margin-bottom:10px;">
-<input type="email" id="email" placeholder="Email Address" required />
+
+<!-- Backup form (hidden) -->
+<form id="signup-form-backup">
+<input type="email" id="email-backup" placeholder="Email Address" required />
 <input type="submit" value="Join the Waitlist" />
 </form>
+
+<!-- Web3Forms functional form -->
+<form id="signup-form" action="https://api.web3forms.com/submit" method="POST" style="margin-bottom:10px;">
+  <input type="hidden" name="access_key" value="d59c6d7b-f144-4eea-9c67-ec80c95ef229" />
+  <input type="hidden" name="subject" value="New Waitlist Signup - AltNetwork" />
+  <input type="hidden" name="redirect" value="https://web3forms.com/success" />
+  <input type="email" name="email" id="email" placeholder="Email Address" required />
+  <input type="submit" value="Join the Waitlist" />
+  <span id="thankyou-message" style="margin-left:1em; display:none; color:#1cb495; font-weight:bold;">Thank you!</span>
+</form>
+
 <div id="form-note" style="margin-bottom:5px;">We'll only use your email to gauge interest. Nothing more.</div>
 </div>
 </section>
+
 <div class="right-scroll-container">
 <p>
 Today's social media platforms have become <b>increasingly restrictive</b>.<br><br>
@@ -95,7 +115,9 @@ If you believe there is a need for such an alternative,<br>
 <b>No commitment. No payment.</b> Just a declaration of interest.
 </p>
 </div>
+
 <script src="assets/js/main.js"></script>
+
 <script>
 const slides = document.querySelectorAll('#slideshow img');
 let currentSlide = 0;
@@ -125,10 +147,21 @@ showSlide(0);
 startSlideshow();
 document.getElementById('slideshow').addEventListener('mouseenter', stopSlideshow);
 document.getElementById('slideshow').addEventListener('mouseleave', resumeSlideshow);
-</script>
-</body>
-</html>
 
+// Web3Forms thank you message
+const form = document.getElementById('signup-form');
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+  const data = new FormData(form);
+  fetch(form.action, { method: form.method, body: data })
+    .then(res => res.json())
+    .then(res => {
+      document.getElementById('thankyou-message').style.display = 'inline';
+      form.reset();
+    })
+    .catch(err => console.error(err));
+});
+</script>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -150,19 +183,11 @@ document.addEventListener('DOMContentLoaded', function() {
         slides[current].classList.remove('visible');
         current = (current + 1) % slides.length;
         slides[current].classList.add('visible');
-      }, 10000); // Change slide every 10s
+      }, 10000);
     }
   }
 
-  // 3️⃣ Form message animation
-  const formMessages = document.querySelectorAll('form .message');
-  formMessages.forEach(msg => {
-    setTimeout(() => {
-      msg.classList.add('visible');
-    }, 500); // fade in after 0.5s
-  });
-
-  // 4️⃣ Optional: Animate sections on scroll
+  // 3️⃣ Optional: Animate sections on scroll
   const animatedSections = document.querySelectorAll('section, article');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -181,3 +206,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 </script>
+
+</body>
+</html>
