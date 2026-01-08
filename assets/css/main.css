@@ -1,7 +1,12 @@
 @import url(fontawesome-all.min.css);
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700");
+/*
+	Eventually by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license
+*/
 
-/* RESET */
+/* Reset */
 html, body, div, span, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
 pre, a, abbr, acronym, address, big, cite,
@@ -13,142 +18,147 @@ tfoot, thead, tr, th, td, article, aside,
 canvas, details, embed, figure, figcaption,
 footer, header, hgroup, menu, nav, output, ruby,
 section, summary, time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font: inherit;
-  vertical-align: baseline;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font: inherit;
+	vertical-align: baseline;
 }
 
 article, aside, footer, header, nav, section {
-  display: block;
+	display: block;
 }
 
 body {
-  line-height: 1;
-  background-color: #000;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 6em 4em 4em 4em;
+	line-height: 1;
+	background: #000;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 6em 4em 4em 4em;
 }
 
 html, body {
-  height: 100%;
-  width: 100%;
-  overflow-x: hidden;
+	height: 100%;
+	width: 100%;
+	overflow-x: hidden;
 }
 
 *, *:before, *:after {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
-/* TYPOGRAPHY */
-body, input, textarea, select {
-  font-family: "Roboto", sans-serif;
-  font-size: 16pt;
-  color: rgba(255, 255, 255, 0.75);
-  line-height: 1.65em;
+/* Typography */
+body, input, select, textarea {
+	color: rgba(255, 255, 255, 0.75);
+	font-family: "Roboto", sans-serif;
+	font-size: 16pt;
+	line-height: 1.65em;
 }
 
 h1 {
-  font-size: 3.25em;
-  color: #fff;
+	color: #fff;
+	font-size: 3.25em;
+	margin-bottom: 0.55em;
 }
 
 p {
-  margin-bottom: 2em;
+	margin: 0 0 2em 0;
 }
 
 strong {
-  color: #fff;
+	color: #fff;
+	font-weight: 700;
 }
 
-/* HEADER */
+/* Header */
 #header h1 {
-  margin-bottom: 0.5em;
+	margin-bottom: 0.55em;
 }
 
 #header p {
-  font-size: 1.35em;
+	font-size: 1.35em;
+	line-height: 1.65em;
 }
 
-/* FORM — ΔΙΟΡΘΩΣΗ */
-form {
-  margin: 0;
-}
+/* ============================= */
+/* SIGNUP FORM — FIXED PROPERLY */
+/* ============================= */
 
 #signup-form {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  margin: 0;
-}
-
-#signup-form > * {
-  margin: 0 0.75em 0 0;
-}
-
-#signup-form > *:last-child {
-  margin-right: 0;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start; /* FIX */
+	margin: 0;
 }
 
 #signup-form input[type="email"] {
-  width: 18em;
+	width: 18em;
+}
+
+#signup-form > * {
+	margin: 0 1em 0 0; /* FIX */
+}
+
+#signup-form > *:last-child {
+	margin-right: 0;
 }
 
 @media screen and (max-width: 480px) {
-  #signup-form {
-    flex-direction: column;
-    align-items: stretch;
-  }
+	#signup-form {
+		flex-direction: column;
+		align-items: stretch;
+	}
 
-  #signup-form > * {
-    margin: 1em 0 0 0;
-  }
+	#signup-form > * {
+		margin: 1.25em 0 0 0;
+	}
 
-  #signup-form input[type="email"] {
-    width: 100%;
-  }
+	#signup-form input[type="email"] {
+		width: 100%;
+	}
 }
 
-/* INPUTS */
+/* Inputs */
 input[type="email"],
 input[type="text"],
 input[type="password"],
 textarea {
-  background: transparent;
-  border: 2px solid rgba(255,255,255,0.35);
-  border-radius: 6px;
-  padding: 0 1em;
-  height: 2.75em;
-  color: #fff;
+	background: transparent;
+	border-radius: 6px;
+	border: solid 2px rgba(255, 255, 255, 0.35);
+	color: inherit;
+	display: block;
+	outline: 0;
+	padding: 0 1em;
+	height: 2.75em;
+	width: 100%;
 }
 
 input:focus {
-  border-color: #1cb495;
-  background-color: rgba(255,255,255,0.1);
-  outline: none;
+	background-color: rgba(255, 255, 255, 0.125);
+	border-color: #1cb495;
 }
 
-/* BUTTON */
+/* Button */
 input[type="submit"] {
-  background-color: #1cb495;
-  border: none;
-  color: #fff;
-  font-weight: 700;
-  padding: 0 1.25em;
-  height: 2.75em;
-  border-radius: 6px;
-  cursor: pointer;
+	background-color: #1cb495;
+	border-radius: 6px;
+	border: 0;
+	color: #fff !important;
+	cursor: pointer;
+	font-weight: 700;
+	height: 2.75em;
+	line-height: 2.75em;
+	padding: 0 1.25em;
+	white-space: nowrap;
 }
 
 input[type="submit"]:hover {
-  background-color: #1fcaa7;
+	background-color: #1fcaa7;
 }
 
-/* FOOTER */
+/* Footer */
 #footer {
-  display: none;
+	display: none;
 }
