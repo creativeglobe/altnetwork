@@ -6,70 +6,75 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="assets/css/main.css" />
 <style>
-/* Right scroll container */
 .right-scroll-container::-webkit-scrollbar { display: none; }
 .right-scroll-container { -ms-overflow-style: none; scrollbar-width: none; }
 .right-scroll-container {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 50%;
-  height: 100vh;
-  padding: 6% 8% 6% 1%;
-  box-sizing: border-box;
-  overflow-y: auto;
-  text-align: left;
-  color: white;
-  opacity: 0.8;
-  z-index: 10;
-  pointer-events: auto;
+position: fixed;
+top: 0;
+right: 0;
+width: 50%;
+height: 100vh;
+padding: 6% 8% 6% 1%;
+box-sizing: border-box;
+overflow-y: auto;
+text-align: left;
+color: white;
+opacity: 0.8;
+z-index: 10;
+pointer-events: auto;
 }
 .right-scroll-container p {
-  font-size: 1.35em;
-  line-height: 1.65;
-  margin: 0 0 1.5em 0;
+font-size: 1.35em;
+line-height: 1.65;
+margin: 0 0 1.5em 0;
 }
 .right-scroll-container p:last-child { margin-bottom: 0; }
 .right-scroll-container .section-title {
-  font-size: 1.8em;
-  font-weight: bold;
-  margin: 2em 0 1em 0;
-  opacity: 1;
+font-size: 1.8em;
+font-weight: bold;
+margin: 2em 0 1em 0;
+opacity: 1;
 }
 body, html { overflow: hidden; height: 100%; }
 
-/* Backup form hidden */
-#backup-form { display: none; }
-
-/* Web3Forms form aligned LEFT, input + button on same line */
+/* Στοίχιση φόρμας */
 #signup-form {
-  display: flex !important;
-  flex-direction: row !important;
-  align-items: center !important; /* vertical alignment */
-  margin: 1em 0 !important;
-  width: 100%;
-  max-width: 25em;
-  gap: 0.5em; /* μικρό κενό μεταξύ input και button */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+  gap: 0.5em;
 }
 #signup-form input[type="email"] {
-  flex: 1; /* παίρνει όλο το διαθέσιμο χώρο */
-  padding: 0.5em 0.75em;
-  font-size: 1em;
+  flex: 1;
+  max-width: 18em;
 }
 #signup-form input[type="submit"] {
-  padding: 0.5em 1em;
-  font-size: 1em;
-  white-space: nowrap;
-  cursor: pointer;
+  flex: none;
+}
+
+/* Κρυφή backup φόρμα */
+#backup-form {
+  display: none;
 }
 </style>
 </head>
 <body class="is-preload">
-
 <section id="header">
 <div class="inner">
+
 <div id="slideshow" style="width:500px; height:260px; margin-top:-15px; margin-bottom:25px; margin-left:0.35%; position: relative; overflow:hidden; border-radius:14px;">
-<!-- slideshow images εδώ -->
+<img src="images/slide1.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:1; transform:scale(1); transition: opacity .8s ease, transform 5s ease;">
+<img src="images/slide2.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
+<img src="images/slide3.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
+<img src="images/slide4.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
+<img src="images/slide5.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
+<img src="images/slide6.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
+<img src="images/slide7.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
+<img src="images/slide8.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
+<img src="images/slide9.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
+<img src="images/slide10.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
 </div>
 
 <header style="margin-bottom:10px;">
@@ -77,19 +82,17 @@ body, html { overflow: hidden; height: 100%; }
 <p>An alternative social networking platform,<br />centered around its users.</p>
 </header>
 
-<!-- Backup form hidden -->
-<form id="backup-form">
-  <input type="email" id="email-backup" placeholder="Email Address" />
-  <input type="submit" value="Join the Waitlist" />
+<!-- Νέα φόρμα Web3Forms -->
+<form id="signup-form" method="POST" action="https://api.web3forms.com/submit">
+<input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+<input type="email" name="email" placeholder="Email Address" required />
+<input type="submit" value="Join the Waitlist" />
 </form>
 
-<!-- Active Web3Forms form -->
-<form id="signup-form" action="https://api.web3forms.com/submit" method="POST">
-  <input type="hidden" name="access_key" value="d59c6d7b-f144-4eea-9c67-ec80c95ef229">
-  <input type="email" name="email" id="email" placeholder="Email Address" required />
-  <input type="submit" value="Join the Waitlist" />
-  <input type="hidden" name="subject" value="New Waitlist Signup - AltNetwork">
-  <input type="hidden" name="redirect" value="https://web3forms.com/success">
+<!-- Παλιό backup form -->
+<form id="backup-form">
+<input type="email" id="email-backup" placeholder="Email Address" required />
+<input type="submit" value="Join the Waitlist" />
 </form>
 
 </div>
@@ -155,14 +158,5 @@ startSlideshow();
 document.getElementById('slideshow').addEventListener('mouseenter', stopSlideshow);
 document.getElementById('slideshow').addEventListener('mouseleave', resumeSlideshow);
 </script>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  setTimeout(() => {
-    document.body.classList.remove('is-preload');
-  }, 100);
-});
-</script>
-
 </body>
 </html>
