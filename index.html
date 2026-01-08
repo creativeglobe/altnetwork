@@ -39,29 +39,9 @@ body, html { overflow: hidden; height: 100%; }
 #form-note { font-size: 0.9em; font-style: italic; opacity: 0.7; margin-top: 0; }
 #footer { display: none; }
 #header .inner { display: block !important; margin-top: 0 !important; }
-
-/* Στυλ για Web3Forms φόρμα */
-#signup-form {
-display: flex;
-align-items: center;
-gap: 10px;
-margin-bottom: 10px;
-}
-#signup-form input[type="email"] {
-padding: 0.5em 0.7em;
-font-size: 1em;
-flex: 1;
-}
-#signup-form input[type="submit"] {
-padding: 0.55em 1em;
-font-size: 1em;
-cursor: pointer;
-}
-#signup-form .w3f-message {
-margin-left: 10px;
-color: #0f0;
-font-weight: bold;
-}
+#signup-form { display: flex; align-items: center; gap: 0.5em; }
+#signup-form input[type="email"] { flex: 1; padding: 0.5em; font-size: 1em; }
+#signup-form input[type="submit"] { padding: 0.55em 1em; font-size: 1em; cursor: pointer; }
 </style>
 </head>
 <body class="is-preload">
@@ -81,21 +61,21 @@ font-weight: bold;
 </div>
 <header style="margin-bottom:10px;">
 <h1>Social Media Network</h1>
-<p>An alternative user-focused social network<br />fostering honest communication and diverse perspectives.</p>
+<p>An alternative user-focused social network<br>fostering honest communication and diverse perspectives.</p>
 </header>
 
-<!-- Web3Forms Form -->
-<form id="signup-form" action="https://api.web3forms.com/submit" method="POST">
-<input type="hidden" name="access_key" value=d59c6d7b-f144-4eea-9c67-ec80c95ef229 />
-<input type="hidden" name="redirect" value="" />
+<!-- Web3Forms form -->
+<form id="signup-form" style="margin-bottom:10px;" action="https://api.web3forms.com/submit" method="POST" autocomplete="off">
+<input type="hidden" name="access_key" value=d59c6d7b-f144-4eea-9c67-ec80c95ef229>
+<input type="hidden" name="redirect" value="">
 <input type="email" name="email" placeholder="Email Address" required />
 <input type="submit" value="Join the Waitlist" />
-<span class="w3f-message"></span>
+<span id="form-message" style="margin-left:1em;"></span>
 </form>
 
-<!-- Backup old form -->
-<form id="backup-form" style="display:none;">
-<input type="email" id="email-backup" placeholder="Email Address" required />
+<!-- Old form backup -->
+<form id="signup-form-backup" style="display:none;">
+<input type="email" id="email-backup" placeholder="Email Address" />
 <input type="submit" value="Join the Waitlist" />
 </form>
 
@@ -161,33 +141,58 @@ showSlide(0);
 startSlideshow();
 document.getElementById('slideshow').addEventListener('mouseenter', stopSlideshow);
 document.getElementById('slideshow').addEventListener('mouseleave', resumeSlideshow);
-
-// Web3Forms inline Thank You
-const w3fForm = document.querySelector('#signup-form');
-const w3fMessage = w3fForm.querySelector('.w3f-message');
-
-w3fForm.addEventListener('submit', async (e) => {
-e.preventDefault();
-const formData = new FormData(w3fForm);
-const data = Object.fromEntries(formData.entries());
-try {
-  const res = await fetch(w3fForm.action, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data)
-  });
-  const json = await res.json();
-  if (json.success) {
-    w3fMessage.textContent = "Thank you!";
-    w3fForm.reset();
-  } else {
-    w3fMessage.textContent = "Error, please try again.";
-  }
-} catch(err) {
-  w3fMessage.textContent = "Error, please try again.";
-}
-});
 </script>
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+  // Remove preload
+  setTimeout(() => {
+    document.body.classList.remove('is-preload');
+  }, 100);
+
+  // Form submission via Web3Forms (ajax, no redirect)
+  const form = document.getElementById('signup-form');
+  const messageEl = document.getElementById('form-message');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    messageEl.textContent = "Sending...";
+    try {
+      const res = await fetch(form.action, {
+        method: form.method,
+        body: data,
+      });
+      if (res.ok) {
+        messageEl.textContent = "Thank you!";
+        form.reset();
+      } else {
+        messageEl.textContent = "Error, try again.";
+      }
+    } catch (err) {
+      messageEl.textContent = "Error, try again.";
+    }
+  });
+
+  // Optional: Animate sections on scroll
+  const animatedSections = document.querySelectorAll('section, article');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = 1;
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  animatedSections.forEach(section => {
+    section.style.opacity = 0;
+    section.style.transform = 'translateY(2em)';
+    observer.observe(section);
+  });
+
+});
+</script>
 </body>
 </html>
