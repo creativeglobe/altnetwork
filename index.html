@@ -64,16 +64,16 @@ body, html { overflow: hidden; height: 100%; }
 </div>
 <header style="margin-bottom:10px;">
 <h1>Social Media Network</h1>
-<p>An alternative user-focused social network<br>fostering honest communication and diverse perspectives.</p>
+<p>An alternative user-focused social network<br>fostering communication and diverse perspectives.</p>
 </header>
 
 <!-- Web3Forms form -->
-<form id="signup-form" action="https://api.web3forms.com/submit" method="POST" autocomplete="off" style="margin-bottom:10px;">
+<form id="signup-form" action="https://api.web3forms.com/submit" method="POST" autocomplete="off" style="margin-bottom:10px; display: inline-block;">
   <input type="hidden" name="access_key" value="ΤΟ_ACCESS_KEY_ΣΟΥ">
   <input type="hidden" name="redirect" value="">
-  <input type="email" name="email" placeholder="Email Address" required />
-  <input type="submit" value="Join the Waitlist" />
-  <span id="form-message"></span>
+  <input type="email" name="email" placeholder="Email Address" required style="padding:0.5em; font-size:1em;">
+  <input type="submit" value="Join the Waitlist" style="padding:0.55em 1em; font-size:1em; cursor:pointer;">
+  <span id="form-message" style="margin-left:1em; font-style:italic; color:#fff; opacity:0.8;"></span>
 </form>
 
 <!-- Backup old form (hidden) -->
