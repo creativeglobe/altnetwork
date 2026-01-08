@@ -939,6 +939,7 @@ button,
     transform: scale(1) !important;
   }
 
+  /* Form: ensuring it is correctly centered */
   #signup-form {
     width: 100% !important;
     display: flex !important;
