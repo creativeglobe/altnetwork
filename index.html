@@ -40,8 +40,20 @@ body, html { overflow: hidden; height: 100%; }
 /* Backup form hidden */
 #backup-form { display: none; }
 
-#footer { display: none; }
-#header .inner { display: block !important; margin-top: 0 !important; }
+/* Web3Forms form aligned to left in scroll container */
+#signup-form {
+  display: block !important;
+  text-align: left !important;
+  margin: 1em 0 !important;
+  width: auto !important;
+}
+#signup-form input[type="email"],
+#signup-form input[type="submit"] {
+  display: block;
+  width: 100%;
+  max-width: 18em;
+  margin-bottom: 0.75em;
+}
 </style>
 </head>
 <body class="is-preload">
@@ -66,14 +78,14 @@ body, html { overflow: hidden; height: 100%; }
 <p>An alternative social networking platform,<br />centered around its users.</p>
 </header>
 
-<!-- Backup form (hidden) -->
+<!-- Backup form hidden -->
 <form id="backup-form">
   <input type="email" id="email-backup" placeholder="Email Address" />
   <input type="submit" value="Join the Waitlist" />
 </form>
 
 <!-- Active Web3Forms form -->
-<form id="signup-form" action="https://api.web3forms.com/submit" method="POST" style="margin-bottom:0;">
+<form id="signup-form" action="https://api.web3forms.com/submit" method="POST">
   <input type="hidden" name="access_key" value="d59c6d7b-f144-4eea-9c67-ec80c95ef229">
   <input type="email" name="email" id="email" placeholder="Email Address" required />
   <input type="submit" value="Join the Waitlist" />
