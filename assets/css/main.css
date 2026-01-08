@@ -896,6 +896,7 @@ button,
     margin-top: 2em !important;
     opacity: 1 !important;
   }
+
   #header, .inner {
     width: 100% !important;
   }
@@ -907,6 +908,7 @@ button,
   }
 }
 
+/* Tablet & Mobile Layout Fix */
 @media screen and (max-width: 1024px) {
   .right-scroll-container {
     position: static !important;
@@ -926,43 +928,8 @@ button,
 
   #slideshow {
     margin: 0 auto 1em auto !important;
-  }
-
-  #signup-form {
-    display: inline-block;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .right-scroll-container {
-    padding: 4% 5% !important;
-  }
-}
-
-@media screen and (max-width: 1024px) {
-  .right-scroll-container {
-    position: static !important;
-    width: 100% !important;
-    height: auto !important;
-    margin: 2em auto 0 auto !important;
-    padding: 2% 5% !important;
-    text-align: center !important;
-    opacity: 1 !important;
-  }
-
-  #header, .inner {
-    width: 100% !important;
-    text-align: center !important;
-    margin: 0 auto;
-  }
-
-  #slideshow {
     width: 90% !important;
     max-width: 500px !important;
-    margin: 0 auto 1em auto !important;
-    position: relative !important;
-    left: auto !important;
-    right: auto !important;
   }
 
   #slideshow img {
@@ -973,41 +940,22 @@ button,
   }
 
   #signup-form {
-    display: inline-block;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .right-scroll-container {
-    padding: 4% 5% !important;
-  }
-}
-
-@media screen and (max-width: 1024px) {
-  #signup-form {
+    width: 100% !important;
     display: flex !important;
-    flex-direction: row !important;
     justify-content: center !important;
     align-items: center !important;
     gap: 0.5em;
-    margin: 1em auto !important;
+    margin: 1em auto 0 auto !important;
   }
 
-  #signup-form input[type="email"] {
-    flex: 1 1 auto;
-    min-width: 200px;
-  }
-
+  #signup-form input[type="email"],
   #signup-form input[type="submit"] {
-    flex: 0 0 auto;
+    max-width: 500px !important;
+    width: 100% !important;
   }
 }
 
-#header .inner {
-  margin-top: 4em !important;
-  text-align: center;
-}
-
+/* Form width & centering on all devices */
 #signup-form {
   max-width: 500px;
   width: 100%;
@@ -1027,9 +975,16 @@ button,
   flex: 0 0 auto;
 }
 
+/* Adjustments for mobile view */
 @media screen and (max-width: 1024px) {
   #signup-form {
-    flex-direction: row;
-    max-width: 90%;
+    flex-direction: row !important;
+    max-width: 90% !important;
   }
+}
+
+/* Spacing Above Title */
+#header .inner {
+  margin-top: 4em !important;
+  text-align: center;
 }
