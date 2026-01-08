@@ -38,11 +38,15 @@ opacity: 1;
 body, html { overflow: hidden; height: 100%; }
 #footer { display: none; }
 #header .inner { display: block !important; margin-top: 0 !important; }
+#form-note { margin-top:10px; font-weight:bold; display:block; }
 </style>
 </head>
 <body class="is-preload">
+
 <section id="header">
 <div class="inner">
+
+<!-- Slideshow -->
 <div id="slideshow" style="width:500px; height:260px; margin-top:-15px; margin-bottom:25px; margin-left:0.35%; position: relative; overflow:hidden; border-radius:14px;">
 <img src="images/slide1.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:1; transform:scale(1); transition: opacity .8s ease, transform 5s ease;">
 <img src="images/slide2.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
@@ -55,58 +59,18 @@ body, html { overflow: hidden; height: 100%; }
 <img src="images/slide9.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
 <img src="images/slide10.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
 </div>
+
 <header style="margin-bottom:10px;">
 <h1>Social Media Network</h1>
 <p>An alternative user-focused social network<br />fostering communication and diverse perspectives.</p>
 </header>
 
-<!-- Native Web3Forms Form -->
+<!-- Form -->
 <form id="signup-form" style="margin-bottom:10px;">
   <input type="email" id="email" placeholder="Email Address" required />
   <input type="submit" value="Join the Waitlist" />
 </form>
-<div id="form-note" style="margin-top:10px;color:#0f0;"></div>
-
-<script>
-document.getElementById('signup-form').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const email = document.getElementById('email').value.trim();
-    const formNote = document.getElementById('form-note');
-
-    if(!email) {
-        formNote.style.color = '#f00';
-        formNote.textContent = 'Please enter a valid email.';
-        return;
-    }
-
-    try {
-        const response = await fetch('https://api.web3forms.com/submit', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                access_key: d59c6d7b-f144-4eea-9c67-ec80c95ef229,
-                email: email,
-                subject: 'New Waitlist Signup'
-            })
-        });
-
-        const result = await response.json();
-        if(result.success) {
-            formNote.style.color = '#0f0';
-            formNote.textContent = 'Thank you! Your email has been submitted.';
-            document.getElementById('signup-form').reset();
-        } else {
-            formNote.style.color = '#f00';
-            formNote.textContent = 'Submission failed. Please try again.';
-            console.log(result);
-        }
-    } catch(err) {
-        formNote.style.color = '#f00';
-        formNote.textContent = 'An error occurred. Please try again.';
-        console.error(err);
-    }
-});
-</script>
+<div id="form-note"></div>
 
 </div>
 </section>
@@ -142,6 +106,7 @@ If you believe there is a need for such an alternative,<br>
 
 <script src="assets/js/main.js"></script>
 <script>
+// Slideshow JS
 const slides = document.querySelectorAll('#slideshow img');
 let currentSlide = 0;
 let interval;
@@ -157,9 +122,7 @@ currentSlide = (currentSlide + 1) % slides.length;
 showSlide(currentSlide);
 }, 5000);
 }
-function stopSlideshow() {
-clearInterval(interval);
-}
+function stopSlideshow() { clearInterval(interval); }
 function resumeSlideshow() {
 clearInterval(interval);
 currentSlide = (currentSlide + 1) % slides.length;
@@ -170,6 +133,46 @@ showSlide(0);
 startSlideshow();
 document.getElementById('slideshow').addEventListener('mouseenter', stopSlideshow);
 document.getElementById('slideshow').addEventListener('mouseleave', resumeSlideshow);
+
+// Web3Forms JS Integration
+document.getElementById('signup-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const email = document.getElementById('email').value.trim();
+    const note = document.getElementById('form-note');
+
+    if(!email) {
+        note.style.color = '#f00';
+        note.textContent = 'Please enter a valid email.';
+        return;
+    }
+
+    try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                access_key: d59c6d7b-f144-4eea-9c67-ec80c95ef229
+                email: email,
+                subject: 'New Waitlist Signup'
+            })
+        });
+
+        const result = await res.json();
+        if(result.success) {
+            note.style.color = '#0f0';
+            note.textContent = 'Thank you! Your email has been submitted.';
+            document.getElementById('signup-form').reset();
+        } else {
+            note.style.color = '#f00';
+            note.textContent = 'Submission failed. Check console.';
+            console.log(result);
+        }
+    } catch(err) {
+        note.style.color = '#f00';
+        note.textContent = 'Error sending email. See console.';
+        console.error(err);
+    }
+});
 </script>
 
 </body>
