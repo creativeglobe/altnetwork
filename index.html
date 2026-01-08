@@ -36,10 +36,11 @@ margin: 2em 0 1em 0;
 opacity: 1;
 }
 body, html { overflow: hidden; height: 100%; }
+#form-note { font-size: 0.9em; font-style: italic; opacity: 0.7; margin-top: 0; }
 #footer { display: none; }
 #header .inner { display: block !important; margin-top: 0 !important; }
 
-/* Στυλ φόρμας Web3Forms */
+/* Στυλ για Web3Forms φόρμα */
 #signup-form {
 display: flex;
 align-items: center;
@@ -80,19 +81,19 @@ font-weight: bold;
 </div>
 <header style="margin-bottom:10px;">
 <h1>Social Media Network</h1>
-<p>An alternative social networking platform,<br />centered around its users.</p>
+<p>An alternative user-focused social network<br />fostering honest communication and diverse perspectives.</p>
 </header>
 
-<!-- Web3Forms Φόρμα -->
+<!-- Web3Forms Form -->
 <form id="signup-form" action="https://api.web3forms.com/submit" method="POST">
 <input type="hidden" name="access_key" value=d59c6d7b-f144-4eea-9c67-ec80c95ef229 />
-<input type="hidden" name="redirect" value="" /> <!-- Αποτρέπει το redirect -->
+<input type="hidden" name="redirect" value="" />
 <input type="email" name="email" placeholder="Email Address" required />
 <input type="submit" value="Join the Waitlist" />
 <span class="w3f-message"></span>
 </form>
 
-<!-- Backup παλιά φόρμα -->
+<!-- Backup old form -->
 <form id="backup-form" style="display:none;">
 <input type="email" id="email-backup" placeholder="Email Address" required />
 <input type="submit" value="Join the Waitlist" />
@@ -132,7 +133,6 @@ If you believe there is a need for such an alternative,<br>
 
 <script src="assets/js/main.js"></script>
 <script>
-// Slideshow λειτουργία
 const slides = document.querySelectorAll('#slideshow img');
 let currentSlide = 0;
 let interval;
@@ -148,7 +148,9 @@ currentSlide = (currentSlide + 1) % slides.length;
 showSlide(currentSlide);
 }, 5000);
 }
-function stopSlideshow() { clearInterval(interval); }
+function stopSlideshow() {
+clearInterval(interval);
+}
 function resumeSlideshow() {
 clearInterval(interval);
 currentSlide = (currentSlide + 1) % slides.length;
@@ -160,7 +162,7 @@ startSlideshow();
 document.getElementById('slideshow').addEventListener('mouseenter', stopSlideshow);
 document.getElementById('slideshow').addEventListener('mouseleave', resumeSlideshow);
 
-// Web3Forms inline thank you
+// Web3Forms inline Thank You
 const w3fForm = document.querySelector('#signup-form');
 const w3fMessage = w3fForm.querySelector('.w3f-message');
 
@@ -168,7 +170,6 @@ w3fForm.addEventListener('submit', async (e) => {
 e.preventDefault();
 const formData = new FormData(w3fForm);
 const data = Object.fromEntries(formData.entries());
-
 try {
   const res = await fetch(w3fForm.action, {
     method: 'POST',
