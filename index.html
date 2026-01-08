@@ -36,7 +36,7 @@ margin: 2em 0 1em 0;
 opacity: 1;
 }
 body, html { overflow: hidden; height: 100%; }
-#form-note { font-size: 0.9em; font-style: italic; opacity: 0.7; margin-top: 0; }
+#form-note { font-size: 0.9em; font-style: italic; opacity: 0.7; margin-top: 10px; }
 #footer { display: none; }
 #header .inner { display: block !important; margin-top: 0 !important; }
 </style>
@@ -60,11 +60,19 @@ body, html { overflow: hidden; height: 100%; }
 <h1>Social Media Network</h1>
 <p>An alternative social networking platform,<br />centered around its users.</p>
 </header>
-<form id="signup-form" style="margin-bottom:10px;">
-<input type="email" id="email" placeholder="Email Address" required />
-<input type="submit" value="Join the Waitlist" />
-</form>
-<div id="form-note" style="margin-bottom:5px;">We'll only use your email to gauge interest. Nothing more.</div>
+
+<!-- Ενημερωμένη λειτουργική Substack φόρμα -->
+<div style="margin-bottom:10px; text-align: center;">
+<iframe src="https://george914688.substack.com/embed" 
+        width="100%" 
+        height="180" 
+        style="border:1px solid #EEE; background:white; border-radius:12px; max-width:480px; margin:0 auto; display:block;" 
+        frameborder="0" 
+        scrolling="no">
+</iframe>
+</div>
+<div id="form-note">We'll only use your email to gauge interest. Nothing more.</div>
+
 </div>
 </section>
 <div class="right-scroll-container">
@@ -126,43 +134,30 @@ startSlideshow();
 document.getElementById('slideshow').addEventListener('mouseenter', stopSlideshow);
 document.getElementById('slideshow').addEventListener('mouseleave', resumeSlideshow);
 </script>
-</body>
-</html>
-
-
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-
-  // 1️⃣ Remove preload to enable animations
   setTimeout(() => {
     document.body.classList.remove('is-preload');
   }, 100);
-
-  // 2️⃣ Background slideshow
   const bgContainer = document.getElementById('bg');
   if (bgContainer) {
     const slides = bgContainer.querySelectorAll('div');
     let current = 0;
     if (slides.length > 0) {
       slides[current].classList.add('visible');
-
       setInterval(() => {
         slides[current].classList.remove('visible');
         current = (current + 1) % slides.length;
         slides[current].classList.add('visible');
-      }, 10000); // Change slide every 10s
+      }, 10000);
     }
   }
-
-  // 3️⃣ Form message animation
   const formMessages = document.querySelectorAll('form .message');
   formMessages.forEach(msg => {
     setTimeout(() => {
       msg.classList.add('visible');
-    }, 500); // fade in after 0.5s
+    }, 500);
   });
-
-  // 4️⃣ Optional: Animate sections on scroll
   const animatedSections = document.querySelectorAll('section, article');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -172,12 +167,12 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   }, { threshold: 0.1 });
-
   animatedSections.forEach(section => {
     section.style.opacity = 0;
     section.style.transform = 'translateY(2em)';
     observer.observe(section);
   });
-
 });
 </script>
+</body>
+</html>
