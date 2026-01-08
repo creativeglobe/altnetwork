@@ -39,6 +39,13 @@ body, html { overflow: hidden; height: 100%; }
 #form-note { font-size: 0.9em; font-style: italic; opacity: 0.7; margin-top: 10px; }
 #footer { display: none; }
 #header .inner { display: block !important; margin-top: 0 !important; }
+/* Extra CSS για να εξασφαλίσουμε ότι δεν θα έχει λευκό box */
+[data-supascribe-embed-id] {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 0 !important;
+}
 </style>
 </head>
 <body class="is-preload">
@@ -61,15 +68,10 @@ body, html { overflow: hidden; height: 100%; }
 <p>An alternative social networking platform,<br />centered around its users.</p>
 </header>
 
-<!-- Ενημερωμένη λειτουργική Substack φόρμα -->
-<div style="margin-bottom:10px; text-align: center;">
-<iframe src="https://george914688.substack.com/embed" 
-        width="100%" 
-        height="180" 
-        style="border:1px solid #EEE; background:white; border-radius:12px; max-width:480px; margin:0 auto; display:block;" 
-        frameborder="0" 
-        scrolling="no">
-</iframe>
+<!-- ΝΕΑ ΛΕΙΤΟΥΡΓΙΚΗ ΦΟΡΜΑ ΜΕ SUPASCRIBE -->
+<div style="margin-bottom:10px;">
+  <!-- Subscribe embed code -->
+  <div data-supascribe-embed-id="522069628453" data-supascribe-subscribe></div>
 </div>
 <div id="form-note">We'll only use your email to gauge interest. Nothing more.</div>
 
@@ -134,6 +136,10 @@ startSlideshow();
 document.getElementById('slideshow').addEventListener('mouseenter', stopSlideshow);
 document.getElementById('slideshow').addEventListener('mouseleave', resumeSlideshow);
 </script>
+
+<!-- Supascribe Script (μία φορά, πριν το </body>) -->
+<script src="https://js.supascribe.com/v1/loader/6natZxMtIPdXBYURzryduIxKVht2.js" async></script>
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   setTimeout(() => {
