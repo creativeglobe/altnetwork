@@ -64,7 +64,7 @@ body, html { overflow: hidden; height: 100%; }
 <p>An alternative user-focused social network<br />fostering communication and diverse perspectives.</p>
 </header>
 
-<!-- Original style form -->
+<!-- Original style form with live confirmation -->
 <form id="signup-form" style="margin-bottom:10px;">
   <input type="email" id="email" name="email" placeholder="Email Address" required />
   <input type="submit" value="Join the Waitlist" />
@@ -188,7 +188,7 @@ document.getElementById('signup-form').addEventListener('submit', async function
     }
   } catch(err) {
     note.style.color = 'red';
-    note.textContent = 'Error sending email. See console.';
+    note.textContent = 'Error sending email. Check console.';
     console.error(err);
   }
 });
