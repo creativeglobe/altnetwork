@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="assets/css/main.css" />
 <style>
-/* Your original styles + improvements */
+/* Your preferred base styles */
 .right-scroll-container::-webkit-scrollbar { display: none; }
 .right-scroll-container { -ms-overflow-style: none; scrollbar-width: none; }
 .right-scroll-container {
@@ -23,7 +23,7 @@
   opacity: 0.85;
   z-index: 10;
   pointer-events: auto;
-  background: rgba(0,0,0,0.45); /* subtle background for better text readability */
+  background: rgba(0,0,0,0.45);
 }
 .right-scroll-container p {
   font-size: 1.35em;
@@ -39,92 +39,88 @@
 }
 body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
 #footer { display: none; }
-#header .inner { display: block !important; margin-top: 0 !important; }
+#header .inner { 
+  display: block !important; 
+  margin-top: 0 !important; 
+  padding-left: 5%; /* restored balanced left padding on desktop */
+  padding-right: 5%;
+}
 #form-note { margin-top:12px; font-weight:bold; color: #1cb495; }
 
-/* ── RESPONSIVE: Stack vertically on tablet/mobile ── */
+/* ── RESPONSIVE: Stack vertically + perfect centering on tablet/mobile ── */
 @media screen and (max-width: 1024px) {
   body, html {
     overflow-y: auto !important;
     height: auto !important;
     background: #000;
   }
-
   #header, .inner {
     position: relative;
     width: 100%;
-    padding: 3.5em 6% 3em;
+    padding: 3.5em 5% 2.5em; /* reduced bottom padding for less gap */
     box-sizing: border-box;
+    text-align: center;
   }
-
   #slideshow {
     width: 100% !important;
     max-width: 700px;
     height: 280px !important;
-    margin: 0 auto 2.5em !important;
+    margin: 0 auto 2em !important; /* centered */
   }
-
-  /* Form improvements */
+  /* Form: perfectly centered, reduced space below */
   #signup-form {
-    display: flex;
+    display: flex !important;
     flex-direction: column !important;
-    align-items: center;
-    gap: 1.2em;
-    margin: 1.5em 0 3em !important;
-  }
-  #signup-form input[type="email"] {
-    width: 90% !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 1em;
+    margin: 1em auto 1.8em !important; /* tighter bottom space */
+    width: 90%;
     max-width: 420px;
-    padding: 0.9em 1em;
   }
+  #signup-form input[type="email"],
   #signup-form input[type="submit"] {
-    width: 90% !important;
-    max-width: 420px;
+    width: 100% !important;
+    box-sizing: border-box;
   }
-
-  /* Long text block: full width, below everything, scrollable naturally */
+  /* Long text: centered feel, full width, no huge gaps */
   .right-scroll-container {
     position: relative !important;
     top: auto !important;
     right: auto !important;
     width: 100% !important;
     height: auto !important;
-    min-height: 100vh;
-    padding: 4em 7% 6em !important;
+    min-height: auto;
+    padding: 3em 6% 5em !important;
     opacity: 1 !important;
-    background: rgba(0,0,0,0.75) !important; /* darker for mobile readability */
+    background: rgba(0,0,0,0.75) !important;
     overflow-y: visible !important;
+    text-align: center !important;
   }
-
+  .right-scroll-container p,
+  .right-scroll-container .section-title {
+    max-width: 90%;
+    margin: 0 auto 1.6em !important;
+    text-align: left !important; /* readable inside centered block */
+  }
   .right-scroll-container > p:first-child {
-    margin-top: 1em !important;
+    margin-top: 0.5em !important;
   }
 }
-
 /* Phones - fine tuning */
 @media screen and (max-width: 600px) {
-  #slideshow {
-    height: 220px !important;
-  }
-  #header {
-    padding: 2.5em 5% 2em;
-  }
-  .right-scroll-container {
-    padding: 3.5em 6% 5em;
-  }
-  .right-scroll-container p {
-    font-size: 1.2em !important;
-  }
-  .right-scroll-container .section-title {
-    font-size: 1.65em !important;
-  }
+  #slideshow { height: 220px !important; }
+  #header, .inner { padding: 2.5em 5% 2em; }
+  .right-scroll-container { padding: 3em 5% 4.5em; }
+  .right-scroll-container p { font-size: 1.2em !important; }
+  .right-scroll-container .section-title { font-size: 1.65em !important; }
 }
 </style>
 </head>
 <body class="is-preload">
 <section id="header">
 <div class="inner">
-<div id="slideshow" style="width:500px; height:260px; margin-top:-15px; margin-bottom:25px; margin-left:0.35%; position: relative; overflow:hidden; border-radius:14px;">
+<div id="slideshow" style="width:500px; height:260px; margin-top:-15px; margin-bottom:25px; margin-left:auto; margin-right:auto; position: relative; overflow:hidden; border-radius:14px;">
 <img src="images/slide1.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:1; transform:scale(1); transition: opacity .8s ease, transform 5s ease;">
 <img src="images/slide2.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
 <img src="images/slide3.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
@@ -147,7 +143,6 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
 <div id="form-note"></div>
 </div>
 </section>
-
 <div class="right-scroll-container">
 <p>
 Today's social media platforms have become <b>increasingly restrictive</b>.<br><br>
@@ -176,7 +171,6 @@ If you believe there is a need for such an alternative,<br>
 <b>No commitment. No payment.</b> Just a declaration of interest.
 </p>
 </div>
-
 <script src="assets/js/main.js"></script>
 <script>
 // Slideshow (unchanged)
@@ -208,7 +202,7 @@ document.getElementById('slideshow').addEventListener('mouseenter', stopSlidesho
 document.getElementById('slideshow').addEventListener('mouseleave', resumeSlideshow);
 </script>
 <script>
-// Other scripts (form submit improved with success message)
+// Form script (unchanged)
 document.addEventListener('DOMContentLoaded', function() {
   setTimeout(() => { document.body.classList.remove('is-preload'); }, 100);
 });
