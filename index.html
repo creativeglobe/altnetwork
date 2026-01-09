@@ -18,7 +18,7 @@
   padding: 6% 8% 6% 4%;
   box-sizing: border-box;
   overflow-y: auto;
-  text-align: center; /* Center content inside right column */
+  text-align: left; /* restored: left alignment for long text */
   color: white;
   opacity: 0.85;
   z-index: 10;
@@ -28,15 +28,13 @@
 .right-scroll-container p {
   font-size: 1.35em;
   line-height: 1.65;
-  margin: 0 auto 1.8em auto; /* Center paragraphs horizontally */
-  max-width: 85%; /* Make text narrower for better centering */
+  margin: 0 0 1.8em 0;
 }
 .right-scroll-container p:last-child { margin-bottom: 0; }
 .right-scroll-container .section-title {
   font-size: 1.9em;
   font-weight: bold;
-  margin: 2.5em auto 1.2em auto; /* Center titles */
-  max-width: 85%;
+  margin: 2.5em 0 1.2em 0;
   opacity: 1;
 }
 body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
@@ -46,7 +44,7 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
   margin-top: 0 !important;
   padding: 3em 5% 3em 5%;
   box-sizing: border-box;
-  text-align: center; /* Center everything inside left column */
+  text-align: left; /* restored: left alignment for left column content */
 }
 #form-note { margin-top:12px; font-weight:bold; color: #1cb495; }
 /* ── RESPONSIVE: Stack vertically + perfect centering on tablet/mobile ── */
@@ -124,7 +122,7 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
 <body class="is-preload">
 <section id="header">
 <div class="inner">
-<div id="slideshow" style="width:500px; height:260px; margin-top:-15px; margin-bottom:25px; margin-left:auto; margin-right:auto; position: relative; overflow:hidden; border-radius:14px;">
+<div id="slideshow" style="width:500px; height:260px; margin-top:-15px; margin-bottom:25px; margin-left:0; position: relative; overflow:hidden; border-radius:14px;">
 <img src="images/slide1.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:1; transform:scale(1); transition: opacity .8s ease, transform 5s ease;">
 <img src="images/slide2.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
 <img src="images/slide3.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
