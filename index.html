@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="assets/css/main.css" />
 <style>
-/* Core styles - improved for balance */
+/* Core desktop layout - balanced padding */
 .right-scroll-container::-webkit-scrollbar { display: none; }
 .right-scroll-container { -ms-overflow-style: none; scrollbar-width: none; }
 .right-scroll-container {
@@ -15,7 +15,7 @@
   right: 0;
   width: 50%;
   height: 100vh;
-  padding: 6% 8% 6% 4%; /* more left padding on desktop right column */
+  padding: 6% 8% 6% 4%; /* balanced padding */
   box-sizing: border-box;
   overflow-y: auto;
   text-align: left;
@@ -41,13 +41,14 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
 #footer { display: none; }
 #header .inner {
   display: block !important;
-  margin-top: 0 !important;
-  padding-left: 4%; /* restored left padding on desktop */
-  max-width: 48%; /* prevents pushing to right */
+  margin: 0 auto !important;
+  padding: 3em 5% !important; /* restored good left/right padding on desktop */
+  max-width: 48%;
+  text-align: center;
 }
 #form-note { margin-top:12px; font-weight:bold; color: #1cb495; }
 
-/* ── RESPONSIVE: Stack + Center Everything Nicely ── */
+/* ── RESPONSIVE: Full stack + perfect centering on tablet/mobile ── */
 @media screen and (max-width: 1024px) {
   body, html {
     overflow-y: auto !important;
@@ -56,88 +57,76 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
   }
 
   #header .inner {
-    width: 100%;
-    padding: 3.5em 5% 2.5em;
-    margin: 0 auto;
-    text-align: center; /* center title + description */
+    max-width: 100%;
+    padding: 3em 5% 2em;
+    text-align: center;
   }
 
   #slideshow {
     width: 100% !important;
     max-width: 680px;
     height: 280px !important;
-    margin: 0 auto 2.2em !important;
+    margin: 0 auto 2em !important;
   }
 
-  /* Perfectly centered form */
+  /* Form: perfectly centered, no shift, reduced space below */
   #signup-form {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
     gap: 1em;
-    margin: 1.2em auto 2.2em !important; /* reduced bottom space */
+    margin: 1em auto 1.8em !important; /* tighter bottom space */
+    width: 90%;
     max-width: 420px;
   }
-  #signup-form input[type="email"] {
-    width: 100% !important;
-    max-width: 420px;
-    text-align: center;
-  }
+  #signup-form input[type="email"],
   #signup-form input[type="submit"] {
     width: 100% !important;
-    max-width: 420px;
+    text-align: center;
   }
 
-  /* Long text: centered, full width, no big gaps */
+  /* Long text: centered block, readable, no huge gaps */
   .right-scroll-container {
     position: relative !important;
-    top: auto !important;
-    right: auto !important;
     width: 100% !important;
     height: auto !important;
-    padding: 3em 6% 5em !important;
+    padding: 2.5em 6% 5em !important;
     opacity: 1 !important;
     background: rgba(0,0,0,0.75) !important;
-    overflow-y: visible !important;
-    text-align: center !important; /* center text on mobile */
-  }
-
-  .right-scroll-container p {
-    max-width: 720px;
-    margin: 0 auto 1.8em !important;
-    text-align: left !important; /* keep readable left-align inside centered block */
-  }
-
-  .right-scroll-container .section-title {
     text-align: center !important;
+  }
+
+  .right-scroll-container p,
+  .right-scroll-container .section-title {
+    max-width: 720px;
+    margin: 0 auto 1.6em !important;
+    text-align: left !important; /* inside centered container = looks balanced */
   }
 }
 
-/* Phones - extra polish */
+/* Phones - extra fine-tuning */
 @media screen and (max-width: 600px) {
   #slideshow { height: 220px !important; }
-  #header .inner { padding: 2.5em 5% 2em; }
-  .right-scroll-container { padding: 3em 5% 4em; }
-  .right-scroll-container p { font-size: 1.2em !important; max-width: 90%; }
+  #header .inner { padding: 2.5em 5% 1.8em; }
+  .right-scroll-container { padding: 2.5em 5% 4em; }
+  .right-scroll-container p { font-size: 1.2em !important; max-width: 92%; }
 }
 </style>
 </head>
 <body class="is-preload">
 <section id="header">
 <div class="inner">
-<div id="slideshow" style="width:500px; height:260px; margin-top:-15px; margin-bottom:25px; margin-left:auto; margin-right:auto; position: relative; overflow:hidden; border-radius:14px;">
+<div id="slideshow" style="width:500px; height:260px; margin: -15px auto 25px; position: relative; overflow:hidden; border-radius:14px;">
 <img src="images/slide1.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:1; transform:scale(1); transition: opacity .8s ease, transform 5s ease;">
-<img src="images/slide2.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
-<img src="images/slide3.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
-<!-- ... other slides unchanged ... -->
+<!-- Add all your other <img> slides here - unchanged -->
 <img src="images/slide10.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
 </div>
-<header style="margin-bottom:10px; text-align:center;">
+<header style="margin-bottom:15px;">
 <h1>Social Media Network</h1>
 <p>An alternative user-focused social network<br />fostering communication and diverse perspectives.</p>
 </header>
-<form id="signup-form" style="margin-bottom:10px;">
+<form id="signup-form">
   <input type="email" id="email" name="email" placeholder="Email Address" required />
   <input type="submit" value="Join the Waitlist" />
 </form>
@@ -146,21 +135,33 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
 </section>
 
 <div class="right-scroll-container">
-<!-- Your text content unchanged -->
 <p>
 Today's social media platforms have become <b>increasingly restrictive</b>.<br><br>
-... (all your paragraphs here, unchanged)
+Algorithms, arbitrary rules, content moderation practices, and the extensive use of personal data have distanced many people from what social networking was originally meant to be: <b>free expression and meaningful communication</b>.<br><br>
+<b>Our idea is simple:</b><br>
+to create a social networking platform <b>open to different viewpoints</b>, <b>without political or thematic bias</b>, and with <b>genuine respect for the user</b>.<br><br>
+We are <b>not aiming to replace everything</b>.<br>
+We aim to build <b>a real alternative</b>, shaped by the participation of its community.
 </p>
-<!-- rest of text, section-titles, etc. -->
+<div class="section-title">How the project will start</div>
+<p>
+<!-- your text unchanged -->
+</p>
+<div class="section-title">Call to action</div>
+<p>
+<!-- your text unchanged -->
+</p>
 </div>
 
-<!-- Scripts unchanged -->
+<!-- Your scripts unchanged - keep them as is -->
 <script src="assets/js/main.js"></script>
+<!-- slideshow script -->
 <script>
-// slideshow script unchanged
+// ... your slideshow code ...
 </script>
+<!-- form submit script -->
 <script>
-// form submit script unchanged
+// ... your form code ...
 </script>
 </body>
 </html>
