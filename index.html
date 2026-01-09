@@ -38,11 +38,11 @@
   opacity: 1;
 }
 /* Right column text: full width, left-aligned, no extra gaps */
-.right-scroll-container p,
-.right-scroll-container .section-title {
-  width: 100%;                     /* full width of the column */
-  margin: 0 0 1.8em -2;             /* original bottom spacing only */
-  text-align: left;                /* natural left alignment */
+.right-scroll-container p {
+  font-size: 1.35em;
+  line-height: 1.65;
+  margin: 0 0 1.8em 0;
+  padding-left: 2em;           /* ← adds left space → pushes text right */
 }
 body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
 #footer { display: none; }
