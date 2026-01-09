@@ -38,12 +38,15 @@
   opacity: 1;
 }
 /* Right column text: full width, left-aligned, no extra gaps */
-.right-scroll-container p {
+.right-scroll-container p,
+.right-scroll-container .section-title {
   font-size: 1.35em;
   line-height: 1.65;
-  margin: 0 3 1.8em 0;
-  padding-left: 2em;
+  margin: 0 0 1.8em 0;
+  padding-left: 2em;           /* pushes both paragraphs and titles right */
 }
+.right-scroll-container p:last-child { margin-bottom: 0; }
+
 body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
 #footer { display: none; }
 #header .inner {
