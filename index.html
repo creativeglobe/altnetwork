@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="assets/css/main.css" />
 <style>
-/* Your preferred base styles */
+/* Your preferred base styles - unchanged except targeted fixes */
 .right-scroll-container::-webkit-scrollbar { display: none; }
 .right-scroll-container { -ms-overflow-style: none; scrollbar-width: none; }
 .right-scroll-container {
@@ -15,7 +15,7 @@
   right: 0;
   width: 50%;
   height: 100vh;
-  padding: 6% 8% 6% 1%;
+  padding: 6% 8% 6% 4%; /* balanced for desktop right panel */
   box-sizing: border-box;
   overflow-y: auto;
   text-align: left;
@@ -42,8 +42,8 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
 #header .inner { 
   display: block !important; 
   margin-top: 0 !important; 
-  padding-left: 5%; /* restored balanced left padding on desktop */
-  padding-right: 5%;
+  padding: 3em 5% 3em 5%; /* restored proper left/right padding on desktop */
+  box-sizing: border-box;
 }
 #form-note { margin-top:12px; font-weight:bold; color: #1cb495; }
 
@@ -57,7 +57,7 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
   #header, .inner {
     position: relative;
     width: 100%;
-    padding: 3.5em 5% 2.5em; /* reduced bottom padding for less gap */
+    padding: 3.5em 5% 2.5em;
     box-sizing: border-box;
     text-align: center;
   }
@@ -65,25 +65,27 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
     width: 100% !important;
     max-width: 700px;
     height: 280px !important;
-    margin: 0 auto 2em !important; /* centered */
+    margin: 0 auto 2em !important; /* centered on mobile */
   }
-  /* Form: perfectly centered, reduced space below */
+  /* Form: PERFECT CENTERING - fixed shift */
   #signup-form {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
     gap: 1em;
-    margin: 1em auto 1.8em !important; /* tighter bottom space */
+    margin: 1em auto 1.8em !important; /* tight but nice space below */
     width: 90%;
     max-width: 420px;
   }
   #signup-form input[type="email"],
   #signup-form input[type="submit"] {
     width: 100% !important;
+    max-width: 420px;
     box-sizing: border-box;
+    margin: 0 auto !important; /* ensure no shift */
   }
-  /* Long text: centered feel, full width, no huge gaps */
+  /* Long text: full width below, centered block feel */
   .right-scroll-container {
     position: relative !important;
     top: auto !important;
@@ -101,7 +103,7 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
   .right-scroll-container .section-title {
     max-width: 90%;
     margin: 0 auto 1.6em !important;
-    text-align: left !important; /* readable inside centered block */
+    text-align: left !important; /* readable left inside centered */
   }
   .right-scroll-container > p:first-child {
     margin-top: 0.5em !important;
@@ -173,7 +175,7 @@ If you believe there is a need for such an alternative,<br>
 </div>
 <script src="assets/js/main.js"></script>
 <script>
-// Slideshow (unchanged)
+// Slideshow script (unchanged)
 const slides = document.querySelectorAll('#slideshow img');
 let currentSlide = 0;
 let interval;
