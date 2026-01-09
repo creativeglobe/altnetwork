@@ -69,14 +69,11 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
   }
   /* Form: PERFECT CENTERING - fixed shift */
   #signup-form {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 0.5em;
-    margin: 1em auto 1.8em !important; /* tight but nice space below */
-    width: 90%;
-    max-width: 420px;
+  display: flex;
+  flex-direction: column !important;
+  align-items: center;
+  gap: 1.2em;
+  margin: 1.5em 0 1.2em !important;
   }
   #signup-form input[type="email"],
   #signup-form input[type="submit"] {
@@ -87,17 +84,16 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
   }
   /* Long text: full width below, centered block feel */
   .right-scroll-container {
-    position: relative !important;
-    top: auto !important;
-    right: auto !important;
-    width: 100% !important;
-    height: auto !important;
-    min-height: auto;
-    padding: 3em 6% 5em !important;
-    opacity: 1 !important;
-    background: rgba(0,0,0,0.75) !important;
-    overflow-y: visible !important;
-    text-align: center !important;
+  position: relative !important;
+  top: auto !important;
+  right: auto !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 100vh;
+  padding: 2em 7% 6em !important;      /* ← changed from 4em to 2em */
+  opacity: 1 !important;
+  background: rgba(0,0,0,0.75) !important;
+  overflow-y: visible !important;
   }
   .right-scroll-container p,
   .right-scroll-container .section-title {
