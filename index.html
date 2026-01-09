@@ -46,10 +46,12 @@
 }
 
 .right-scroll-container .section-title {
-  font-size: 1.9em;            /* ← restored: bigger size for titles */
+  font-size: 1.9em;
   font-weight: bold;
-  margin: 2em 0 1.2em 0;
-  padding-left: 2em;           /* ← also push titles right, same as paragraphs */
+  margin: 2.5em 0 1.2em 0;
+  padding-left: 2em;           /* same left push as paragraphs */
+  text-indent: -2em;           /* ← NEW: pulls the title back left by the same amount */
+  margin-left: 2em;            /* compensates so title starts at same point as paragraphs */
   opacity: 1;
 }
 body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
