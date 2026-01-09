@@ -886,28 +886,33 @@ button,
       margin: 1em 0 0 0;
       position: relative; } }
 
-/* =========================================
-   MOBILE & TABLET FIX — SAFE
-   Centers all content, stacks correctly
-   DOES NOT affect desktop or background
-   ========================================= */
+/* ===============================
+   MOBILE & TABLET TEXT CENTERING
+   FOR creativeglobe.github.io/altnetwork
+   =============================== */
 
 @media screen and (max-width: 1024px) {
 
   body {
-    justify-content: flex-start;
-    text-align: center;
+    padding: 2em 1em !important;
+    text-align: center !important;
   }
-
-  #header,
-  section {
-    max-width: 100%;
+  
+  body h1,
+  body p {
+    max-width: 600px;
     margin-left: auto;
     margin-right: auto;
   }
 
-  section {
-    margin-top: 3em;
+  body h1 {
+    font-size: 2.2rem;
+    margin-bottom: 0.8rem;
+  }
+
+  body p {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
   }
 
 }
