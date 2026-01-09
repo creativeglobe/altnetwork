@@ -887,8 +887,7 @@ button,
       position: relative; } }
 
 /* =========================================
-   MOBILE & TABLET LAYOUT FIX
-   Stack right text under main content
+   MOBILE/TABLET: Stack long text below main content
    ========================================= */
 
 @media screen and (max-width: 1024px) {
@@ -897,20 +896,9 @@ button,
     justify-content: flex-start;
   }
 
-  #header,
-  #signup-form,
-  section,
-  article {
-    position: relative;
-    width: 100%;
-  }
-
-  /* Force all content into vertical flow */
-  body > * {
-    position: relative !important;
-    left: auto !important;
-    top: auto !important;
-    transform: none !important;
+  section {
+    margin-top: 2.5em;
+    max-width: 100%;
   }
 
 }
