@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="assets/css/main.css" />
 <style>
-/* Your original styles */
+/* Your original styles + improvements */
 .right-scroll-container::-webkit-scrollbar { display: none; }
 .right-scroll-container { -ms-overflow-style: none; scrollbar-width: none; }
 .right-scroll-container {
@@ -20,87 +20,103 @@
   overflow-y: auto;
   text-align: left;
   color: white;
-  opacity: 0.8;
+  opacity: 0.85;
   z-index: 10;
   pointer-events: auto;
-  background: rgba(0,0,0,0.4); /* added subtle bg for better readability if needed */
+  background: rgba(0,0,0,0.45); /* subtle background for better text readability */
 }
 .right-scroll-container p {
   font-size: 1.35em;
   line-height: 1.65;
-  margin: 0 0 1.5em 0;
+  margin: 0 0 1.8em 0;
 }
 .right-scroll-container p:last-child { margin-bottom: 0; }
 .right-scroll-container .section-title {
-  font-size: 1.8em;
+  font-size: 1.9em;
   font-weight: bold;
-  margin: 2em 0 1em 0;
+  margin: 2.5em 0 1.2em 0;
   opacity: 1;
 }
-body, html { overflow: hidden; height: 100%; }
+body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
 #footer { display: none; }
 #header .inner { display: block !important; margin-top: 0 !important; }
-#form-note { margin-top:10px; font-weight:bold; }
+#form-note { margin-top:12px; font-weight:bold; color: #1cb495; }
 
-/* ── RESPONSIVE FIX: Stack columns on tablet & mobile ── */
-@media screen and (max-width: 1024px) {  /* tablets + phones */
+/* ── RESPONSIVE: Stack vertically on tablet/mobile ── */
+@media screen and (max-width: 1024px) {
   body, html {
-    overflow-y: auto;          /* allow normal page scrolling */
-    height: auto;              /* no more forced full height */
+    overflow-y: auto !important;
+    height: auto !important;
+    background: #000;
   }
 
-  /* Left part (slideshow + form) becomes full width, top */
-  #header {
+  #header, .inner {
     position: relative;
     width: 100%;
-    min-height: auto;
-    padding: 4em 5% 3em;
+    padding: 3.5em 6% 3em;
     box-sizing: border-box;
-    background: rgba(0,0,0,0.5); /* optional: slight bg for contrast */
   }
 
   #slideshow {
-    width: 100%;
-    max-width: 600px;
-    height: 260px;
-    margin: 0 auto 2em;
+    width: 100% !important;
+    max-width: 700px;
+    height: 280px !important;
+    margin: 0 auto 2.5em !important;
   }
 
-  /* Right text moves BELOW left content, full width, normal flow */
+  /* Form improvements */
+  #signup-form {
+    display: flex;
+    flex-direction: column !important;
+    align-items: center;
+    gap: 1.2em;
+    margin: 1.5em 0 3em !important;
+  }
+  #signup-form input[type="email"] {
+    width: 90% !important;
+    max-width: 420px;
+    padding: 0.9em 1em;
+  }
+  #signup-form input[type="submit"] {
+    width: 90% !important;
+    max-width: 420px;
+  }
+
+  /* Long text block: full width, below everything, scrollable naturally */
   .right-scroll-container {
-    position: relative;        /* no more fixed */
-    top: auto;
-    right: auto;
-    width: 100%;
-    height: auto;
-    padding: 5% 6%;
-    opacity: 1;
-    background: rgba(0,0,0,0.7); /* better contrast on mobile */
-    overflow-y: visible;       /* normal document flow */
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 100vh;
+    padding: 4em 7% 6em !important;
+    opacity: 1 !important;
+    background: rgba(0,0,0,0.75) !important; /* darker for mobile readability */
+    overflow-y: visible !important;
   }
 
-  .right-scroll-container p {
-    font-size: 1.2em;          /* slightly smaller but still readable */
-  }
-
-  .right-scroll-container .section-title {
-    font-size: 1.6em;
+  .right-scroll-container > p:first-child {
+    margin-top: 1em !important;
   }
 }
 
-/* Extra nice touches for very small phones */
-@media screen and (max-width: 480px) {
-  #header {
-    padding: 3em 5% 2em;
-  }
+/* Phones - fine tuning */
+@media screen and (max-width: 600px) {
   #slideshow {
-    height: 200px;
+    height: 220px !important;
+  }
+  #header {
+    padding: 2.5em 5% 2em;
   }
   .right-scroll-container {
-    padding: 8% 5%;
+    padding: 3.5em 6% 5em;
   }
   .right-scroll-container p {
-    font-size: 1.1em;
+    font-size: 1.2em !important;
+  }
+  .right-scroll-container .section-title {
+    font-size: 1.65em !important;
   }
 }
 </style>
@@ -124,7 +140,6 @@ body, html { overflow: hidden; height: 100%; }
 <h1>Social Media Network</h1>
 <p>An alternative user-focused social network<br />fostering communication and diverse perspectives.</p>
 </header>
-<!-- Original style form with live confirmation -->
 <form id="signup-form" style="margin-bottom:10px;">
   <input type="email" id="email" name="email" placeholder="Email Address" required />
   <input type="submit" value="Join the Waitlist" />
@@ -132,6 +147,7 @@ body, html { overflow: hidden; height: 100%; }
 <div id="form-note"></div>
 </div>
 </section>
+
 <div class="right-scroll-container">
 <p>
 Today's social media platforms have become <b>increasingly restrictive</b>.<br><br>
@@ -163,7 +179,7 @@ If you believe there is a need for such an alternative,<br>
 
 <script src="assets/js/main.js"></script>
 <script>
-// Slideshow script (unchanged)
+// Slideshow (unchanged)
 const slides = document.querySelectorAll('#slideshow img');
 let currentSlide = 0;
 let interval;
@@ -192,25 +208,10 @@ document.getElementById('slideshow').addEventListener('mouseenter', stopSlidesho
 document.getElementById('slideshow').addEventListener('mouseleave', resumeSlideshow);
 </script>
 <script>
-// Your other scripts (DOMContentLoaded + form submit) unchanged
+// Other scripts (form submit improved with success message)
 document.addEventListener('DOMContentLoaded', function() {
   setTimeout(() => { document.body.classList.remove('is-preload'); }, 100);
-  const animatedSections = document.querySelectorAll('section, article');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = 1;
-        entry.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.1 });
-  animatedSections.forEach(section => {
-    section.style.opacity = 0;
-    section.style.transform = 'translateY(2em)';
-    observer.observe(section);
-  });
 });
-// Web3Forms AJAX submit
 document.getElementById('signup-form').addEventListener('submit', async function(e) {
   e.preventDefault();
   const form = e.target;
@@ -230,14 +231,15 @@ document.getElementById('signup-form').addEventListener('submit', async function
     const result = await res.json();
     if (result.success) {
       note.style.color = '#1cb495';
-      note.textContent = 'Thank you! You are on the waitlist.';
+      note.textContent = 'Thank you! You have been added to the waitlist.';
+      form.reset();
     } else {
       note.style.color = 'red';
       note.textContent = 'Something went wrong. Please try again.';
     }
   } catch(err) {
     note.style.color = 'red';
-    note.textContent = 'Error sending. Please check connection.';
+    note.textContent = 'Connection error. Please check your internet.';
     console.error(err);
   }
 });
