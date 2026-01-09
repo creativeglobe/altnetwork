@@ -885,22 +885,3 @@ button,
       left: auto;
       margin: 1em 0 0 0;
       position: relative; } }
-
-/* Tablet & Mobile */
-@media (max-width: 1024px) {
-  .main-container {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .left-content {
-    order: 1;
-    width: 100%;
-  }
-
-  .right-content {
-    order: 2;
-    width: 100%;
-    margin-top: 2rem;
-  }
-}
