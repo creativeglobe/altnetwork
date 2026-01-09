@@ -36,9 +36,7 @@
   font-size: 1.9em;
   font-weight: bold;
   margin: 2.5em 0 1.2em 0;
-  padding-left: 2em; /* same push as paragraphs */
-  text-indent: -2em; /* pulls title text back left to align with paragraphs */
-  margin-left: 2em; /* NEW: ensures title starts at same left position as paragraphs */
+  padding-left: 2em; /* same push as paragraphs — titles now start at the same left position */
   opacity: 1;
 }
 body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
@@ -50,6 +48,12 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
   box-sizing: border-box;
 }
 #form-note { margin-top:12px; font-weight:bold; color: #1cb495; }
+/* NEW: Make main title a little smaller on desktop/large screens only */
+@media (min-width: 1025px) {
+  h1 {
+    font-size: 3.16em !important;
+  }
+}
 /* ── RESPONSIVE: Stack vertically + perfect centering on tablet/mobile ── */
 @media screen and (max-width: 1024px) {
   body, html {
