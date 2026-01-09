@@ -886,7 +886,6 @@ button,
       margin: 1em 0 0 0;
       position: relative; } }
 
-
 @media screen and (max-width: 980px) {   /* tablets + mobile; change to 768px for phones only */
   /* Force body to flex column (already is, but reinforces) */
   body {
