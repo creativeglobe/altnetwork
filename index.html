@@ -15,7 +15,7 @@
   right: 0;
   width: 50%;
   height: 100vh;
-  padding: 6% 8% 6% 4%; /* balanced for desktop right panel */
+  padding: 6% 6% 6% 6%; /* CHANGED: symmetric padding - now visually equal columns */
   box-sizing: border-box;
   overflow-y: auto;
   text-align: left;
@@ -42,7 +42,7 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
 #header .inner {
   display: block !important;
   margin-top: 0 !important;
-  padding: 3em 5% 3em 5%; /* restored proper left/right padding on desktop */
+  padding: 3em 6% 3em 6%; /* CHANGED: horizontal padding to 6% to match right column visually */
   box-sizing: border-box;
 }
 #form-note { margin-top:12px; font-weight:bold; color: #1cb495; }
@@ -107,13 +107,12 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
   .right-scroll-container > p:first-child {
     margin-top: 0.5em !important;
   }
-
   /* Added: smaller title and description on tablets/mobile */
   h1 {
-    font-size: 2.8em !important;  /* title size - change this number if needed */
+    font-size: 2.8em !important; /* title size - change this number if needed */
   }
   header p {
-    font-size: 1.4em !important;  /* description size */
+    font-size: 1.4em !important; /* description size */
   }
 }
 /* Phones - fine tuning */
@@ -123,10 +122,9 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
   .right-scroll-container { padding: 3em 5% 4.5em; }
   .right-scroll-container p { font-size: 1.2em !important; }
   .right-scroll-container .section-title { font-size: 1.65em !important; }
-
   /* Added: even smaller title and description on very small phones */
   h1 {
-    font-size: 2em !important;  /* title size for phones */
+    font-size: 2em !important; /* title size for phones */
   }
   header p {
     font-size: 1em !important;
