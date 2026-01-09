@@ -886,27 +886,21 @@ button,
       margin: 1em 0 0 0;
       position: relative; } }
 
-@media screen and (max-width: 980px) {   /* tablets + mobile; change to 768px for phones only */
-  /* Force body to flex column (already is, but reinforces) */
+@media screen and (max-width: 980px) {   /* ← change 980px to 768px if you want phones only */
+  /* Reinforce body as flex column */
   body {
-    display: flex;
-    flex-direction: column;
+    flex-direction: column !important;
   }
 
-  /* Target the LONG text paragraphs — move them AFTER the form */
-  /* These are usually the 2nd to last <p> elements before footer/form */
-  body > p:nth-child(n+2):not(#signup-form ~ p) {
-    order: 10;                    /* higher number = pushed down */
-  }
-
-  /* Make sure the SIGNUP FORM comes before the long text */
+  /* Pull the signup form UP — make it appear before the long text */
   #signup-form {
-    order: 5;
-    margin: 2.5em 0 3em 0;        /* nicer spacing on mobile */
+    order: -5 !important;               /* Negative = moves it earlier */
+    margin: 2.5em 0 3.5em 0 !important; /* Better spacing around form on mobile */
   }
 
-  /* Optional: bigger spacing before long text on small screens */
-  body > p:nth-child(n+3) {
-    margin-top: 3em;
+  /* Optional: add extra breathing room before the moved-long-text */
+  #signup-form + p,
+  #signup-form ~ p {
+    margin-top: 3em !important;
   }
 }
