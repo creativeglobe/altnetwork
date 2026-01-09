@@ -15,10 +15,10 @@
   right: 0;
   width: 50%;
   height: 100vh;
-  padding: 6% 6% 6% 6%; /* CHANGED: symmetric padding - now visually equal columns */
+  padding: 6% 8% 6% 4%;
   box-sizing: border-box;
   overflow-y: auto;
-  text-align: left;
+  text-align: center; /* CHANGED: center text/content inside right column */
   color: white;
   opacity: 0.85;
   z-index: 10;
@@ -29,6 +29,9 @@
   font-size: 1.35em;
   line-height: 1.65;
   margin: 0 0 1.8em 0;
+  max-width: 90%; /* helps centering look balanced */
+  margin-left: auto;
+  margin-right: auto;
 }
 .right-scroll-container p:last-child { margin-bottom: 0; }
 .right-scroll-container .section-title {
@@ -42,8 +45,9 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
 #header .inner {
   display: block !important;
   margin-top: 0 !important;
-  padding: 3em 6% 3em 6%; /* CHANGED: horizontal padding to 6% to match right column visually */
+  padding: 3em 5% 3em 5%;
   box-sizing: border-box;
+  text-align: center; /* CHANGED: center all content inside left column */
 }
 #form-note { margin-top:12px; font-weight:bold; color: #1cb495; }
 /* ── RESPONSIVE: Stack vertically + perfect centering on tablet/mobile ── */
@@ -107,13 +111,6 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
   .right-scroll-container > p:first-child {
     margin-top: 0.5em !important;
   }
-  /* Added: smaller title and description on tablets/mobile */
-  h1 {
-    font-size: 2.8em !important; /* title size - change this number if needed */
-  }
-  header p {
-    font-size: 1.4em !important; /* description size */
-  }
 }
 /* Phones - fine tuning */
 @media screen and (max-width: 600px) {
@@ -122,13 +119,6 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
   .right-scroll-container { padding: 3em 5% 4.5em; }
   .right-scroll-container p { font-size: 1.2em !important; }
   .right-scroll-container .section-title { font-size: 1.65em !important; }
-  /* Added: even smaller title and description on very small phones */
-  h1 {
-    font-size: 2em !important; /* title size for phones */
-  }
-  header p {
-    font-size: 1em !important;
-  }
 }
 </style>
 </head>
