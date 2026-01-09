@@ -39,14 +39,13 @@
 }
 body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
 #footer { display: none; }
-#header .inner { 
-  display: block !important; 
-  margin-top: 0 !important; 
+#header .inner {
+  display: block !important;
+  margin-top: 0 !important;
   padding: 3em 5% 3em 5%; /* restored proper left/right padding on desktop */
   box-sizing: border-box;
 }
 #form-note { margin-top:12px; font-weight:bold; color: #1cb495; }
-
 /* ── RESPONSIVE: Stack vertically + perfect centering on tablet/mobile ── */
 @media screen and (max-width: 1024px) {
   body, html {
@@ -108,6 +107,14 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
   .right-scroll-container > p:first-child {
     margin-top: 0.5em !important;
   }
+
+  /* Added: smaller title and description on tablets/mobile */
+  h1 {
+    font-size: 2.4em !important;  /* title size - change this number if needed */
+  }
+  header p {
+    font-size: 1.1em !important;  /* description size */
+  }
 }
 /* Phones - fine tuning */
 @media screen and (max-width: 600px) {
@@ -116,6 +123,14 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
   .right-scroll-container { padding: 3em 5% 4.5em; }
   .right-scroll-container p { font-size: 1.2em !important; }
   .right-scroll-container .section-title { font-size: 1.65em !important; }
+
+  /* Added: even smaller title and description on very small phones */
+  h1 {
+    font-size: 2em !important;  /* title size for phones */
+  }
+  header p {
+    font-size: 1em !important;
+  }
 }
 </style>
 </head>
