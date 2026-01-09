@@ -13,9 +13,9 @@
   position: fixed;
   top: 0;
   right: 0;
-  width: 50%;
+  width: 60%; /* CHANGED: increased from 50% to 60% for right column */
   height: 100vh;
-  padding: 6% 8% 6% 4%; /* balanced for desktop right panel */
+  padding: 6% 8% 6% 4%;
   box-sizing: border-box;
   overflow-y: auto;
   text-align: left;
@@ -42,7 +42,7 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
 #header .inner {
   display: block !important;
   margin-top: 0 !important;
-  padding: 3em 5% 3em 5%; /* restored proper left/right padding on desktop */
+  padding: 3em 5% 3em 5%;
   box-sizing: border-box;
 }
 #form-note { margin-top:12px; font-weight:bold; color: #1cb495; }
@@ -107,14 +107,6 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
   .right-scroll-container > p:first-child {
     margin-top: 0.5em !important;
   }
-
-  /* Added: smaller title and description on tablets/mobile */
-  h1 {
-    font-size: 2.8em !important;  /* title size - change this number if needed */
-  }
-  header p {
-    font-size: 1.4em !important;  /* description size */
-  }
 }
 /* Phones - fine tuning */
 @media screen and (max-width: 600px) {
@@ -123,21 +115,13 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
   .right-scroll-container { padding: 3em 5% 4.5em; }
   .right-scroll-container p { font-size: 1.2em !important; }
   .right-scroll-container .section-title { font-size: 1.65em !important; }
-
-  /* Added: even smaller title and description on very small phones */
-  h1 {
-    font-size: 2em !important;  /* title size for phones */
-  }
-  header p {
-    font-size: 1em !important;
-  }
 }
 </style>
 </head>
 <body class="is-preload">
 <section id="header">
 <div class="inner">
-<div id="slideshow" style="width:500px; height:260px; margin-top:-15px; margin-bottom:25px; margin-left:auto; margin-right:auto; position: relative; overflow:hidden; border-radius:14px;">
+<div id="slideshow" style="width:500px; height:260px; margin-top:-15px; margin-bottom:25px; margin-left:0; position: relative; overflow:hidden; border-radius:14px;">
 <img src="images/slide1.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:1; transform:scale(1); transition: opacity .8s ease, transform 5s ease;">
 <img src="images/slide2.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
 <img src="images/slide3.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
