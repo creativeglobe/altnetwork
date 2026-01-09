@@ -886,78 +886,21 @@ button,
       margin: 1em 0 0 0;
       position: relative; } }
 
-/* ======================
-   Current desktop layout 
-   (probably already something like this)
-   ====================== */
-.container,
-.main-wrapper,
-.row,
-.hero,
-.landing-content {
-  display: flex;
-  flex-wrap: wrap;          /* ← important */
-  gap: 2rem;               /* or whatever you have */
-}
-
-.left-column,
-.image-side,
-.slideshow-side,
-.form-side {
-  flex: 1 1 45%;           /* or 50% or whatever you use */
-  min-width: 300px;        /* prevents getting too narrow */
-}
-
-.right-column,
-.text-side,
-.philosophy-side {
-  flex: 1 1 45%;
-}
-
-/* ==============================================
-   MOBILE/TABLET → stack everything vertically
-   Order: image/slideshow → short text → form → long text
-   ============================================== */
-@media (max-width: 991px) {   /* ← tablets + mobile — you can use 768px if you prefer more mobile-only */
-  .container,
-  .main-wrapper,
-  .row,
-  .hero,
-  .landing-content {
-    flex-direction: column;   /* ← this is the magic line! */
+/* Tablet & Mobile */
+@media (max-width: 1024px) {
+  .main-container {
+    display: flex;
+    flex-direction: column;
   }
 
-  /* Optional: make sure left parts stay in desired order */
-  .left-column,
-  .image-side,
-  .slideshow-side {
+  .left-content {
     order: 1;
-  }
-
-  /* Short intro text / title if it's separate */
-  .intro-text,
-  .main-title {
-    order: 2;
-  }
-
-  /* Email form */
-  .form-container,
-  .join-form {
-    order: 3;
-  }
-
-  /* The long right-side text → goes last */
-  .right-column,
-  .text-side,
-  .philosophy-side,
-  .main-description {
-    order: 4;
-  }
-
-  /* Usually helpful on mobile */
-  .left-column,
-  .right-column {
     width: 100%;
-    flex: 1 1 100%;
+  }
+
+  .right-content {
+    order: 2;
+    width: 100%;
+    margin-top: 2rem;
   }
 }
