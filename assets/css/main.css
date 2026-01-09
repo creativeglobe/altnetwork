@@ -887,18 +887,27 @@ button,
       position: relative; } }
 
 /* =========================================
-   MOBILE/TABLET: Stack long text below main content
+   MOBILE & TABLET FIX — SAFE
+   Centers all content, stacks correctly
+   DOES NOT affect desktop or background
    ========================================= */
 
 @media screen and (max-width: 1024px) {
 
   body {
     justify-content: flex-start;
+    text-align: center;
+  }
+
+  #header,
+  section {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   section {
-    margin-top: 2.5em;
-    max-width: 100%;
+    margin-top: 3em;
   }
 
 }
