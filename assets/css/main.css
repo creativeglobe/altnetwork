@@ -886,28 +886,31 @@ button,
       margin: 1em 0 0 0;
       position: relative; } }
 
-/* ================================================
-   MOVE LONG TEXT BELOW FORM ON TABLET + MOBILE ONLY
-   ================================================ */
-@media screen and (max-width: 980px) {
+/* =========================================
+   MOBILE & TABLET LAYOUT FIX
+   Stack right text under main content
+   ========================================= */
 
-  /* Pull the form higher in the order */
-  #signup-form {
-    order: -10 !important;           /* Negative = appears much earlier */
-    margin: 3em 0 4em 0 !important;  /* Add nice spacing around it on small screens */
+@media screen and (max-width: 1024px) {
+
+  body {
+    justify-content: flex-start;
   }
 
-  /* Push the long description paragraphs down (after form) */
-  /* Targets paragraphs that come after the first one or the long ones */
-  body > p:nth-child(n+3),
-  body > p:last-of-type {
-    order: 10 !important;
-    margin-top: 3em !important;      /* extra space before the moved text */
+  #header,
+  #signup-form,
+  section,
+  article {
+    position: relative;
+    width: 100%;
   }
 
-  /* If the long text has strong/bold parts or is wrapped, this helps */
-  body > *[class*="description"],
-  body > p:not(:first-child):not(#signup-form + p) {
-    order: 10 !important;
+  /* Force all content into vertical flow */
+  body > * {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
   }
+
 }
