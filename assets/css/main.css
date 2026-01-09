@@ -886,43 +886,28 @@ button,
       margin: 1em 0 0 0;
       position: relative; } }
 
-@media screen and (max-width: 980px) {   /* ← affects tablets + phones; change to 768px if you want phones only */
-    main, 
-    body > *:not(#bg):not(#footer) {
-        display: flex;
-        flex-direction: column;
-    }
 
-    /* Make sure the long philosophy text block comes LAST */
-    /* Try these selectors one by one — use the one that matches your long text */
-    
-    /* Option 1 - most common in this template style */
-    p:last-of-type, 
-    body > p:nth-last-child(2) {          /* the second-to-last big paragraph */
-        order: 100;                       /* very high number = goes to the end */
-        margin-top: 3em;
-    }
+@media screen and (max-width: 980px) {   /* tablets + mobile; change to 768px for phones only */
+  /* Force body to flex column (already is, but reinforces) */
+  body {
+    display: flex;
+    flex-direction: column;
+  }
 
-    /* Option 2 - if the long text is inside a div or has more space before */
-    div > p:last-child,
-    .content-area > p:last-of-type {
-        order: 100;
-        margin-top: 2.5em;
-    }
+  /* Target the LONG text paragraphs — move them AFTER the form */
+  /* These are usually the 2nd to last <p> elements before footer/form */
+  body > p:nth-child(n+2):not(#signup-form ~ p) {
+    order: 10;                    /* higher number = pushed down */
+  }
 
-    /* Option 3 - if you wrapped the long part in a div yourself */
-    /* .long-description, .philosophy, .main-idea { */
-    /*    order: 100; */
-    /*    margin-top: 3em; */
-    /* } */
+  /* Make sure the SIGNUP FORM comes before the long text */
+  #signup-form {
+    order: 5;
+    margin: 2.5em 0 3em 0;        /* nicer spacing on mobile */
+  }
 
-    /* Bonus: make email form nicer on mobile */
-    #signup-form {
-        flex-direction: column !important;
-        align-items: stretch !important;
-    }
-    
-    #signup-form input[type="email"] {
-        margin-bottom: 1.2em;
-    }
+  /* Optional: bigger spacing before long text on small screens */
+  body > p:nth-child(n+3) {
+    margin-top: 3em;
+  }
 }
