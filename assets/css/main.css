@@ -885,3 +885,34 @@ button,
       left: auto;
       margin: 1em 0 0 0;
       position: relative; } }
+
+/* =========================================
+   MOBILE & TABLET LAYOUT
+   Stack right content under left content
+   Center everything
+   ========================================= */
+
+@media screen and (max-width: 1024px) {
+
+  body {
+    justify-content: flex-start;
+    text-align: center;
+  }
+
+  .left-content,
+  .right-content {
+    width: 100%;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .right-content {
+    margin-top: 3em;
+  }
+
+  #signup-form {
+    justify-content: center;
+  }
+
+}
