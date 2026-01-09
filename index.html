@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="assets/css/main.css" />
 <style>
-/* Your preferred base styles - unchanged except targeted fixes */
+/* Your preferred base styles */
 .right-scroll-container::-webkit-scrollbar { display: none; }
 .right-scroll-container { -ms-overflow-style: none; scrollbar-width: none; }
 .right-scroll-container {
@@ -15,7 +15,7 @@
   right: 0;
   width: 50%;
   height: 100vh;
-  padding: 6% 8% 6% 4%; /* balanced for desktop right panel */
+  padding: 6% 8% 6% 1%;
   box-sizing: border-box;
   overflow-y: auto;
   text-align: left;
@@ -39,15 +39,10 @@
 }
 body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
 #footer { display: none; }
-#header .inner { 
-  display: block !important; 
-  margin-top: 0 !important; 
-  padding: 3em 5% 3em 5%; /* restored proper left/right padding on desktop */
-  box-sizing: border-box;
-}
+#header .inner { display: block !important; margin-top: 0 !important; }
 #form-note { margin-top:12px; font-weight:bold; color: #1cb495; }
 
-/* ── RESPONSIVE: Stack vertically + perfect centering on tablet/mobile ── */
+/* ── RESPONSIVE: Stack vertically on tablet/mobile ── */
 @media screen and (max-width: 1024px) {
   body, html {
     overflow-y: auto !important;
@@ -57,66 +52,66 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
   #header, .inner {
     position: relative;
     width: 100%;
-    padding: 3.5em 5% 2.5em;
+    padding: 3.5em 6% 2em; /* reduced bottom padding */
     box-sizing: border-box;
-    text-align: center;
   }
   #slideshow {
     width: 100% !important;
     max-width: 700px;
     height: 280px !important;
-    margin: 0 auto 2em !important; /* centered on mobile */
+    margin: 0 auto 2em !important;
   }
-  /* Form: PERFECT CENTERING - fixed shift */
+  /* Form improvements - keep centering, reduce bottom margin */
   #signup-form {
-    display: flex !important;
+    display: flex;
     flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 1em;
-    margin: 1em auto 1.8em !important; /* tight but nice space below */
-    width: 90%;
-    max-width: 420px;
+    align-items: center;
+    gap: 1.2em;
+    margin: 1.5em 0 1.2em !important; /* reduced bottom from 3em → 1.2em for shorter gap */
   }
-  #signup-form input[type="email"],
+  #signup-form input[type="email"] {
+    width: 90% !important;
+    max-width: 420px;
+    padding: 0.9em 1em;
+  }
   #signup-form input[type="submit"] {
-    width: 100% !important;
+    width: 90% !important;
     max-width: 420px;
-    box-sizing: border-box;
-    margin: 0 auto !important; /* ensure no shift */
   }
-  /* Long text: full width below, centered block feel */
+  /* Long text block: full width, below everything, smaller top padding */
   .right-scroll-container {
     position: relative !important;
     top: auto !important;
     right: auto !important;
     width: 100% !important;
     height: auto !important;
-    min-height: auto;
-    padding: 3em 6% 5em !important;
+    min-height: 100vh;
+    padding: 2em 7% 6em !important; /* reduced top padding from 4em → 2em */
     opacity: 1 !important;
     background: rgba(0,0,0,0.75) !important;
     overflow-y: visible !important;
-    text-align: center !important;
-  }
-  .right-scroll-container p,
-  .right-scroll-container .section-title {
-    max-width: 90%;
-    margin: 0 auto 1.6em !important;
-    text-align: left !important; /* readable left inside centered */
   }
   .right-scroll-container > p:first-child {
-    margin-top: 0.5em !important;
+    margin-top: 0.5em !important; /* even tighter start */
   }
 }
 /* Phones - fine tuning */
 @media screen and (max-width: 600px) {
-  #slideshow { height: 220px !important; }
-  #header, .inner { padding: 2.5em 5% 2em; }
-  .right-scroll-container { padding: 3em 5% 4.5em; }
-  .right-scroll-container p { font-size: 1.2em !important; }
-  .right-scroll-container .section-title { font-size: 1.65em !important; }
-}
+  #slideshow {
+    height: 220px !important;
+  }
+  #header {
+    padding: 2.5em 5% 1.5em; /* further reduced */
+  }
+  .right-scroll-container {
+    padding: 1.8em 6% 5em; /* minimal top gap */
+  }
+  .right-scroll-container p {
+    font-size: 1.2em !important;
+  }
+  .right-scroll-container .section-title {
+    font-size: 1.65em !important;
+  }
 </style>
 </head>
 <body class="is-preload">
