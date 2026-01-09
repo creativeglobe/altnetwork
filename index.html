@@ -37,12 +37,12 @@
   margin: 2.5em 0 1.2em 0;
   opacity: 1;
 }
-/* NEW: Center the long text inside the right column on desktop */
+/* Right column text: full width, left-aligned, no extra gaps */
 .right-scroll-container p,
 .right-scroll-container .section-title {
-  max-width: 85%;                  /* narrower text block */
-  margin: 0 auto 1.8em auto;       /* centers it horizontally */
-  text-align: left;                /* keeps left-aligned reading flow */
+  width: 100%;                     /* full width of the column */
+  margin: 0 0 1.8em 0;             /* original bottom spacing only */
+  text-align: left;                /* natural left alignment */
 }
 body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
 #footer { display: none; }
