@@ -48,28 +48,36 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
   box-sizing: border-box;
 }
 #form-note { margin-top:12px; font-weight:bold; color: #1cb495; }
-/* Vertically center left content on desktop - ultra strong override */
+/* Vertically center left content on desktop - maximum strength + more visible */
 @media (min-width: 1025px) {
-  #header, #header .inner {
+  #header {
     height: 100vh !important;
-    min-height: 100vh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  #header .inner {
+    height: 100% !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
     align-items: flex-start !important;
-    padding: 3em 5% !important;
+    padding: 2em 5% !important; /* reduced vertical padding to make centering obvious */
     margin: 0 !important;
     box-sizing: border-box !important;
   }
 
   #slideshow {
     margin-top: 0 !important;
-    margin-bottom: 2em !important; /* optional breathing room */
+    margin-bottom: 1.5em !important;
   }
 
-  header, #signup-form {
-    margin-top: 1em !important;
-    margin-bottom: 1em !important;
+  header {
+    margin: 1em 0 !important;
+  }
+
+  #signup-form {
+    margin: 0 !important; /* no extra bottom gap */
   }
 }
 /* NEW: Make main title a little smaller on desktop/large screens only */
