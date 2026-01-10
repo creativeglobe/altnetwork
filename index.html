@@ -49,32 +49,40 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
 }
 #form-note { margin-top:12px; font-weight:bold; color: #1cb495; }
 
-/* Vertically center left content on desktop/large screens only - corrected & strong */
+/* Title size on desktop/large screens only */
 @media (min-width: 1025px) {
-  #header {
+  h1 {
+    font-size: 3.16em !important;
+  }
+}
+
+/* Vertically center left content on desktop/large screens only - strongest version */
+@media (min-width: 1025px) {
+  body, #header {
     height: 100vh !important;
+    min-height: 100vh !important;
     margin: 0 !important;
     padding: 0 !important;
   }
+
   #header .inner {
     height: 100% !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
     align-items: flex-start !important;
-    padding: 3em 5% !important;
+    padding: 2em 5% !important; /* reduced to make centering more obvious */
     margin: 0 !important;
     box-sizing: border-box !important;
   }
+
   #slideshow {
     margin-top: 0 !important;
-    margin-bottom: 2em !important;
+    margin-bottom: 1.5em !important;
   }
-  header {
-    margin: 1em 0 !important;
-  }
-  #signup-form {
-    margin: 0 !important;
+
+  header, #signup-form, #form-note {
+    margin: 0.5em 0 !important;
   }
 }
 
@@ -95,39 +103,33 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
   #slideshow {
     width: 100% !important;
     max-width: 700px;
-    height: 320px !important; /* slightly taller on mobile for better impact */
-    margin: 0 auto 2em !important;
+    height: 280px !important;
+    margin: 0 auto 2em !important; /* centered on mobile */
   }
-
-  /* BIGGER TITLE & DESCRIPTION on mobile */
-  h1 {
-    font-size: 2.8em !important; /* bigger title */
-    margin-bottom: 0.4em !important;
-  }
-  header p {
-    font-size: 1.4em !important; /* bigger description */
-    line-height: 1.4 !important;
-  }
-
-  /* Reduce gap under the button/form */
+  /* Form: PERFECT CENTERING - fixed shift */
   #signup-form {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
     gap: 1em;
-    margin: 1em auto 0.8em !important; /* reduced bottom margin from 1.8em to 0.8em */
+    margin: 1em auto 1.8em !important; /* tight but nice space below */
     width: 90%;
     max-width: 420px;
   }
-
-  /* Center the full text column while keeping left-aligned text */
+  #signup-form input[type="email"],
+  #signup-form input[type="submit"] {
+    width: 100% !important;
+    max-width: 420px;
+    box-sizing: border-box;
+    margin: 0 auto !important; /* ensure no shift */
+  }
+  /* Long text: full width below, centered block feel */
   .right-scroll-container {
     position: relative !important;
     top: auto !important;
     right: auto !important;
-    width: 90% !important; /* slightly narrower than full width for centering feel */
-    margin: 0 auto !important; /* centers the whole text box horizontally */
+    width: 100% !important;
     height: auto !important;
     min-height: auto;
     padding: 3em 6% 5em !important;
@@ -135,29 +137,24 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
     background: rgba(0,0,0,0.75) !important;
     overflow-y: visible !important;
     text-align: center !important;
-    border-radius: 12px !important; /* optional: nice rounded corners */
   }
-
-  /* Keep text left-aligned inside the centered box */
   .right-scroll-container p,
   .right-scroll-container .section-title {
-    max-width: 100%;
+    max-width: 90%;
     margin: 0 auto 1.6em !important;
-    text-align: left !important;
+    text-align: left !important; /* readable left inside centered */
   }
-
   .right-scroll-container > p:first-child {
     margin-top: 0.5em !important;
   }
 }
-
 /* Phones - fine tuning */
 @media screen and (max-width: 600px) {
-  #slideshow { height: 240px !important; }
+  #slideshow { height: 220px !important; }
   #header, .inner { padding: 2.5em 5% 2em; }
-  .right-scroll-container { padding: 2.5em 5% 4em; }
-  .right-scroll-container p { font-size: 1.25em !important; }
-  .right-scroll-container .section-title { font-size: 1.7em !important; }
+  .right-scroll-container { padding: 3em 5% 4.5em; }
+  .right-scroll-container p { font-size: 1.2em !important; }
+  .right-scroll-container .section-title { font-size: 1.65em !important; }
 }
 </style>
 </head>
