@@ -36,7 +36,7 @@
   font-size: 1.9em;
   font-weight: bold;
   margin: 2.5em 0 1.2em 0;
-  padding-left: 1.45em;
+  padding-left: 1.45em; /* your perfect value */
   opacity: 1;
 }
 body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
@@ -49,7 +49,7 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
 }
 #form-note { margin-top:12px; font-weight:bold; color: #1cb495; }
 
-/* Vertically center left content on desktop/large screens only - corrected & strong */
+/* Restore vertical centering like original template - only on desktop */
 @media (min-width: 1025px) {
   #header {
     height: 100vh !important;
@@ -109,7 +109,7 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
     align-items: center !important;
     justify-content: center !important;
     gap: 1em;
-    margin: 1em auto 1.8em !important; /* tight but nice space below */
+    margin: 1em auto 1.8em !important;
     width: 90%;
     max-width: 420px;
   }
@@ -118,7 +118,7 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
     width: 100% !important;
     max-width: 420px;
     box-sizing: border-box;
-    margin: 0 auto !important; /* ensure no shift */
+    margin: 0 auto !important;
   }
   /* Long text: full width below, centered block feel */
   .right-scroll-container {
@@ -138,7 +138,7 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
   .right-scroll-container .section-title {
     max-width: 90%;
     margin: 0 auto 1.6em !important;
-    text-align: left !important; /* readable left inside centered */
+    text-align: left !important;
   }
   .right-scroll-container > p:first-child {
     margin-top: 0.5em !important;
