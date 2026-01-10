@@ -48,20 +48,20 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
   box-sizing: border-box;
 }
 #form-note { margin-top:12px; font-weight:bold; color: #1cb495; }
-  /* Vertically center left content on desktop/large screens only */
+/* Vertically center left content on desktop/large screens only */
 @media (min-width: 1025px) {
   #header .inner {
-    height: 100vh;                  /* full viewport height */
+    height: 100vh !important;
     display: flex !important;
-    flex-direction: column;
-    justify-content: center;        /* centers vertically */
-    align-items: flex-start;        /* keeps left alignment horizontally */
-    padding: 3em 5% !important;     /* reduced vertical padding for better centering */
-    box-sizing: border-box;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    padding: 3em 5% !important;
+    box-sizing: border-box !important;
   }
   
   #slideshow {
-    margin-top: 0 !important;       /* remove negative margin if it was pushing up */
+    margin-top: 0 !important;
   }
 }
 /* NEW: Make main title a little smaller on desktop/large screens only */
