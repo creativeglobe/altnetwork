@@ -49,16 +49,15 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
 }
 #form-note { margin-top:12px; font-weight:bold; color: #1cb495; }
 
-/* ✅ FIXED: Vertically center left content on desktop */
+/* Vertically center left content on desktop / large screens ONLY */
 @media (min-width: 1025px) {
-  #header {
-    min-height: 100vh !important;
-    display: flex !important;
-    align-items: center !important;
-  }
-
   #header .inner {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    min-height: 100vh !important;
     padding: 3em 5% !important;
+    box-sizing: border-box !important;
   }
 
   #slideshow {
