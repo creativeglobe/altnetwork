@@ -48,15 +48,24 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
   box-sizing: border-box;
 }
 #form-note { margin-top:12px; font-weight:bold; color: #1cb495; }
-/* ✅ RESTORE ORIGINAL EVENTUALLY VERTICAL CENTERING (LEFT SIDE ONLY) */
+/* Vertically center left content on desktop/large screens only */
 @media (min-width: 1025px) {
-  body {
-    display: flex;
-    align-items: center;
+  #header .inner {
+    height: 100vh !important;           /* full screen height */
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important; /* centers vertically */
+    align-items: flex-start !important; /* keeps left alignment horizontally */
+    padding: 3em 5% !important;         /* balanced padding */
+    box-sizing: border-box !important;
   }
-
-  #header {
-    flex: 0 0 auto;
+  
+  #slideshow {
+    margin-top: 0 !important;           /* reset any negative top margin */
+  }
+  
+  #signup-form {
+    margin-bottom: 0 !important;        /* optional: remove gap under form if needed */
   }
 }
 /* NEW: Make main title a little smaller on desktop/large screens only */
