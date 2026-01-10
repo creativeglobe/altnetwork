@@ -48,6 +48,19 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
   box-sizing: border-box;
 }
 #form-note { margin-top:12px; font-weight:bold; color: #1cb495; }
+  /* ✅ DESKTOP ONLY — true vertical centering for HTML5 UP */
+@media (min-width: 1025px) {
+  #header {
+    position: relative;
+  }
+
+  #header .inner {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+  }
+}
 /* NEW: Make main title a little smaller on desktop/large screens only */
 @media (min-width: 1025px) {
   h1 {
