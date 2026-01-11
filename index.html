@@ -46,7 +46,7 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
   box-sizing: border-box;
 }
 #form-note { margin-top:12px; font-weight:bold; color: #1cb495; }
-/* Vertically center left content on desktop - left-aligned + proportional slideshow */
+/* Vertically center left content on desktop - left-aligned, all same width */
 @media (min-width: 1025px) {
   body, #header {
     height: 100vh !important;
@@ -66,14 +66,17 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
   }
   #slideshow {
     width: 100% !important;
-    aspect-ratio: 3 / 2 !important; /* 1920:1280 ratio - height auto */
-    max-width: 700px !important; /* prevents too wide on large screens */
-    margin: 0 0 1.5em 0 !important; /* left-aligned, no auto center */
+    aspect-ratio: 3 / 2 !important; /* keeps perfect 1920:1280 ratio */
+    max-width: 700px !important; /* limits max width so it doesn't get too wide */
+    margin: 0 0 1.5em 0 !important; /* no center, left-aligned */
   }
   header, #signup-form, #form-note {
     width: 100% !important;
-    max-width: 600px !important;
+    max-width: 700px !important; /* ← this matches slideshow max-width */
     margin: 0.5em 0 !important;
+  }
+  h1, header p, #signup-form {
+    text-align: left !important; /* ensure left alignment */
   }
 }
 /* Title size on desktop/large screens only */
