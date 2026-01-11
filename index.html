@@ -114,39 +114,39 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
     line-height: 1.4 !important;
   }
 
-/* 2. Center the full text column on mobile + force scrollbar hidden */
+/* Center the full text column on mobile + equal padding + scrollbar hidden */
 .right-scroll-container {
   position: relative !important;
   top: auto !important;
   right: auto !important;
-  width: 100% !important; /* full width background */
+  width: 100% !important;               /* full width background */
   height: auto !important;
   min-height: auto;
-  padding: 3em 6% 3em !important;
+  padding: 3em 6% 3em 6% !important;    /* explicitly equal left/right 6% */
   opacity: 1 !important;
   background: rgba(0,0,0,0.75) !important;
   overflow-y: auto !important;
-  -ms-overflow-style: none !important;          /* IE/Edge */
-  scrollbar-width: none !important;             /* Firefox */
-  margin: 0 auto !important;                    /* centers the block if screen is wider */
+  -ms-overflow-style: none !important;  /* hide scrollbar IE/Edge */
+  scrollbar-width: none !important;     /* hide scrollbar Firefox */
+  margin: 0 !important;                 /* no extra margin */
   box-sizing: border-box !important;
 }
 
-/* Hide scrollbar on Chrome/Safari - must be inside media query for mobile */
+/* Hide scrollbar on Chrome/Safari - inside media query for reliability */
 .right-scroll-container::-webkit-scrollbar {
   display: none !important;
 }
 
-/* Center the text content inside the full-width box */
+/* Text content inside: left-aligned, but centered within max width */
 .right-scroll-container p,
 .right-scroll-container .section-title {
-  max-width: 100%;
+  max-width: 90%;
   margin: 0 auto 1.6em !important;
-  text-align: left !important; /* keeps left alignment */
+  text-align: left !important;
 }
 
 .right-scroll-container > p:first-child {
-  margin-top: 1em !important;
+  margin-top: 0.5em !important;
 }
 
   /* Form: PERFECT CENTERING - fixed shift */
