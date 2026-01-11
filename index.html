@@ -7,8 +7,6 @@
 <link rel="stylesheet" href="assets/css/main.css" />
 <style>
 /* Your preferred base styles - unchanged except targeted fixes */
-.right-scroll-container::-webkit-scrollbar { display: none; }
-.right-scroll-container { -ms-overflow-style: none; scrollbar-width: none; }
 .right-scroll-container {
   position: fixed;
   top: 0;
@@ -48,7 +46,6 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
   box-sizing: border-box;
 }
 #form-note { margin-top:12px; font-weight:bold; color: #1cb495; }
-
 /* Vertically center left content on desktop - strongest override possible */
 @media (min-width: 1025px) {
   body, #header {
@@ -75,14 +72,12 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
     margin: 0.5em 0 !important;
   }
 }
-
 /* Title size on desktop/large screens only */
 @media (min-width: 1025px) {
   h1 {
     font-size: 3.16em !important;
   }
 }
-
 /* ── RESPONSIVE: Stack vertically + perfect centering on tablet/mobile ── */
 @media screen and (max-width: 1024px) {
   body, html {
@@ -103,7 +98,6 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
     height: 280px !important;
     margin: 0 auto 2em !important;
   }
-
   /* 1. Bigger title and description on mobile */
   h1 {
     font-size: 2.7em !important;
@@ -113,42 +107,31 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
     font-size: 1.3em !important;
     line-height: 1.4 !important;
   }
-
-/* Center the full text column on mobile + equal padding + scrollbar hidden */
-.right-scroll-container {
-  position: relative !important;
-  top: auto !important;
-  right: auto !important;
-  width: 100% !important;               /* full width background */
-  height: auto !important;
-  min-height: auto;
-  padding: 3em 6% 3em 2% !important;    /* explicitly equal left/right 6% */
-  opacity: 1 !important;
-  background: rgba(0,0,0,0.75) !important;
-  overflow-y: auto !important;
-  -ms-overflow-style: none !important;  /* hide scrollbar IE/Edge */
-  scrollbar-width: none !important;     /* hide scrollbar Firefox */
-  margin: 0 !important;                 /* no extra margin */
-  box-sizing: border-box !important;
-}
-
-/* Scrollbar hiding (keep these - they are correct) */
-.right-scroll-container::-webkit-scrollbar {
-  display: none !important;
-}
-
-/* Text content inside */
-.right-scroll-container p,
-.right-scroll-container .section-title {
-  max-width: 90%;
-  margin: 0 auto 1.6em !important;
-  text-align: left !important;
-}
-
-.right-scroll-container > p:first-child {
-  margin-top: 0.5em !important;
-}
-
+  /* Center the full text column on mobile + equal padding */
+  .right-scroll-container {
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    width: 100% !important; /* full width background */
+    height: auto !important;
+    min-height: auto;
+    padding: 3em 6% 3em 2% !important;
+    opacity: 1 !important;
+    background: rgba(0,0,0,0.75) !important;
+    overflow-y: auto !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+  }
+  /* Text content inside */
+  .right-scroll-container p,
+  .right-scroll-container .section-title {
+    max-width: 90%;
+    margin: 0 auto 1.6em !important;
+    text-align: left !important;
+  }
+  .right-scroll-container > p:first-child {
+    margin-top: 0.5em !important;
+  }
   /* Form: PERFECT CENTERING - fixed shift */
   #signup-form {
     display: flex !important;
