@@ -94,8 +94,8 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
   }
   #slideshow {
     width: 100% !important;
+    aspect-ratio: 3 / 2 !important; /* enforces 1920:1280 ratio (3:2) */
     max-width: 700px;
-    height: 280px !important;
     margin: 0 auto 2em !important;
   }
   /* 1. Bigger title and description on mobile */
@@ -153,7 +153,9 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
 }
 /* Phones - fine tuning */
 @media screen and (max-width: 600px) {
-  #slideshow { height: 220px !important; }
+  #slideshow { 
+    height: auto !important; /* let aspect-ratio handle it */
+  }
   #header, .inner { padding: 2.5em 5% 2em; }
   .right-scroll-container { padding: 3em 5% 4.5em; }
   .right-scroll-container p { font-size: 1.2em !important; }
@@ -164,7 +166,8 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
 <body class="is-preload">
 <section id="header">
 <div class="inner">
-<div id="slideshow" style="width:500px; height:260px; margin-top:-15px; margin-bottom:25px; margin-left:0; position: relative; overflow:hidden; border-radius:14px;">
+<!-- Updated slideshow with responsive aspect ratio -->
+<div id="slideshow" style="width:100%; aspect-ratio: 3 / 2; position: relative; overflow:hidden; border-radius:14px; margin:0 auto 2em;">
 <img src="images/slide1.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:1; transform:scale(1); transition: opacity .8s ease, transform 5s ease;">
 <img src="images/slide2.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
 <img src="images/slide3.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
@@ -211,7 +214,7 @@ The platform will move forward <b>only if there is a community that truly wants 
 </p>
 <div class="section-title">Call to action</div>
 <p>
-If you believe there is a need for such an alternative,
+If you believe there is a need for such an alternative,<br>
 <b>sign up</b> to express your interest and be among the first to receive updates.<br><br>
 <b>No commitment. No payment.</b> Just a declaration of interest.
 </p>
