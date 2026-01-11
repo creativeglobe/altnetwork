@@ -93,9 +93,10 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
     text-align: center;
   }
   #slideshow {
-    width: 625px !important;
-    height: 406px !important;
-    margin: 0 auto 2em !important; /* center it */
+    width: 100% !important;
+    max-width: 700px;
+    height: 280px !important;
+    margin: 0 auto 2em !important;
   }
   /* 1. Bigger title and description on mobile */
   h1 {
@@ -138,7 +139,7 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
     align-items: center !important;
     justify-content: center !important;
     gap: 1em;
-    margin: 1em auto 0.8em !important;
+    margin: 1em auto 1.8em !important;
     width: 90%;
     max-width: 420px;
   }
@@ -163,7 +164,7 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
 <body class="is-preload">
 <section id="header">
 <div class="inner">
-<div id="slideshow" style="width:625px; height:406px; margin-top:0; margin-bottom:25px; margin-left:auto; margin-right:auto; position: relative; overflow:hidden; border-radius:14px;">
+<div id="slideshow" style="width:500px; height:260px; margin-top:-15px; margin-bottom:25px; margin-left:0; position: relative; overflow:hidden; border-radius:14px;">
 <img src="images/slide1.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:1; transform:scale(1); transition: opacity .8s ease, transform 5s ease;">
 <img src="images/slide2.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
 <img src="images/slide3.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
