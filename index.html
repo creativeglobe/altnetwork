@@ -46,7 +46,7 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
   box-sizing: border-box;
 }
 #form-note { margin-top:12px; font-weight:bold; color: #1cb495; }
-/* Vertically center left content on desktop - left-aligned, all same width */
+/* Vertically center left content on desktop - smaller slideshow */
 @media (min-width: 1025px) {
   body, #header {
     height: 100vh !important;
@@ -59,24 +59,21 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
-    align-items: flex-start !important; /* left-aligned */
+    align-items: flex-start !important;
     padding: 2em 5% !important;
     margin: 0 !important;
     box-sizing: border-box !important;
   }
   #slideshow {
     width: 100% !important;
+    max-width: 500px !important; /* smaller width on desktop */
     aspect-ratio: 3 / 2 !important; /* keeps perfect 1920:1280 ratio */
-    max-width: 700px !important; /* limits max width so it doesn't get too wide */
-    margin: 0 0 1.5em 0 !important; /* no center, left-aligned */
+    margin: 0 0 1.5em 0 !important; /* left-aligned, bottom space */
   }
   header, #signup-form, #form-note {
     width: 100% !important;
-    max-width: 700px !important; /* ← this matches slideshow max-width */
+    max-width: 500px !important; /* matches slideshow width */
     margin: 0.5em 0 !important;
-  }
-  h1, header p, #signup-form {
-    text-align: left !important; /* ensure left alignment */
   }
 }
 /* Title size on desktop/large screens only */
@@ -102,7 +99,6 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
   #slideshow {
     width: 100% !important;
     aspect-ratio: 3 / 2 !important; /* same ratio - height auto */
-    max-width: none !important;
     margin: 0 auto 2em !important;
   }
   /* 1. Bigger title and description on mobile */
@@ -161,7 +157,7 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
 /* Phones - fine tuning */
 @media screen and (max-width: 600px) {
   #slideshow { 
-    aspect-ratio: 3 / 2 !important; /* keeps ratio */
+    aspect-ratio: 3 / 2 !important;
   }
   #header, .inner { padding: 2.5em 5% 2em; }
   .right-scroll-container { padding: 3em 5% 4.5em; }
@@ -173,7 +169,7 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
 <body class="is-preload">
 <section id="header">
 <div class="inner">
-<!-- Slideshow with responsive 3:2 ratio, left-aligned on desktop -->
+<!-- Slideshow with proportional size, left-aligned on desktop -->
 <div id="slideshow" style="width:100%; aspect-ratio: 3 / 2; position: relative; overflow:hidden; border-radius:14px; margin:0 0 2em 0;">
 <img src="images/slide1.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:1; transform:scale(1); transition: opacity .8s ease, transform 5s ease;">
 <img src="images/slide2.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
