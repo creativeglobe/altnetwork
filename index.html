@@ -42,11 +42,11 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
 #header .inner {
   display: block !important;
   margin-top: 0 !important;
-  padding: 3em 5% 3em 5%;
+  padding: 3em 5% 3em 5% !important; /* ← added top padding to push everything down */
   box-sizing: border-box;
 }
 #form-note { margin-top:12px; font-weight:bold; color: #1cb495; }
-/* Vertically center left content on desktop - smaller slideshow */
+/* Vertically center left content on desktop - with top push */
 @media (min-width: 1025px) {
   body, #header {
     height: 100vh !important;
@@ -60,19 +60,15 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
     flex-direction: column !important;
     justify-content: center !important;
     align-items: flex-start !important;
-    padding: 3em 5% !important;
+    padding: 4em 5% 3em 5% !important; /* ↑ increased top padding to 4em to push slideshow down */
     margin: 0 !important;
     box-sizing: border-box !important;
   }
   #slideshow {
-    width: 100% !important;
-    max-width: 500px !important; /* smaller width on desktop */
-    aspect-ratio: 3 / 2 !important; /* keeps perfect 1920:1280 ratio */
-    margin: 0 0 1.5em 0 !important; /* left-aligned, bottom space */
+    margin-top: 0 !important;
+    margin-bottom: 1.5em !important;
   }
   header, #signup-form, #form-note {
-    width: 100% !important;
-    max-width: 500px !important; /* matches slideshow width */
     margin: 0.5em 0 !important;
   }
 }
@@ -98,7 +94,8 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
   }
   #slideshow {
     width: 100% !important;
-    aspect-ratio: 3 / 2 !important; /* same ratio - height auto */
+    max-width: 700px;
+    height: 280px !important;
     margin: 0 auto 2em !important;
   }
   /* 1. Bigger title and description on mobile */
@@ -115,7 +112,7 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
     position: relative !important;
     top: auto !important;
     right: auto !important;
-    width: 100% !important;
+    width: 100% !important; /* full width background */
     height: auto !important;
     min-height: auto;
     padding: 3em 8% 3em 2% !important;
@@ -135,7 +132,7 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
   .right-scroll-container > p:first-child {
     margin-top: 0.5em !important;
   }
-  /* Form: PERFECT CENTERING */
+  /* Form: PERFECT CENTERING - fixed shift */
   #signup-form {
     display: flex !important;
     flex-direction: column !important;
@@ -156,9 +153,7 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
 }
 /* Phones - fine tuning */
 @media screen and (max-width: 600px) {
-  #slideshow { 
-    aspect-ratio: 3 / 2 !important;
-  }
+  #slideshow { height: 220px !important; }
   #header, .inner { padding: 2.5em 5% 2em; }
   .right-scroll-container { padding: 3em 5% 4.5em; }
   .right-scroll-container p { font-size: 1.2em !important; }
@@ -169,8 +164,7 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
 <body class="is-preload">
 <section id="header">
 <div class="inner">
-<!-- Slideshow with proportional size, left-aligned on desktop -->
-<div id="slideshow" style="width:100%; aspect-ratio: 3 / 2; position: relative; overflow:hidden; border-radius:14px; margin:0 0 2em 0;">
+<div id="slideshow" style="width:500px; height:260px; margin-top:-15px; margin-bottom:25px; margin-left:0; position: relative; overflow:hidden; border-radius:14px;">
 <img src="images/slide1.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:1; transform:scale(1); transition: opacity .8s ease, transform 5s ease;">
 <img src="images/slide2.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
 <img src="images/slide3.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
