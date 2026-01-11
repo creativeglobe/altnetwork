@@ -48,7 +48,7 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
   box-sizing: border-box;
 }
 #form-note { margin-top:12px; font-weight:bold; color: #1cb495; }
-/* Vertically center left content on desktop - strongest override possible */
+/* Vertically & horizontally center left content on desktop */
 @media (min-width: 1025px) {
   body, #header {
     height: 100vh !important;
@@ -61,20 +61,25 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
     height: 100% !important;
     display: flex !important;
     flex-direction: column !important;
-    justify-content: center !important;
-    align-items: flex-start !important;
-    padding: 2em 5% !important; /* reduced to make centering more obvious */
+    justify-content: center !important; /* vertical center */
+    align-items: center !important;     /* ← changed: horizontal center */
+    padding: 2em 5% !important;
     margin: 0 !important;
     box-sizing: border-box !important;
   }
 
   #slideshow {
-    margin-top: 0 !important;
-    margin-bottom: 1.5em !important;
+    width: 100% !important;             /* full width of left space */
+    max-width: 700px !important;        /* optional max to prevent too big */
+    height: 400px !important;           /* bigger height - adjust if needed */
+    margin: 0 auto 2em !important;
   }
 
   header, #signup-form, #form-note {
-    margin: 0.5em 0 !important;
+    width: 100% !important;
+    max-width: 600px !important;        /* optional: keeps content readable */
+    text-align: center !important;
+    margin: 1em auto !important;
   }
 }
 /* Title size on desktop/large screens only */
