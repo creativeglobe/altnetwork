@@ -48,43 +48,8 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
   box-sizing: border-box;
 }
 #form-note { margin-top:12px; font-weight:bold; color: #1cb495; }
-/* Vertically center left content on desktop - strongest override possible */
-@media (min-width: 1025px) {
-  body, #header {
-    height: 100vh !important;
-    min-height: 100vh !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
 
-  #header .inner {
-    height: 100% !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important;
-    align-items: flex-start !important;
-    padding: 2em 5% !important; /* reduced to make centering more obvious */
-    margin: 0 !important;
-    box-sizing: border-box !important;
-  }
-
-  #slideshow {
-    margin-top: 0 !important;
-    margin-bottom: 1.5em !important;
-  }
-
-  header, #signup-form, #form-note {
-    margin: 0.5em 0 !important;
-  }
-}
-/* Title size on desktop/large screens only */
-@media (min-width: 1025px) {
-  h1 {
-    font-size: 3.16em !important; /* you can change this number if needed */
-  }
-}
-
-/* Vertically center left content on desktop/large screens only - corrected & strong */
+/* Vertically center left content on desktop/large screens only */
 @media (min-width: 1025px) {
   #header {
     height: 100vh !important;
@@ -112,6 +77,7 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
     margin: 0 !important;
   }
 }
+
 /* ── RESPONSIVE: Stack vertically + perfect centering on tablet/mobile ── */
 @media screen and (max-width: 1024px) {
   body, html {
@@ -130,17 +96,28 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
     width: 100% !important;
     max-width: 700px;
     height: 280px !important;
-    margin: 0 auto 2em !important; /* centered on mobile */
+    margin: 0 auto 2em !important;
   }
-  /* Form: PERFECT CENTERING - fixed shift */
+
+  /* 1. Bigger title and description on mobile */
+  h1 {
+    font-size: 2.8em !important;
+    margin-bottom: 0.4em !important;
+  }
+  header p {
+    font-size: 1.4em !important;
+    line-height: 1.4 !important;
+  }
+
+  /* 2. Reduce gap under the button/form */
   #signup-form {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
     gap: 1em;
-    margin: 1em auto 1.8em !important; /* tight but nice space below */
-    width: 90%;
+    margin: 1em auto 0.8em !important; /* reduced bottom gap */
+    width: 90% !important;
     max-width: 420px;
   }
   #signup-form input[type="email"],
@@ -148,14 +125,16 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
     width: 100% !important;
     max-width: 420px;
     box-sizing: border-box;
-    margin: 0 auto !important; /* ensure no shift */
+    margin: 0 auto !important;
   }
-  /* Long text: full width below, centered block feel */
+
+  /* 3. Center the full text column on mobile, keep text left-aligned inside */
   .right-scroll-container {
     position: relative !important;
     top: auto !important;
     right: auto !important;
-    width: 100% !important;
+    width: 100% !important; /* full width background */
+    margin: 0 !important;
     height: auto !important;
     min-height: auto;
     padding: 3em 6% 5em !important;
@@ -168,7 +147,7 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
   .right-scroll-container .section-title {
     max-width: 90%;
     margin: 0 auto 1.6em !important;
-    text-align: left !important; /* readable left inside centered */
+    text-align: left !important; /* text left-aligned inside */
   }
   .right-scroll-container > p:first-child {
     margin-top: 0.5em !important;
