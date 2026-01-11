@@ -46,7 +46,7 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
   box-sizing: border-box;
 }
 #form-note { margin-top:12px; font-weight:bold; color: #1cb495; }
-/* Vertically center left content on desktop - strongest override possible */
+/* Vertically center left content on desktop - left-aligned + proportional slideshow */
 @media (min-width: 1025px) {
   body, #header {
     height: 100vh !important;
@@ -59,14 +59,16 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
-    align-items: flex-start !important;
+    align-items: flex-start !important; /* left-aligned */
     padding: 2em 5% !important;
     margin: 0 !important;
     box-sizing: border-box !important;
   }
   #slideshow {
-    margin-top: 0 !important;
-    margin-bottom: 1.5em !important;
+    width: 100% !important;
+    aspect-ratio: 3 / 2 !important; /* 1920:1280 ratio - height auto */
+    max-width: 700px !important; /* prevents too wide on large screens */
+    margin: 0 0 1.5em 0 !important; /* no negative top, bottom space */
   }
   header, #signup-form, #form-note {
     margin: 0.5em 0 !important;
@@ -94,8 +96,8 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
   }
   #slideshow {
     width: 100% !important;
-    max-width: 700px;
-    height: 280px !important;
+    aspect-ratio: 3 / 2 !important; /* same 1920:1280 ratio - height auto */
+    max-width: none !important;
     margin: 0 auto 2em !important;
   }
   /* 1. Bigger title and description on mobile */
@@ -112,7 +114,7 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
     position: relative !important;
     top: auto !important;
     right: auto !important;
-    width: 100% !important; /* full width background */
+    width: 100% !important;
     height: auto !important;
     min-height: auto;
     padding: 3em 8% 3em 2% !important;
@@ -153,7 +155,9 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
 }
 /* Phones - fine tuning */
 @media screen and (max-width: 600px) {
-  #slideshow { height: 220px !important; }
+  #slideshow { 
+    aspect-ratio: 3 / 2 !important; /* keeps ratio */
+  }
   #header, .inner { padding: 2.5em 5% 2em; }
   .right-scroll-container { padding: 3em 5% 4.5em; }
   .right-scroll-container p { font-size: 1.2em !important; }
@@ -164,7 +168,8 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
 <body class="is-preload">
 <section id="header">
 <div class="inner">
-<div id="slideshow" style="width:500px; height:333px; max-width:100%; aspect-ratio: 3 / 2; margin:0 auto 25px; position: relative; overflow:hidden; border-radius:14px;">
+<!-- Slideshow with responsive 3:2 ratio -->
+<div id="slideshow" style="width:100%; aspect-ratio: 3 / 2; position: relative; overflow:hidden; border-radius:14px; margin:0 auto 2em;">
 <img src="images/slide1.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:1; transform:scale(1); transition: opacity .8s ease, transform 5s ease;">
 <img src="images/slide2.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
 <img src="images/slide3.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
@@ -211,7 +216,7 @@ The platform will move forward <b>only if there is a community that truly wants 
 </p>
 <div class="section-title">Call to action</div>
 <p>
-If you believe there is a need for such an alternative,
+If you believe there is a need for such an alternative,<br>
 <b>sign up</b> to express your interest and be among the first to receive updates.<br><br>
 <b>No commitment. No payment.</b> Just a declaration of interest.
 </p>
