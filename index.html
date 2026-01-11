@@ -269,10 +269,8 @@ document.getElementById('signup-form').addEventListener('submit', async function
     });
     const result = await res.json();
     if (result.success) {
-      note.style.color = '#1cb495';
-      note.textContent = 'Thank you! You have been added to the waitlist.';
-      form.reset();
-    } else {
+  form.reset();
+} else {
       note.style.color = 'red';
       note.textContent = 'Something went wrong. Please try again.';
     }
