@@ -84,32 +84,38 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
   }
 }
 
-/* Vertically center left content on desktop/large screens only - corrected & strong */
+/* Vertically & horizontally center left content on desktop/large screens */
 @media (min-width: 1025px) {
-  #header {
+  body, #header {
     height: 100vh !important;
+    min-height: 100vh !important;
     margin: 0 !important;
     padding: 0 !important;
   }
+
   #header .inner {
     height: 100% !important;
     display: flex !important;
     flex-direction: column !important;
-    justify-content: center !important;
-    align-items: flex-start !important;
-    padding: 3em 5% !important;
+    justify-content: center !important; /* vertical center */
+    align-items: center !important;     /* ← changed to center horizontally */
+    padding: 2em 5% !important;
     margin: 0 !important;
     box-sizing: border-box !important;
   }
+
   #slideshow {
-    margin-top: 0 !important;
-    margin-bottom: 2em !important;
+    width: 100% !important;             /* full width of left column */
+    max-width: none !important;
+    height: 400px !important;           /* bigger height - change if needed */
+    margin: 0 auto 2em !important;      /* centered + space below */
   }
-  header {
-    margin: 1em 0 !important;
-  }
-  #signup-form {
-    margin: 0 !important;
+
+  header, #signup-form, #form-note {
+    width: 100% !important;
+    max-width: 600px !important;        /* optional: limit max width for readability */
+    text-align: center !important;      /* center text inside */
+    margin: 1em auto !important;
   }
 }
 /* ── RESPONSIVE: Stack vertically + perfect centering on tablet/mobile ── */
