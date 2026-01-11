@@ -48,8 +48,43 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
   box-sizing: border-box;
 }
 #form-note { margin-top:12px; font-weight:bold; color: #1cb495; }
+/* Vertically center left content on desktop - strongest override possible */
+@media (min-width: 1025px) {
+  body, #header {
+    height: 100vh !important;
+    min-height: 100vh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
 
-/* Vertically center left content on desktop/large screens only */
+  #header .inner {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    padding: 2em 5% !important; /* reduced to make centering more obvious */
+    margin: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  #slideshow {
+    margin-top: 0 !important;
+    margin-bottom: 1.5em !important;
+  }
+
+  header, #signup-form, #form-note {
+    margin: 0.5em 0 !important;
+  }
+}
+/* Title size on desktop/large screens only */
+@media (min-width: 1025px) {
+  h1 {
+    font-size: 3.16em !important; /* you can change this number if needed */
+  }
+}
+
+/* Vertically center left content on desktop/large screens only - corrected & strong */
 @media (min-width: 1025px) {
   #header {
     height: 100vh !important;
@@ -77,14 +112,6 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
     margin: 0 !important;
   }
 }
-
-/* Title size on desktop/large screens only */
-@media (min-width: 1025px) {
-  h1 {
-    font-size: 3.16em !important;
-  }
-}
-
 /* ── RESPONSIVE: Stack vertically + perfect centering on tablet/mobile ── */
 @media screen and (max-width: 1024px) {
   body, html {
@@ -101,11 +128,10 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
   }
   #slideshow {
     width: 100% !important;
-    max-width: none !important;
-    height: 320px !important; /* bigger on mobile */
-    margin: 0 auto 2em !important;
+    max-width: 700px;
+    height: 280px !important;
+    margin: 0 auto 2em !important; /* centered on mobile */
   }
-
   /* Form: PERFECT CENTERING - fixed shift */
   #signup-form {
     display: flex !important;
@@ -113,7 +139,7 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
     align-items: center !important;
     justify-content: center !important;
     gap: 1em;
-    margin: 1em auto 1.8em !important;
+    margin: 1em auto 1.8em !important; /* tight but nice space below */
     width: 90%;
     max-width: 420px;
   }
@@ -122,7 +148,7 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
     width: 100% !important;
     max-width: 420px;
     box-sizing: border-box;
-    margin: 0 auto !important;
+    margin: 0 auto !important; /* ensure no shift */
   }
   /* Long text: full width below, centered block feel */
   .right-scroll-container {
@@ -142,7 +168,7 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
   .right-scroll-container .section-title {
     max-width: 90%;
     margin: 0 auto 1.6em !important;
-    text-align: left !important;
+    text-align: left !important; /* readable left inside centered */
   }
   .right-scroll-container > p:first-child {
     margin-top: 0.5em !important;
@@ -150,7 +176,7 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
 }
 /* Phones - fine tuning */
 @media screen and (max-width: 600px) {
-  #slideshow { height: 240px !important; }
+  #slideshow { height: 220px !important; }
   #header, .inner { padding: 2.5em 5% 2em; }
   .right-scroll-container { padding: 3em 5% 4.5em; }
   .right-scroll-container p { font-size: 1.2em !important; }
@@ -161,8 +187,7 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
 <body class="is-preload">
 <section id="header">
 <div class="inner">
-<!-- Slideshow moved to top + bigger/full-width -->
-<div id="slideshow" style="width:100%; height:400px; margin:0; position: relative; overflow:hidden; border-radius:14px;">
+<div id="slideshow" style="width:700px; height:360px; margin-top:-15px; margin-bottom:25px; margin-left:0; position: relative; overflow:hidden; border-radius:14px;">
 <img src="images/slide1.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:1; transform:scale(1); transition: opacity .8s ease, transform 5s ease;">
 <img src="images/slide2.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
 <img src="images/slide3.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition: opacity .8s ease, transform 5s ease;">
