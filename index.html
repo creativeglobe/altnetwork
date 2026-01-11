@@ -13,7 +13,7 @@
   position: fixed;
   top: 0;
   right: 0;
-  width: 58%;
+  width: 56%;
   height: 100vh;
   padding: 6% 5% 6% 3%;
   box-sizing: border-box;
@@ -48,7 +48,7 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
   box-sizing: border-box;
 }
 #form-note { margin-top:12px; font-weight:bold; color: #1cb495; }
-/* Vertically & horizontally center left content on desktop */
+/* Vertically center left content on desktop - strongest override possible */
 @media (min-width: 1025px) {
   body, #header {
     height: 100vh !important;
@@ -61,25 +61,20 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
     height: 100% !important;
     display: flex !important;
     flex-direction: column !important;
-    justify-content: center !important; /* vertical center */
-    align-items: center !important;     /* ← changed: horizontal center */
-    padding: 2em 5% !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    padding: 2em 5% !important; /* reduced to make centering more obvious */
     margin: 0 !important;
     box-sizing: border-box !important;
   }
 
   #slideshow {
-    width: 100% !important;             /* full width of left space */
-    max-width: 700px !important;        /* optional max to prevent too big */
-    height: 400px !important;           /* bigger height - adjust if needed */
-    margin: 0 auto 2em !important;
+    margin-top: 0 !important;
+    margin-bottom: 1.5em !important;
   }
 
   header, #signup-form, #form-note {
-    width: 100% !important;
-    max-width: 600px !important;        /* optional: keeps content readable */
-    text-align: center !important;
-    margin: 1em auto !important;
+    margin: 0.5em 0 !important;
   }
 }
 /* Title size on desktop/large screens only */
@@ -89,38 +84,32 @@ body, html { overflow: hidden; height: 100%; margin:0; padding:0; }
   }
 }
 
-/* Vertically & horizontally center left content on desktop/large screens */
+/* Vertically center left content on desktop/large screens only - corrected & strong */
 @media (min-width: 1025px) {
-  body, #header {
+  #header {
     height: 100vh !important;
-    min-height: 100vh !important;
     margin: 0 !important;
     padding: 0 !important;
   }
-
   #header .inner {
     height: 100% !important;
     display: flex !important;
     flex-direction: column !important;
-    justify-content: center !important; /* vertical center */
-    align-items: center !important;     /* ← changed to center horizontally */
-    padding: 2em 5% !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    padding: 3em 5% !important;
     margin: 0 !important;
     box-sizing: border-box !important;
   }
-
   #slideshow {
-    width: 100% !important;             /* full width of left column */
-    max-width: none !important;
-    height: 400px !important;           /* bigger height - change if needed */
-    margin: 0 auto 2em !important;      /* centered + space below */
+    margin-top: 0 !important;
+    margin-bottom: 2em !important;
   }
-
-  header, #signup-form, #form-note {
-    width: 100% !important;
-    max-width: 600px !important;        /* optional: limit max width for readability */
-    text-align: center !important;      /* center text inside */
-    margin: 1em auto !important;
+  header {
+    margin: 1em 0 !important;
+  }
+  #signup-form {
+    margin: 0 !important;
   }
 }
 /* ── RESPONSIVE: Stack vertically + perfect centering on tablet/mobile ── */
